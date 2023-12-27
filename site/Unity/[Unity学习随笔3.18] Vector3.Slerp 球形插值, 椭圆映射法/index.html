@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/">
+        <link rel="prev" href="../%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/">
       
       
-        <link rel="next" href="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/">
+        <link rel="next" href="../%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>[JavaScript学习记录] 异步操作 - 泥烟</title>
+        <title>[Unity学习随笔3.18] Vector3.Slerp 球形插值, 椭圆映射法 - 泥烟</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#lerp-slerp" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              [JavaScript学习记录] 异步操作
+              [Unity学习随笔3.18] Vector3.Slerp 球形插值, 椭圆映射法
             
           </span>
         </div>
@@ -485,19 +485,21 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -511,7 +513,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Unity
@@ -525,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -543,10 +545,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔3.18] Vector3.Slerp 球形插值, 椭圆映射法
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -555,6 +575,72 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lerp-slerp" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性插值lerp 与 球形线性插值Slerp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线性插值lerp 与 球形线性插值Slerp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题缘由:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elliptical-grid-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      椭圆映射法(Elliptical Grid Mapping)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="椭圆映射法(Elliptical Grid Mapping)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题缘由:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -567,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -588,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
+      <a href="../%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,21 +764,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -706,7 +790,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Javascript
@@ -717,30 +801,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    [JavaScript学习记录] 异步操作
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -749,53 +813,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#settimeoutjavascript" class="md-nav__link">
-    <span class="md-ellipsis">
-      setTimeout(JavaScript函数/要执行的代码, 等待的毫秒数)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cleartimeouttimeoutid" class="md-nav__link">
-    <span class="md-ellipsis">
-      clearTimeout(timeoutID)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setintervaljavascript" class="md-nav__link">
-    <span class="md-ellipsis">
-      setInterval(JavaScript函数/要执行的代码, 等待的毫秒数)
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -808,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1062,8 +1079,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1072,29 +1087,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#settimeoutjavascript" class="md-nav__link">
+  <a href="#lerp-slerp" class="md-nav__link">
     <span class="md-ellipsis">
-      setTimeout(JavaScript函数/要执行的代码, 等待的毫秒数)
+      线性插值lerp 与 球形线性插值Slerp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线性插值lerp 与 球形线性插值Slerp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题缘由:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cleartimeouttimeoutid" class="md-nav__link">
-    <span class="md-ellipsis">
-      clearTimeout(timeoutID)
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setintervaljavascript" class="md-nav__link">
+  <a href="#elliptical-grid-mapping" class="md-nav__link">
     <span class="md-ellipsis">
-      setInterval(JavaScript函数/要执行的代码, 等待的毫秒数)
+      椭圆映射法(Elliptical Grid Mapping)
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="椭圆映射法(Elliptical Grid Mapping)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题缘由:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1113,232 +1149,24 @@
                   
 
 
-<p>JavaScript 引擎有多个线程，单个脚本只能在主线程运行,其他线程都在后台配合.</p>
-<p>单线程模型虽然对 JavaScript 构成了很大的限制，但也因此使它具备了其他语言不具备的优势。如果用得好，JavaScript 程序是不会出现堵塞的，这就是为什么 Node 可以用很少的资源，应付大流量访问的原因。</p>
-<h1 id="_1"><strong>一.定时器</strong></h1>
-<h2 id="settimeoutjavascript"><strong>setTimeout(JavaScript函数/要执行的代码, 等待的毫秒数)</strong></h2>
-<p>(三秒后会出现一个"ABC"的按钮)</p>
-<pre><code class="language-html">&lt;p id=&quot;content&quot;&gt; 请等三秒钟!&lt;/p&gt;  
-&lt;script&gt;  
-setTimeout(&quot;changeState()&quot;,3000 );  
-function changeState(){  
-    var content=document.getElementById('content');  
-    content.innerHTML=&quot;&lt;input type='button' value='ABC'&gt;&quot;;  
-}  
-&lt;/script&gt;
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<p>(一个计时器)</p>
-<pre><code class="language-html">&lt;input type=&quot;button&quot; id=&quot;displayBox&quot; value=&quot;0&quot;&gt;
+  <h1>[Unity学习随笔3.18] Vector3.Slerp 球形插值, 椭圆映射法</h1>
 
-&lt;script&gt;
-x = 0
-function countSecond() 
-{　
-    x = x+1
-    document.getElementById(&quot;displayBox&quot;).value=x 
-    setTimeout(&quot;countSecond()&quot;, 1000)
-}
-
-countSecond()
-&lt;/script&gt;
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<h2 id="cleartimeouttimeoutid"><strong>clearTimeout(timeoutID)</strong></h2>
-<p>timeoutID 为调用 setTimeout() 函数时所获得的返回值，使用该返回标识符作为参数，可以取消该 setTimeout() 所设定的定时执行操作</p>
-<p><img alt="img" src="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C.assets/2021081218485763.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<pre><code class="language-html">&lt;form class=&quot;countNum&quot;&gt;
-    &lt;input type=&quot;text&quot; id=&quot;addNum&quot; value=&quot;0&quot; size=&quot;4&quot; &gt;
-    &lt;input type=&quot;button&quot; value=&quot;开始&quot; onclick=&quot;countNum()&quot;&gt;
-    &lt;input type=&quot;button&quot; value=&quot;停止&quot; onclick=&quot;clearTimeout(matter)&quot;&gt;
-&lt;/form&gt;
-&lt;script&gt;
-    x = 0
-    function countNum(){
-        document.getElementById('addNum').value=x;
-        x += 1
-        matter=setTimeout(&quot;countNum()&quot;,1000)
-    }
-    function stopNum(){
-
-    }
-&lt;/script&gt;
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<h2 id="setintervaljavascript">setInterval(JavaScript函数/要执行的代码, 等待的毫秒数)</h2>
-<p>一个时钟<img alt="img" src="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C.assets/20210812213824321.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /> </p>
-<pre><code class="language-html">&lt;p id=&quot;timer&quot;&gt;&lt;/p&gt;
-&lt;script&gt;
-    setInterval(&quot;myTimer()&quot;,1000)
-    function myTimer(){
-        var d=new Date();
-        var t=d.toLocaleTimeString();
-        document.getElementById('timer').innerHTML = t
-    }
-&lt;/script&gt;
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<h1 id="_2"><strong>二.几种模式</strong></h1>
-<h2 id="1"><strong>1.回调函数</strong></h2>
-<table>
-<thead>
-<tr>
-<th><strong>优点</strong></th>
-<th><strong>缺点</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>简单、容易理解和实现</td>
-<td>各个部分之间<strong>高度耦合</strong>,使得程序结构混乱、流程难以追踪（尤其是多个回调函数嵌套的情况），而且每个任务只能指定一个回调函数</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="language-javascript">function f1(callback) {
-  // ...
-  callback();
-}
-
-function f2() {
-  // ...
-}
-
-f1(f2);
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<h2 id="2"><strong>2.事件监听</strong></h2>
-<table>
-<thead>
-<tr>
-<th><strong>优点</strong></th>
-<th><strong>缺点</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>容易理解,，有利于实现模块化</td>
-<td>整个程序都要变成事件驱动型，运行流程会变得很不清晰, 难以分辨出主流程</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="language-javascript">f1.on('done', f2);
-function f1() {
-  setTimeout(function () {
-    // ...
-    f1.trigger('done');
-  }, 1000);
-}
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<p><strong><code>f1.trigger('done')</code>表示，执行完成后，立即触发<code>done</code>事件，从而开始执行<code>f2</code></strong></p>
-<h2 id="3"><strong>3.发布/订阅</strong></h2>
-<p><strong>与“事件监听”类似，但是优于后者。因为可以通过查看“消息中心”，了解存在多少信号、每个信号有多少订阅者，从而监控程序的运行</strong></p>
-<pre><code class="language-javascript">f2向信号中心jQuery订阅done信号
-jQuery.subscribe('done', f2);
-
-function f1() {
-  setTimeout(function () {
-    // ...
-    jQuery.publish('done');
-  }, 1000);
-}
-f1执行完成后，向信号中心jQuery发布done信号，从而引发f2
-
-f2完成执行后，可以取消订阅
-jQuery.unsubscribe('done', f2);
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<h1 id="_3"><strong>三.流程控制</strong></h1>
-<h2 id="1_1"><strong>1.串行执行(一个任务完成以后，再执行另一个)</strong></h2>
-<p><strong>在下面的例子<code>,goals</code>数组表示每一个异步任务的参数，<code>results</code>数组保存每一个异步任务的运行结果, <code>Series</code>就是串行函数，它会依次执行异中步任务，所有任务都完成后，才会执行Final函数。</strong></p>
-<pre><code class="language-javascript">var goals = [1, 2, 3, 4, 5, 7];
-var results = [];
-
-function ShowStep(num, callback){
-    console.log('参数为 ' + num +' , 1秒后返回结果');
-    setTimeout(function(){ callback(num*2); }, 1000);
-}
-function Final(valueFinal){
-    console.log('完成, 最后的生成值为: ', valueFinal);
-}
-
-function Series(goal){
-    if(goal){
-        ShowStep(goal, function(result){
-            results.push(result);
-            return Series(goals.shift());
-        });
-    }else{
-        return Final(results[results.length-1]);
-    }
-}
-
-Series(goals.shift());
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<p><strong>输出</strong> :    <img alt="img" src="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<h2 id="2_1"><strong>2.并行执行(所有异步任务同时执行，等到全部完成以后，才执行)</strong></h2>
-<pre><code class="language-javascript">var goals = [ 1, 2, 3, 4, 5, 7 ];
-var results = [];
-
-function ShowStep(num, callback) {
-  console.log('参数为 ' + num +' , 1秒后返回结果');
-  setTimeout(function () { callback(num * 2); }, 1000);
-}
-
-function Final(valueFinal) {
-  console.log('完成,最后的生成值为: ', valueFinal);
-}
-
-goals.forEach(function(item) {
-  ShowStep(item, function(result){
-    results.push(result);
-    if(results.length === goals.length) {
-      Final(results[results.length - 1]);
-    }
-  })
-});
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<p><img alt="img" src="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70-17036914745591.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /> </p>
-<p><strong><code>forEach</code>方法会同时发起六个异步任务，等到它们全部完成以后，才会执行Final函数 .</strong></p>
-<p><strong>这次用时变为上面的六分之一(仅需一秒就能完成整个脚本),问题在于如果并行的任务较多，很容易耗尽系统资源，拖慢运行速度, 因此有了二者结合的流程控制方式👇👇👇</strong></p>
-<h2 id="3n"><strong>3.串并结合(设置一个门槛，每次最多只能并行执行<code>n</code>个异步任务)</strong></h2>
-<p>避免过分占用系统资源</p>
-<pre><code class="language-javascript">var goals = [ 1, 2, 3, 4, 5, 7 ];
-var results = [];
-var running = 0;
-var limit = 2;
-
-function async(num, callback) {
-  console.log('参数为 ' + num +' , 1秒后返回结果');
-  setTimeout(function () { callback(num * 2); }, 1000);
-}
-
-function Final(valueFinal) {
-  console.log('完成:,最后的生成值为: ', valueFinal);
-}
-
-function launcher() {
-  while(running &lt; limit &amp;&amp; goals.length &gt; 0) {
-    var item = goals.shift();
-    async(item, function(result) {
-      results.push(result);
-      running--;
-      if(goals.length &gt; 0) {
-        launcher();
-      } else if(running == 0) {
-        Final(results);
-      }
-    });
-    running++;
-  }
-}
-
-launcher();
-</code></pre>
-<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
-<p><img alt="img" src="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70-17036914745612.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /> <strong>(两个两个进行)</strong></p>
+<h2 id="lerp-slerp"><strong>线性插值lerp 与 球形线性插值Slerp</strong></h2>
+<blockquote>
+<h3 id="_1"><strong>问题缘由:</strong></h3>
+<p><strong>人物转向时动作不连贯,突兀, 调用</strong><strong>Slerp可以更自然些</strong></p>
+</blockquote>
+<p>阅读博文↓</p>
+<p><a href="http://www.manew.com/thread-43314-1-1.html">【Vector3的Slerp详解】-教程分享-【游戏蛮牛】 - Powered by Discuz! (manew.com)</a></p>
+<p><a href="http://www.u3d8.com/?tag=unity-slerp">unity slerp | u3d8技术分享</a></p>
+<h2 id="elliptical-grid-mapping"><strong>椭圆映射法(</strong>Elliptical Grid Mapping<strong>)</strong></h2>
+<blockquote>
+<h3 id="_2"><strong>问题缘由:</strong></h3>
+<p>❓可不可以直接用if语句让大于1的Dmag(这个float型的变量是我在练习人物的移动时,利用勾股求出移动方向上的单位速度, 但在斜着走的时候值会大于一,更快)变成1呢？</p>
+<p>👉大于一直接强制砍掉/直接clamp的话，加速度问题没有解决, 影响摇杆的手感</p>
+</blockquote>
+<p><strong>直接套用了一些数学方面的公式,</strong><img alt="img" src="../%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><a href="https://arxiv.org/ftp/arxiv/papers/1509/1509.06344.pdf">Mappings for Squaring the Circular Disc (arxiv.org)</a></p>
 
 
 
