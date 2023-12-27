@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/">
+        <link rel="prev" href="../..">
       
+      
+        <link rel="next" href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>斐波那契数列的多种实现和性能 - 泥烟</title>
+        <title>安装 wsl, g++, eigen, cmake - 泥烟</title>
       
     
     
@@ -60,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#0" class="md-skip">
+        <a href="#wsl-g-eigen-cmake" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              斐波那契数列的多种实现和性能
+              安装 wsl, g++, eigen, cmake
             
           </span>
         </div>
@@ -206,19 +208,21 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -232,7 +236,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             GAMES101
@@ -243,10 +247,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -255,6 +268,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -267,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+      <a href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -292,21 +306,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -320,7 +332,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             《算法精粹》
@@ -331,19 +343,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -352,7 +355,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -398,137 +400,61 @@
                   
 
 
-<p>[toc]</p>
-<h1 id="0">0. 普通斐波那契</h1>
-<pre><code class="language-python">import time
-start = time.time()
+<h1 id="wsl-g-eigen-cmake">安装 wsl, g++, eigen, cmake</h1>
+<p>略</p>
+<h1 id="opencv">配置opencv</h1>
+<pre><code>[root@DESKTOP-31LJ6LM ~/g101/h1/build]
+$ cmake ..
+-- OpenCV ARCH:
+-- OpenCV RUNTIME:
+-- OpenCV STATIC: OFF
+CMake Warning at /mnt/e/DevelopeTools/opencv/opencv/build/OpenCVConfig.cmake:190 (message):
+  Found OpenCV Windows Pack but it has no binaries compatible with your
+  configuration.
 
-def fib0(n: int) -&gt; int:
-    if n &lt; 2:
-        return n
-    return fib0(n-1) + fib0(n-2)
+  You should manually point CMake variable OpenCV_DIR to your build of OpenCV
+  library.
+Call Stack (most recent call first):
+  CMakeLists.txt:4 (find_package)
 
-print(&quot;fib0(40) = &quot;, fib0(40))
-end = time.time()
-print('程序运行时间为: %s Seconds' % (end-start))
+
+CMake Error at CMakeLists.txt:4 (find_package):
+  Found package configuration file:
+
+    /mnt/e/DevelopeTools/opencv/opencv/build/OpenCVConfig.cmake
+
+  but it set OpenCV_FOUND to FALSE so package &quot;OpenCV&quot; is considered to be
+  NOT FOUND.
+
+
+-- Configuring incomplete, errors occurred!
+See also &quot;/root/g101/h1/build/CMakeFiles/CMakeOutput.log&quot;.
 </code></pre>
-<blockquote>
-<p>fib0(40) =  102334155
-程序运行时间为: 29.292827367782593 Seconds</p>
-</blockquote>
-<p><img alt="image" src="../%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD.assets/2138326-20230115154707557-1166377612.png" /></p>
-<h1 id="1">1. 结果缓存</h1>
-<blockquote>
-<p>每次计算任务完成后就把结果保存起来，这样在下次需要时即可直接检索出结果，而不需要一而再再而三地重复计算</p>
-</blockquote>
-<pre><code class="language-python">from typing import Dict
-import time
-start = time.time()
-memo: Dict[int, int] = {0: 0, 1: 1}
-
-def fib1(n: int) -&gt; int:
-    if n not in memo:
-        memo[n] = fib1(n-1) + fib1(n-2)
-    return memo[n]
-
-print(&quot;fib1(120) = &quot;, fib1(120))
-end = time.time()
-print('程序运行时间为: %s Seconds' % (end-start))
+<p>捣鼓了大半天,总算在(wsl)ubuntu 22.04上配好了opencv开发环境
+参考,包括但不限于:
+https://blog.csdn.net/weixin_52402390/article/details/122341561
+https://blog.csdn.net/Undefinedefity/article/details/106180033</p>
+<p>其中,在make -j时, 我出现了缺openjpeg.h头文件的错误,导致make: *** [Makefile:****] 错误 2
+<img alt="image" src="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv.assets/2138326-20220929084855690-1179844682.png" />
+解决方案:
+https://github.com/uclouvain/openjpeg/blob/master/INSTALL.md</p>
+<p><code>在补好缺的依赖后一定把之前opencv build的删掉,重新cmake,make一遍</code></p>
+<h1 id="wsl-xfce4-windows-vcxsrv">wsl xfce4 连接 windows VcXsrv</h1>
+<p>参考:https://www.bilibili.com/video/BV1RK411n79v</p>
+<h2 id="1">1.配置</h2>
+<pre><code>sudo vim /etc/resolv.conf
 </code></pre>
-<blockquote>
-<p>fib1(120) =  5358359254990966640871840
-程序运行时间为: 0.005672931671142578 Seconds
-fib1(120) =  5358359254990966640871840
-程序运行时间为: 0.00408172607421875 Seconds
-fib1(120) =  5358359254990966640871840
-程序运行时间为: 0.004380702972412109 Seconds</p>
-</blockquote>
-<h1 id="2">2. 自动化结果缓存</h1>
-<blockquote>
-<ul>
-<li>每次用新的参数执行fib()时，该装饰器就会把返回值缓存起来。以后再用相同的参数调用fib()时，都会从缓存中读取该参数对应的fib()之前的返回值并返回</li>
-<li>@lru_cache的maxsize属性表示对所装饰的函数最多应该缓存多少次最近的调用结果，如果将其设置为None就表示没有限制
-<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)">Cache replacement policies</a>
-<img alt="image" src="../%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD.assets/2138326-20230115155305772-536945396.png" />
-<img alt="image" src="../%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD.assets/2138326-20230115163908950-559953534.png" /></li>
-</ul>
-</blockquote>
-<pre><code class="language-python">from functools import lru_cache
-import time
-start = time.time()
-
-@lru_cache(maxsize=None)
-def fib2(n: int) -&gt; int:
-    if n &lt; 2:
-        return n
-    return fib2(n-1) + fib2(n-2)
-
-print(&quot;fib2(120) = &quot;, fib2(120))
-end = time.time()
-print('程序运行时间为: %s Seconds' % (end-start))
+<p>记住其中的IP</p>
+<pre><code>sudo vim ~/.bashrc
 </code></pre>
-<blockquote>
-<p>fib2(120) =  5358359254990966640871840
-程序运行时间为: 6.771087646484375e-05 Seconds
-fib2(120) =  5358359254990966640871840
-程序运行时间为: 7.05718994140625e-05 Seconds
-fib2(120) =  5358359254990966640871840
-程序运行时间为: 7.677078247070312e-05 Seconds</p>
-</blockquote>
-<h1 id="3">3. 迭代</h1>
-<pre><code class="language-python">import time
-start = time.time()
-
-def fib3(n: int) -&gt; int:
-    if n == 0: return 0
-    last: int = 0
-    next: int = 1
-    for _ in range(1, n):
-        last, next = next, last+next
-    return next
-
-print(&quot;fib3(120) = &quot;, fib3(120))
-end = time.time()
-print('程序运行时间为: %s Seconds' % (end-start))
-</code></pre>
-<blockquote>
-<p>fib3(120) =  5358359254990966640871840
-程序运行时间为: 1.5020370483398438e-05 Seconds
-fib3(120) =  5358359254990966640871840
-程序运行时间为: 1.33514404296875e-05 Seconds
-fib3(120) =  5358359254990966640871840
-程序运行时间为: 1.430511474609375e-05 Seconds</p>
-</blockquote>
-<h1 id="4">4. 生成器</h1>
-<blockquote>
-<p>目前为止，已完成的这些函数都只能输出斐波那契序列中的单个值。如果要将到某个值之前的整个序列输出，又该怎么做呢？用yield语句很容易就能把fib5()转换为Python生成器。在对生成器进行迭代时，每轮迭代都会用yield语句从斐波那契序列中吐出一个值</p>
-</blockquote>
-<pre><code class="language-python">from typing import Generator
-import time
-start = time.time()
-
-def fib4(n: int) -&gt; Generator[int, None, None]:
-    yield 0
-    if n &gt; 0: yield 1
-    last: int = 0
-    next: int = 1
-    for _ in range(1, n):
-        last, next = next, last+next
-        yield next
-
-res = [_ for _ in fib4(120)]
-print(&quot;fib4(120) = &quot;, res[120])
-end = time.time()
-print('程序运行时间为: %s Seconds' % (end-start))
-</code></pre>
-<blockquote>
-<p>fib4(120) =  5358359254990966640871840
-程序运行时间为: 0.004061222076416016 Seconds
-fib4(120) =  5358359254990966640871840
-程序运行时间为: 0.004450798034667969 Seconds
-fib4(120) =  5358359254990966640871840
-程序运行时间为: 0.004158735275268555 Seconds</p>
-</blockquote>
+<p>加入如下两行,此处打码部分即为上方的IP
+<img alt="image" src="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv.assets/2138326-20220928164600941-396411656.png" /></p>
+<h2 id="2vcxsrv">2.启动VcXsrv</h2>
+<p><img alt="image" src="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv.assets/2138326-20220928164149985-1426777213.png" />
+<img alt="image" src="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv.assets/2138326-20220928164220971-1078493992.png" />
+<img alt="image" src="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv.assets/2138326-20220928164252439-1515712422.png" /></p>
+<h2 id="3wsl-startxfce4">3.wsl输入 startxfce4</h2>
+<p><img alt="image" src="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv.assets/2138326-20220928172236434-452179245.png" /></p>
 
 
 
