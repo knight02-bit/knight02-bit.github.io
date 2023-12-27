@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/">
+        <link rel="prev" href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/">
       
       
-        <link rel="next" href="../%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/">
+        <link rel="next" href="../%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>[python笔记] 深入分析iterable, iterator, generator - 泥烟</title>
+        <title>C++实现Trie 树 - 泥烟</title>
       
     
     
@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              [python笔记] 深入分析iterable, iterator, generator
+              C++实现Trie 树
             
           </span>
         </div>
@@ -1109,6 +1114,108 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C++实现Trie 树
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    C++实现Trie 树
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数组实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一种优化方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -1142,35 +1249,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    [python笔记] 深入分析iterable, iterator, generator
-  </span>
-  
-
-      </a>
-      
     </li>
   
 
@@ -1287,6 +1365,59 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数组实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一种优化方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1300,62 +1431,123 @@
                   
 
 
-  <h1>[python笔记] 深入分析iterable, iterator, generator</h1>
+  <h1>C++实现Trie 树</h1>
 
-<p>参考: </p>
-<p><a href="https://nvie.com/posts/iterators-vs-generators/#containers">可迭代器 vs. 迭代器 vs. 生成器 » nvie.com<img alt="img" src="[python笔记] 深入分析iterable, iterator, generator.assets/icon-default.png" />https://nvie.com/posts/iterators-vs-generators/#containers</a></p>
-<hr />
-<p>可迭代的(Iterable)有:</p>
-<ul>
-<li>文件</li>
-<li>generator</li>
-<li>大部分containers , 如list, tuple, dict, String.....</li>
-</ul>
-<p>一点小测试: </p>
-<pre><code class="language-python">from collections import Iterable, Iterator
+<h2 id="_1"><strong>数组实现</strong></h2>
+<p>之前做题用数组模拟过Trie树的实现: </p>
+<p><a href="https://blog.csdn.net/qq_39391544/article/details/120775174">图解 数组模拟Trie树_☆迷茫狗子的秘密基地☆-CSDN博客</a></p>
+<h2 id="_2"><strong>本质</strong></h2>
+<p><strong>Trie 树的本质，就是利用字符串之间的公共前缀，将重复的前缀合并在一起</strong></p>
+<p>主要有两个操作，</p>
+<p>一个是将字符串集合构造成 Trie 树</p>
+<p>另一个是在 Trie 树中查询一个字符串</p>
+<p><img alt="img" src="../C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91.assets/b9da449e49a67f18e1f146ab86315c2a.png" /></p>
+<p><img alt="img" src="../C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91.assets/8d9b5474c076913b97b9d1d19559ff9f.png" /></p>
+<p>Trie 树的本质是避免重复存储一组字符串的相同前缀子串，但是现在每个字符（对应一个节点）的存储远远大于 1 个字节</p>
+<p>我们不可否认，Trie 树可能很浪费内存，但是确实非常高效。</p>
+<p>我们也可以稍微牺牲一点查询的效率，将每个节点中的数组换成其他数据结构，比如有序数组、跳表、散列表、红黑树等, 来存储一个节点的子节点指针。</p>
+<blockquote>
+<h2 id="_3"><strong>一种优化方法</strong></h2>
+<p><strong>缩点优化</strong>，就是对只有一个子节点的节点，而且此节点不是一个串的结束节点，可以将此节点与子节点合并。这样可以节省空间，但却增加了编码难度</p>
+<p><img alt="img" src="../C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91.assets/82c0ad6ec1e1bf8dd38cf1e86ea40d7b.png" /></p>
+</blockquote>
+<h2 id="_4"><strong>代码实现</strong></h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#define Size 26
+using namespace std;
 
+template&lt;typename T&gt; 
+struct TrieNode{
+    T data;
+    bool isEnd; //是否为词尾 
+    TrieNode* child[Size];
 
-def f():
-    x = 0
-    while True:
-        yield x
-        x = x + 1
+    TrieNode(T ch):data(ch),isEnd(false){
+        for(int i = 0; i &lt; Size; i ++) {
+            child[i] = NULL;
+        }   
+    }
+};
 
-g = f()
-a = [1, 2, 3]
-b = (1, 2, 3)
-c = {&quot;name&quot;:&quot;kkk&quot;, &quot;age&quot;:15}
+class Trie
+{
+    private:
+        TrieNode&lt;char&gt;* root;
+        int num;
+    public:
+        Trie();
+        void Insert(string s);
+        bool Search(string s);
+};
 
-print(type(g))                      #&lt;class 'generator'&gt;
-print(isinstance(g, Iterable))      #True
+Trie::Trie()
+{
+    root = new TrieNode&lt;char&gt;('#');
+}
 
-print(isinstance(a, Iterable))          #True
-print(isinstance(b, Iterable))          #True
-print(isinstance(&quot;String&quot;, Iterable))   #True
-print(isinstance(c, Iterable))          #True
+void Trie::Insert(string s)
+{
+    TrieNode&lt;char&gt;* p = root;
+    int size = s.length();
+    for(int i = 0; i &lt; size; i ++)
+    {
+        int index = s[i] - 'a';
+        if(p-&gt;child[index] == NULL){
+            p-&gt;child[index] = new TrieNode&lt;char&gt;(s[i]);
+        }
+        p = p-&gt;child[index];
+    }
+    p-&gt;isEnd = true; //标记为词尾 
+    cout &lt;&lt; &quot;sucess insert \&quot;&quot; &lt;&lt; s &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
+
+}
+bool Trie::Search(string s)
+{
+    TrieNode&lt;char&gt;* p = root;
+    int size = s.length();
+    for(int i = 0; i &lt; size; i ++)
+    {
+        int index = s[i] - 'a';
+        if(p-&gt;child[index] == NULL){
+            return false;
+        }
+        p = p-&gt;child[index];
+    }
+    // 可能不存在该单词,只是一段前缀 
+    if(p-&gt;isEnd) return true;
+    else return false;
+}
+
+int main()
+{
+    Trie tree;
+
+    // 测试 
+    string s[] = {&quot;he&quot;, &quot;hello&quot;, &quot;app&quot;, &quot;apple&quot;, &quot;application&quot;, &quot;book&quot;, &quot;boom&quot;};
+
+    tree.Insert(s[0]);
+    tree.Insert(s[1]);
+    tree.Insert(s[3]);
+    tree.Insert(s[5]);
+    for(auto t : s){
+        if(tree.Search(t))   cout &lt;&lt; t &lt;&lt; &quot; 已找到&quot; &lt;&lt; endl;
+        else  cout &lt;&lt; t &lt;&lt; &quot; 未找到&quot; &lt;&lt; endl;
+
+    }
+    return 0;
+}
 </code></pre>
-<p>iterable实现了__iter__()方法的对象, 该方法返回的是的一个iterator对象.其中,iterator的目的是返回所有元素</p>
-<p>测试:</p>
-<pre><code class="language-python">x = [1, 2, 3, 6, 2, 39]
-
-itX = iter(x)
-print(type(itX))        #&lt;class 'list_iterator'&gt;
-
-for i in range(6):
-    print(next(itX),end=&quot; &quot;)    #1 2 3 6 2 39
-</code></pre>
-<p>iterable是一个比iterator更大的概念</p>
-<pre><code class="language-python">x = [1, 2, 3, 6, 2, 39]
-for i in x: 
-    . . . 
-</code></pre>
-<p>当反汇编此代码时，可以看到显式调用<strong><code>GET_ITER``iter(x) ``FOR_ITER</code></strong><code>**next()**的</code>指令，它将等效于重复调用以获取每个元素，但这不会从字节代码指令中显示，因为它针对解释器中的速度进行了优化。</p>
-<pre><code class="language-python">import dis
-x = [1, 2, 3, 6, 2, 39]
-dis.dis('for i in x: pass')
-</code></pre>
-<p><img alt="img" src="[python笔记] 深入分析iterable, iterator, generator.assets/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5rOl54Of,size_20,color_FFFFFF,t_70,g_se,x_16.png" /></p>
-<p>调用FOR_ITER这个指令实现了读取下一个next()的功能, 即, for循环中，首先利用GET_ITER得到x的返回值, 一个iterator. 再通过FOR_ITER得到其中的元素. 如此实现了循环的功能</p>
+<p><img alt="img" src="../C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91.assets/6afe739586164b479905fba628da1dec.png" /></p>
+<h2 id="_5"><strong>适用场景</strong></h2>
+<p>Trie对要处理的字符串有较高的要求。</p>
+<ol>
+<li>字符串中包含的字符集不能太大且要求字符串的前缀重合比较多。否则，存储空间可能会浪费很多。即便可以优化，也要付出牺牲一部分效率的代价</li>
+<li>要自己从零开始实现一个 Trie 树，还要保证没有 bug，这在工程上是将简单问题复杂化，除非必须，一般不建议</li>
+<li>指针串起来的数据块是不连续的，所以，对缓存并不友好，性能上会打折扣</li>
+</ol>
+<p>综上倾向于用散列表或者红黑树,有相应的类库</p>
+<p>而Trie 树的特点使她可以应用到自动输入补全，如输入法自动补全、IDE 代码自动补全功能、浏览器网址输入时的自动补全功能等 </p>
 
 
 
