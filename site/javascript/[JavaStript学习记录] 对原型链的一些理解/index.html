@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/">
+        <link rel="prev" href="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/">
       
       
-        <link rel="next" href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/">
+        <link rel="next" href="../%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>[Games101笔记]Lecture3 4 - 泥烟</title>
+        <title>[JavaStript学习记录] 对原型链的一些理解 - 泥烟</title>
       
     
     
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              [Games101笔记]Lecture3 4
+              [JavaStript学习记录] 对原型链的一些理解
             
           </span>
         </div>
@@ -208,21 +208,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -236,7 +234,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             GAMES101
@@ -250,7 +248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -271,7 +269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -289,28 +287,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    [Games101笔记]Lecture3 4
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,66 +299,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      仿射变换
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="仿射变换">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mvp" class="md-nav__link">
-    <span class="md-ellipsis">
-      mvp变换
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      正交投影
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      透射投影
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -391,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -412,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -695,19 +615,21 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -721,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Javascript
@@ -735,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -753,10 +675,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -765,6 +696,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -777,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1010,56 +942,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      仿射变换
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="仿射变换">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mvp" class="md-nav__link">
-    <span class="md-ellipsis">
-      mvp变换
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      正交投影
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      透射投影
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1074,58 +958,84 @@
                   
 
 
-  <h1>[Games101笔记]Lecture3 4</h1>
+<p>回忆一下昨天的学习内容,梳理一些疑惑</p>
+<p>先写了一个简单的构造函数</p>
+<pre><code class="language-javascript">function A(){
+    var num=0;
+}
 
-<p>该笔记基于闫令琪大神的cs课程及课后作业总结而成 </p>
-<p>three-dimensional Euclidean space 三维欧氏空间</p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164628173-723500663.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164633088-856322725.png" /></p>
-<p>在伸缩,旋转后, 发现无法通过同维度的矩阵体现<strong>平移</strong>, 所以引入齐次方程</p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164645293-610099708.png" /></p>
-<p><strong>为了不把"平移变换"当做整个体系中的另类,再加一层向量,我的理解是补充常数(可以满足偏移等需求)</strong>
-<img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164654146-1887018549.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164810346-1145648063.png" /></p>
-<p>方便理解的阐释</p>
-<h3 id="_1">仿射变换</h3>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164944388-1113006234.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927164958935-449247230.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165051735-1142060778.png" /></p>
-<p>罗德里格斯旋转公式
-<img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165101007-377158721.png" /></p>
-<p>推导
-<img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165111005-2142410750.png" /></p>
-<h4 id="mvp">mvp变换</h4>
-<blockquote>
-<p>相机从一个坐标变换到世界坐标原点了，为了保持相机视图的图像不变，model也要跟着相机一起运动，相机变换到世界坐标的矩阵，就是model的变换矩阵，也就是MVP</p>
-<p>先将当前物体的原点移至世界坐标原点T(view)</p>
-<p>然后,为了求出当前整个参考系旋转至世界坐标系的变换R(view),可以先求其逆变换</p>
-<p>旋转矩阵是正交矩阵 → 旋转矩阵的逆为它的转置,易得</p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165128410-1124060391.png" /></p>
-</blockquote>
-<h3 id="_2">正交投影</h3>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165149720-62437884.png" /></p>
-<p><strong>注意:</strong>
-<img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165159870-1023201249.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165208736-924451328.png" /></p>
-<h3 id="_3">透射投影</h3>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165219763-754398053.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165228387-1767751225.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165237296-1386312289.png" /></p>
-<p>形象化的描述一下的话，就是利用这个变换矩阵将整个空间压缩了一下，使其对应了真正透视投影的坐标，最后不要忘了要利用正交转换到[-1, 1]^3的空间之内</p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165246368-2018095148.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165254485-1522715767.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165303682-836512988.png" /></p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165311540-981453537.png" /></p>
-<ul>
-<li><strong>解得 A = n + f  B = - f n</strong></li>
-</ul>
-<p>最后将这个被压缩过的空间，<strong>重新正交投影</strong>成标准小立方体，故定义透视投影变换</p>
-<p>如下</p>
-<p><img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165323325-1376234289.png" /></p>
-<p>即
-<img alt="image" src="../%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4.assets/2138326-20220927165332726-866891971.png" /></p>
-<p>思考:
-<code>中间的经过透视投影, z值变得更小了</code></p>
+var aa=new A();
+</code></pre>
+<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<h1 id="_1">查看该函数的实例</h1>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/20210809152204963.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<h1 id="prototype">为什么实例对象没有prototype属性呢?</h1>
+<h1 id="_2"><strong>下面是经过查证后我的理解</strong></h1>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70-17036912403951.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/20210809155316711.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><strong>发现</strong></p>
+<p><strong><em>*1.aa 是 A 的一个实例,但是不是一个函数，所以没有prototype;*</em></strong> <strong><em>*A是Function的一个实例，而Function是一个函数，他的实例A也是一个函数，所以他们都有prototype。此外Object ,Array, RegExp等也是函数。Math就仅仅是一个new Object() ,不是函数。*</em></strong></p>
+<p><strong><em>*2.构造函数的prototype，默认情况下就是一个new Object()还额外添加了一个constructor属性。*</em></strong></p>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70-17036912403952.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/watermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzkxNTQ0%2Csize_16%2Ccolor_FFFFFF%2Ct_70-17036912403953.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><strong><em>*3.除了Object.prototype这个对象，其他所有的对象都会有__proto__属性，之后函数才会有prototype属性。*</em></strong></p>
+<p><img alt="img" src="../%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.assets/20210809160149326.png" /><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p>在创建对象的时候会自动创建一个<strong><code>__proto__</code>属性，指向它构造函数的<code>prototype</code></strong>,当访问这个对象的属性的时候会<strong>顺带访问</strong><code>__proto__</code>中对应的属性，也就是构造函数<code>prototype</code>这样实现了继承。
+ 只有创建函数的时候才会创建一个<code>prototype</code>属性，目的就是为了完成上面的继承方式。</p>
+<h1 id="_3"><strong>总结</strong>:</h1>
+<p><strong>每个构造函数[</strong>自动带有一个prototype属性,该属性是一个指针，指向一个对象(即原型对象)]<strong>都有一个原型对象，原型对象上包含着一个指向构造函数的指针(constructor)，而实例都包含着一个指向原型对象的内部指针(<em>proto</em>)。通俗的说，实例可以通过内部指针访问到原型对象，原型对象可以通过constructor找到构造函数。</strong></p>
+<h1 id="_4">回顾原型链</h1>
+<pre><code class="language-javascript">function People(){
+    this.type = '人';
+}
+
+People.prototype.showType = function(){
+    alert(this.type);
+}
+
+function Man(){
+    this.sex='♂';
+    this.age=18;
+}
+
+Man.prototype=new People();
+
+var boy=new Man();
+
+console.log('大家好,我'+boy.age+'岁啦,性别为'+boy.sex+'我是'+boy.type+'族的一员');
+
+
+&gt;&gt;大家好,我18岁啦,性别为♂我是人族的一员
+</code></pre>
+<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p><strong>将Man构造函数的prototype指向了People实例对象,从而覆盖了Man的原型对象</strong>。<strong>当Man的实例对象boy去访问type属性时，js首先在Man实例属性中查找，发现没有定义，接着去Man的原型对象上找，Man的原型对象此时已被改成了People实例，那就是去People实例上去找。先找People的实例属性，发现没有type，最后去People的原型对象上去找，找到了。这个查找就是这么一级一级的往上查找。</strong></p>
+<pre><code class="language-javascript">function People(){
+    this.type = '人';
+}
+
+People.prototype.showType = function(){
+    alert(this.type);
+}
+
+function Man(){
+    this.sex='♂';
+    this.age=18;
+    this.type = '狂战士';//此处定义了type属性，就不会向上层级查找;
+}
+
+Man.prototype=new People();
+
+var boy=new Man();
+
+console.log('大家好,我'+boy.age+'岁啦,性别为'+boy.sex+'我是'+boy.type+'族的一员');
+
+
+&gt;&gt;大家好,我18岁啦,性别为♂我是狂战士族的一员
+</code></pre>
+<p><img alt="点击并拖拽以移动" src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" /></p>
+<p>我们通过原型链的方式，实现 Man继承 People 的所有属性和方法。</p>
+<p>总的来说：就是当重写了Man.prototype指向的原型对象后，实例的内部指针也发生了改变，指向了新的原型对象，然后就能实现类与类之间的继承了。</p>
 
 
 
