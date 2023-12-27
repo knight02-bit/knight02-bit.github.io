@@ -1,0 +1,1943 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>游戏设计模式 - 泥烟</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            泥烟
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              游戏设计模式
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    泥烟
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES101
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装 wsl, g++, eigen, cmake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture1 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture3 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture6抗锯齿与一点点深度缓存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture7~9 初学shading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES104
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES104
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记] 游戏中的渲染管线,后处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.21 基础架构1 [引擎架构分层，整体Pipeline]
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.28 基础架构2 『数据组织和管理』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]4.4 渲染系统1 『渲染数据组织』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wsl2 参考的对象类型不支持尝试的操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    《算法精粹》
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            《算法精粹》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    斐波那契数列的多种实现和性能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    设计模式
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            设计模式
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    游戏设计模式
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    游戏设计模式
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔋进度
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="命令模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      动作撤销
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      类 or 函数(闭包)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      享元模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="享元模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对于地形来说
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      常规(枚举)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象指针
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API中的实例渲染
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      观察者模式(略)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      原型模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="原型模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      生产函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javastript" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝对JavaStript原型链的一些理解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      为数据模型构建原型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      单例模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单例模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      惰性初始化弊端
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何抉择？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何给实例提供方便的访问方法？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔋进度
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="命令模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      动作撤销
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      类 or 函数(闭包)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      享元模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="享元模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对于地形来说
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      常规(枚举)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象指针
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API中的实例渲染
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      观察者模式(略)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      原型模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="原型模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      生产函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javastript" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝对JavaStript原型链的一些理解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      为数据模型构建原型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      单例模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单例模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      惰性初始化弊端
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何抉择？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何给实例提供方便的访问方法？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">游戏设计模式</h1>
+<pre><code>title: 游戏设计模式
+categories:
+    - 设计模式
+description:  游戏设计模式
+top_img: ../img/article/游戏设计模式.assets/command-buttons-two.png
+cover: ../img/article/游戏设计模式.assets/command-buttons-two.png
+
+</code></pre>
+<h2 id="_2"><strong>🔋进度</strong></h2>
+<ul>
+<li>[ ]  设计模式<ul>
+<li>[x]  ~~命令模式~~</li>
+<li>[x]  ~~享元模式~~</li>
+<li>[x]  ~~观察者模式~~</li>
+<li>[x]  ~~原型模式~~</li>
+<li>[x]  ~~单例模式~~</li>
+<li>[ ]  状态模式</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>[ ]  序列模式<ul>
+<li>[ ]  双缓冲模式</li>
+<li>[ ]  游戏循环</li>
+<li>[ ]  更新方法</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>[ ]  行为模式<ul>
+<li>[ ]  字节码</li>
+<li>[ ]  子类沙箱</li>
+<li>[ ]  类型对象</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>[ ]  解耦模式<ul>
+<li>[ ]  组件模式</li>
+<li>[ ]  事件队列</li>
+<li>[ ]  服务定位器</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>[ ]  优化模式<ul>
+<li>[ ]  数据局部性</li>
+<li>[ ]  脏标识模式</li>
+<li>[ ]  对象池模式</li>
+<li>[ ]  空间分区</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><strong>最小化在编写代码前需要了解的信息</strong></p>
+<p>对可扩展性的过分强调使得无数的开发者花费多年时间制作“引擎”,  却没有搞清楚做引擎是为了什么</p>
+<blockquote>
+<p>模板编程</p>
+<p>灵活性的两极。 当写代码调用类中的具体方法时, 你就是在写的时候指定类——硬编码了调用的是哪个类。 当使用虚方法或接口时, 直到<em>运行</em>时才知道调用的类。这更加灵活但增加了运行时开销。</p>
+<p>模板编程是在两极之间。在<em>编译时</em>初始化模板, 决定调用哪些类。
+</p>
+</blockquote>
+<h2 id="_3"><strong>命令模式</strong></h2>
+<p>情形:</p>
+<p>一个手柄, A键调用swapWeapon(), B键调用lurch(), X键调用jump(), Y键调用fireGun()</p>
+<pre><code class="language-csharp">void InputHandler::handleInput()
+{
+  if (isPressed(BUTTON_X)) jump();
+  else if (isPressed(BUTTON_Y)) fireGun();
+  else if (isPressed(BUTTON_A)) swapWeapon();
+  else if (isPressed(BUTTON_B)) lurchIneffectively();
+}
+</code></pre>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135456417-1244544997.png" /></p>
+<p><strong>命令模式是一种回调的面向对象实现。</strong></p>
+<p>用户可以自定义按键</p>
+<p>👇</p>
+<pre><code class="language-csharp">class Command
+{
+public:
+  virtual ~Command() {}
+  virtual void execute(GameActor&amp; actor) = 0;
+};
+class JumpCommand : public Command
+{
+public:
+  virtual void execute(GameActor&amp; actor)
+  {
+    actor.jump();
+  }
+};
+
+class FireCommand : public Command
+{
+public:
+  virtual void execute(GameActor&amp; actor)
+  {
+    actor.fireGun();
+  }
+};
+</code></pre>
+<p>在代码的输入处理部分, 为每个按键存储一个指向命令的指针, 输入处理部分这样处理：</p>
+<pre><code class="language-csharp">class InputHandler
+{
+public:
+  Command* handleInput();
+
+  // 绑定命令的方法……
+
+private:
+  Command* buttonX_;
+  Command* buttonY_;
+  Command* buttonA_;
+  Command* buttonB_;
+};
+
+Command* InputHandler::handleInput()
+{
+  if (isPressed(BUTTON_X)) return buttonX_;
+  if (isPressed(BUTTON_Y)) return buttonY_;
+  if (isPressed(BUTTON_A)) return buttonA_;
+  if (isPressed(BUTTON_B)) return buttonB_;
+
+  // 没有按下任何按键, 就什么也不做
+  return NULL;
+}
+
+//接受命令, 作用在玩家角色上...
+Command* command = inputHandler.handleInput();
+if (command)
+{
+  command-&gt;execute(actor);
+}
+
+</code></pre>
+<p>一个手柄, 每个按键都与一个特定的'button_'变量相关联, 这个变量再与函数关联。</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135546781-341578649.png" /></p>
+<blockquote>
+<p>如果想支持不做任何事情的按键又不想显式检测NULL, 我们可以定义一个命令类, 它的execute()什么也不做。 这样, 某些按键处理器不必设为NULL, 只需指向这个类, 即空对象。
+</p>
+</blockquote>
+<p><strong>我们可以让玩家控制游戏中的任何角色, 只需向命令传入不同的角色。</strong>甚至可以对不同的角色使用不同的AI, 或者为了不同的行为而混合AI。</p>
+<p>把控制角色的命令变为第一公民对象, 去除直接方法调用中严厉的束缚。 将其视为命令队列, 或者是命令流</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135555687-26739265.png" /></p>
+<p>一些代码（输入控制器或者AI）产生一系列命令放入流中。 另一些代码（调度器或者角色自身）调用并消耗命令。 通过在中间加入队列, 我们解耦了消费者和生产者。</p>
+<h3 id="_4"><strong>动作撤销</strong></h3>
+<p>命令绑定到要移动的单位上,</p>
+<pre><code class="language-csharp">Command* handleInput()
+{
+  Unit* unit = getSelectedUnit();
+
+  if (isPressed(BUTTON_UP)) {
+    // 向上移动单位
+    int destY = unit-&gt;y() - 1;
+    return new MoveUnitCommand(unit, unit-&gt;x(), destY);
+  }
+
+  if (isPressed(BUTTON_DOWN)) {
+    // 向下移动单位
+    int destY = unit-&gt;y() + 1;
+    return new MoveUnitCommand(unit, unit-&gt;x(), destY);
+  }
+
+  // 其他的移动……
+
+  return NULL;
+}
+</code></pre>
+<p>当然, 在像C++这样没有垃圾回收的语言中, 这意味着执行命令的代码也要负责释放内存。</p>
+<p>命令的一次性为我们很快地赢得了一个优点。 为了让指令可被取消, 我们为每个类定义另一个需要实现的方法：</p>
+<pre><code class="language-csharp">class Command
+{
+public:
+  virtual ~Command() {}
+  virtual void execute() = 0;
+  virtual void undo() = 0;
+};
+</code></pre>
+<p><code>undo()</code>方法回滚了<code>execute()</code>方法造成的游戏状态改变。 这里是添加了撤销功能后的移动命令：</p>
+<pre><code class="language-csharp">class MoveUnitCommand : public Command
+{
+public:
+  MoveUnitCommand(Unit* unit, int x, int y)
+  : unit_(unit),
+    xBefore_(0),
+    yBefore_(0),
+    x_(x),
+    y_(y)
+  {}
+
+  virtual void execute()
+  {
+    // 保存移动之前的位置, 这样之后可以复原。
+
+    xBefore_ = unit_-&gt;x();
+    yBefore_ = unit_-&gt;y();
+
+    unit_-&gt;moveTo(x_, y_);
+  }
+
+  virtual void undo()
+  {
+    unit_-&gt;moveTo(xBefore_, yBefore_);
+  }
+
+private:
+  Unit* unit_;
+  int xBefore_, yBefore_;
+  int x_, y_;
+};
+</code></pre>
+<p>从旧到新排列的命令队列。 一个当前箭头指向一条命令, 一个“撤销”箭头指向之前的命令, 一个“重做”指向之后的命令</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135622306-1263531814.png" /></p>
+<p>重做在游戏中并不常见, 但重<em>放</em>常见。 一种简单的重放实现是记录游戏每帧的状态, 这样它可以回放, 但那会消耗太多的内存。</p>
+<p>相反, 很多游戏记录每个实体每帧运行的命令。 为了重放游戏, 引擎只需要正常运行游戏, 执行<strong>之前存储的命令</strong>。</p>
+<h3 id="or"><strong>类 or 函数(闭包)?</strong></h3>
+<p>函数式编程风格, 闭包写法(js) :</p>
+<pre><code class="language-csharp">function makeMoveUnitCommand(unit, x, y) {
+  var xBefore, yBefore;
+  return {
+    execute: function() {
+      xBefore = unit.x();
+      yBefore = unit.y();
+      unit.moveTo(x, y);
+    },
+    undo: function() {
+      unit.moveTo(xBefore, yBefore);
+    }
+  };
+}
+</code></pre>
+<p>命令模式展现了函数式范式在很多问题上的高效性</p>
+<p><code>在某种程度上说, 命令模式是为一些没有闭包的语言模拟闭包</code></p>
+<blockquote>
+<p>("某种程度上"👉 即使是那些支持闭包的语言,  为命令建立真正的类或者结构也是很有用的。 如果你的命令拥有多重操作（比如可撤销的命令）,  将其全部映射到同一函数中并不优雅。)</p>
+<p>定义一个有字段的真实类能帮助读者理解命令包含了什么数据。 闭包是<strong>自动包装状态</strong>的完美解决方案, 但它们<strong>过于自动化而很难看清包装的真正状态</strong>有哪些。
+</p>
+</blockquote>
+<h3 id="tips"><strong>tips</strong></h3>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135632944-1248809848.png" /></p>
+<h2 id="_5"><strong>享元模式</strong></h2>
+<p>将共有的数据("上下文无关")拿出来分离到另一个类中, 只需有一个对这个<code>共享Model</code>的引用</p>
+<p>比如:</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135637417-2015597559.png" /></p>
+<p>我们不想为每个区块都保存一个相同的(“固有的”或者说“上下文无关的”)实例</p>
+<blockquote>
+<p>这有点像"类型对象模式"。</p>
+<ul>
+<li>相同: 两者都涉及将一个类中的状态委托给另外的类, 来达到在不同实例间分享状态的目的。</li>
+<li>不同: 两种模式背后的意图不同<ul>
+<li>使用类型对象, 目标是通过将类型引入对象模型, 减少需要定义的类, <strong>伴随而来的内容分享是额外的好处</strong></li>
+<li>享元模式则是纯粹的为了效率</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="_6"><strong>对于地形来说</strong></h3>
+<h3 id="_7"><strong>常规(枚举)</strong></h3>
+<p>地形类大致如此</p>
+<pre><code class="language-csharp">enum Terrain
+{
+  TERRAIN_GRASS,
+  TERRAIN_HILL,
+  TERRAIN_RIVER
+  // 其他地形
+};
+
+class Terrain
+{
+public:
+  Terrain(int movementCost,
+          bool isWater,
+          Texture texture)
+  : movementCost_(movementCost),
+    isWater_(isWater),
+    texture_(texture)
+  {}
+
+  int getMovementCost() const { return movementCost_; }
+  bool isWater() const { return isWater_; }
+  const Texture&amp; getTexture() const { return texture_; }
+
+private:
+  int movementCost_;
+  bool isWater_;
+  Texture texture_;
+};
+</code></pre>
+<blockquote>
+<p>✨这里所有的方法都是const。这不是巧合。 由于同一对象在多处引用, 如果你修改了它,  改变会同时在多个地方出现。</p>
+<p>这也许不是你想要的。 通过分享对象来节约内存的这种优化, 不应该影响到应用的显性行为。 因此, 享元对象几乎总是不可变的。
+</p>
+</blockquote>
+<h3 id="_8"><strong>对象指针</strong></h3>
+<p>我们没有必要保存多个同种地形类型, 地面上的草区块两两无异,  我们不用地形区块对象枚举构成世界网格, 而是用<code>Terrain</code><strong>对象指针</strong>组成网格：</p>
+<pre><code class="language-csharp">class World
+{
+private:
+  Terrain* tiles_[WIDTH][HEIGHT];
+
+  // 其他代码……
+};
+</code></pre>
+<p>每个相同地形的区块会指向相同的地形实例。</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135648471-1413213545.png" /></p>
+<p>由于地形实例在很多地方使用, 如果你想要动态分配, 它们的生命周期会有点复杂。 因此, 我们直接在游戏世界中存储它们。</p>
+<pre><code class="language-csharp">class World
+{
+public:
+  World()
+  : grassTerrain_(1, false, GRASS_TEXTURE),
+    hillTerrain_(3, false, HILL_TEXTURE),
+    riverTerrain_(2, true, RIVER_TEXTURE)
+  {}
+
+private:
+  Terrain grassTerrain_;
+  Terrain hillTerrain_;
+  Terrain riverTerrain_;
+
+  // 其他代码……
+};
+</code></pre>
+<p>然后我们可以像这样来描绘地面：</p>
+<pre><code class="language-csharp">void World::generateTerrain()
+{
+  // 简单生成一下地形
+  // 将地面填满草皮.
+  for (int x = 0; x &lt; WIDTH; x++)
+  {
+    for (int y = 0; y &lt; HEIGHT; y++)
+    {
+      // 加入一些丘陵
+      if (random(10) == 0)
+      {
+        tiles_[x][y] = &amp;hillTerrain_;
+      }
+      else
+      {
+        tiles_[x][y] = &amp;grassTerrain_;
+      }
+    }
+  }
+
+  // 放置河流
+  int x = random(WIDTH);
+  for (int y = 0; y &lt; HEIGHT; y++) {
+    tiles_[x][y] = &amp;riverTerrain_;
+  }
+}
+</code></pre>
+<p>现在不需要<code>World</code>中的方法来接触地形属性, 我们可以直接暴露出<code>Terrain</code>对象。</p>
+<pre><code class="language-csharp">const Terrain&amp; World::getTile(int x, int y) const
+{
+  return *tiles_[x][y];
+}
+</code></pre>
+<p>用这种方式, <code>World</code>不再与各种地形的细节耦合。 如果你想要某一区块的属性, 可直接从那个对象获得：</p>
+<pre><code class="language-csharp">int cost = world.getTile(2, 3).getMovementCost();
+</code></pre>
+<p>我们回到了操作实体对象的API, 几乎没有额外开销——指针通常不比枚举大</p>
+<h3 id="api"><strong>API中的实例渲染</strong></h3>
+<p>为了减少需要推送到GPU的数据量, 我们想把共享的数据<code>Model</code>只发送一次, 然后, 我们告诉GPU, “使用同一模型渲染每个实例”</p>
+<p>Direct3D和OpenGL都可以做<a href="http://en.wikipedia.org/wiki/Geometry_instancing">&gt;&gt;&gt;实例渲染</a></p>
+<p>在这些API中, 你需要提供两部分数据流。</p>
+<ol>
+<li>一块需要渲染多次的共同数据——在例子中是树的网格和纹理。</li>
+<li>实例的列表以及绘制第一部分时需要使用的参数。</li>
+</ol>
+<p>然后调用一次渲染, 绘制整个森林。</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135701599-359933121.png" /></p>
+<blockquote>
+<p>在实时计算机图形学中, 几何体实例化是一次在场景中渲染同一网格的多个副本的实践。此技术主要用于树木、草地或建筑物等对象, 这些对象可以表示为重复的几何体, 而不会出现过度重复, 但也可以用于角色。尽管顶点数据在所有实例化网格上都是重复的, 但每个实例可能会更改其他微分参数（例如颜色或骨骼动画姿势）, 以减少重复的外观。
+API支持编辑
+从Direct3D版本9开始, Microsoft提供了对几何体实例的支持。此方法通过在单独的流中为每个副本指定区分参数, 明确允许按顺序渲染网格的多个副本, 从而提高渲染实例化几何体的潜在运行时性能。Vulkan core和OpenGL core在3.1及以上版本中都有相同的功能, 但在一些早期的实现中, 可以使用EXT\u draw\u实例扩展访问这些功能。
+在脱机渲染中
+  Houdini、Maya或其他3D软件包中的几何体实例化通常涉及将静态或预设置动画的对象或几何体映射到空间中的粒子或任意点, 然后几乎可以由任何脱机渲染器进行渲染。脱机渲染中的几何体实例化对于创建诸如昆虫群之类的对象非常有用, 在这些对象中, 每个昆虫都可以被详细描述, 但其行为仍以真实的方式进行, 不必由动画师确定。大多数包允许在每个实例的基础上更改材质或材质参数, 这有助于确保实例看起来不是彼此的精确副本。在Houdini中, 许多对象级属性（例如缩放）也可以根据每个实例进行更改。由于大多数三维软件包中的实例化几何体仅引用原始对象, 因此文件大小保持非常小, 更改原始会更改所有实例。
+在许多脱机渲染器中, 例如Pixar的照片级真实感渲染器（Photorealistic Renderman）, 实例化是通过使用延迟加载渲染过程来实现的, 该过程仅在包含实例的桶实际正在渲染时加载几何体。这意味着所有实例的几何体不必同时在内存中。
+</p>
+</blockquote>
+<h3 id="tips_1"><strong>tips</strong></h3>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135726496-1784958725.png" /></p>
+<h2 id="_9"><strong>观察者模式(略)</strong></h2>
+<h2 id="_10"><strong>原型模式</strong></h2>
+<p>假设我们游戏中每种怪物都有不同的类——<code>Ghost</code>, <code>Demon</code>, <code>Sorcerer</code>等等, 像这样：</p>
+<pre><code class="language-csharp">class Monster
+{
+  // 代码……
+};
+
+class Ghost : public Monster {};
+class Demon : public Monster {};
+class Sorcerer : public Monster {};
+</code></pre>
+<p>生产者构造特定种类怪物的实例。 为了在游戏中支持每种怪物, 我们可以用一种暴力的实现方法,  让每个怪物类都有生产者类, 得到平行的类结构：</p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135740745-1827918100.png" /></p>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135747155-1876578815.png" /></p>
+<p>代表“继承”。</p>
+<p>实现后看起来像是这样：</p>
+<pre><code class="language-csharp">class Spawner
+{
+public:
+  virtual ~Spawner() {}
+  virtual Monster* spawnMonster() = 0;
+};
+
+class GhostSpawner : public Spawner
+{
+public:
+  virtual Monster* spawnMonster()
+  {
+    return new Ghost();
+  }
+};
+
+class DemonSpawner : public Spawner
+{
+public:
+  virtual Monster* spawnMonster()
+  {
+    return new Demon();
+  }
+};
+
+// ……
+</code></pre>
+<p>原型模式提供了一种策略, 关键思路是<strong>一个对象可以产出与它自己相近的对象</strong></p>
+<p>为了实现这个功能, 我们给基类<code>Monster</code>添加一个抽象方法<code>clone()</code>：</p>
+<pre><code class="language-csharp">class Monster
+{
+public:
+  virtual ~Monster() {}
+  virtual Monster* clone() = 0;
+
+  // 其他代码……
+};
+</code></pre>
+<p>每个怪兽子类提供一个特定实现, 返回与它自己的类和状态都完全一样的新对象。例如：</p>
+<pre><code class="language-csharp">class Ghost : public Monster {
+public:
+  Ghost(int health, int speed)
+  : health_(health),
+    speed_(speed)
+  {}
+
+  virtual Monster* clone()
+  {
+    return new Ghost(health_, speed_);
+  }
+
+private:
+  int health_;
+  int speed_;
+};
+</code></pre>
+<p>一旦我们所有的怪物都支持这个,  我们不再需要为每个怪物类创建生产者类。我们只需定义一个类Spawner用来生产：</p>
+<pre><code class="language-csharp">class Spawner
+{
+public:
+  Spawner(Monster* prototype)
+  : prototype_(prototype)
+  {}
+
+  Monster* spawnMonster()
+  {
+    return prototype_-&gt;clone();
+  }
+
+private:
+  Monster* prototype_;
+};
+</code></pre>
+<p><img alt="image" src="../%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.assets/2138326-20220810135758364-1083699243.png" /></p>
+<p>为了得到恶灵生产者, 我们创建一个恶灵的原型实例, 然后创建拥有这个实例的生产者：</p>
+<pre><code class="language-csharp">Monster* ghostPrototype = new Ghost(15, 3);
+Spawner* ghostSpawner = new Spawner(ghostPrototype);
+</code></pre>
+<p>这个模式的灵巧之处在于它<strong>不但拷贝原型的<em>类</em>, 也拷贝它的状态</strong>。</p>
+<p>感觉起来就是提供了一个生产"接口"</p>
+<p>相应的问题出现了</p>
+<p>❓<strong>做深层拷贝还是浅层拷贝呢？</strong></p>
+<p>换言之, 如果恶魔拿着叉子, 克隆恶魔也要克隆叉子吗？</p>
+<p>因此这种写法不是很常用</p>
+<h3 id="_11"><strong>生产函数</strong></h3>
+<p>不是使用为每个怪物建立分离的生产者<em>类</em>, 我们可以<strong>创建生产函数</strong>, 就像这样：</p>
+<pre><code class="language-csharp">Monster* spawnGhost()
+{
+  return new Ghost();
+}
+</code></pre>
+<p>这比构建怪兽生产者类更简洁。生产者类只需简单地<strong>存储一个函数指针</strong>：</p>
+<pre><code class="language-csharp">typedef Monster* (*SpawnCallback)();
+
+class Spawner
+{
+public:
+  Spawner(SpawnCallback spawn)
+  : spawn_(spawn)
+  {}
+
+  Monster* spawnMonster()
+  {
+    return spawn_();
+  }
+
+private:
+  SpawnCallback spawn_;
+};
+</code></pre>
+<p>为了给恶灵构建生产者, 你需要做：</p>
+<pre><code class="language-csharp">Spawner* ghostSpawner = new Spawner(spawnGhost);
+</code></pre>
+<h3 id="_12"><strong>模板</strong></h3>
+<pre><code class="language-csharp">class Spawner
+{
+public:
+  virtual ~Spawner() {}
+  virtual Monster* spawnMonster() = 0;
+};
+
+template &lt;class T&gt;
+class SpawnerFor : public Spawner
+{
+public:
+  virtual Monster* spawnMonster() { return new T(); }
+};
+
+// ...
+Spawner* ghostSpawner = new SpawnerFor&lt;Ghost&gt;();
+</code></pre>
+<h3 id="javastript"><strong>📝对JavaStript原型链的一些理解</strong></h3>
+<blockquote>
+<p>去年学js的时候的记录:
+[JavaStript学习记录] 对原型链的一些理解_泥烟的博客-CSDN博客
+</p>
+</blockquote>
+<p><code>new</code>也为你做了另外一件事。 当它创建那个新的空对象时，它<strong>将空对象的委托和一个原型对象连接起来</strong>。 你可以用<code>A.prototype</code>来获得原型对象</p>
+<h3 id="_13"><strong>为数据模型构建原型</strong></h3>
+<p>游戏中的哥布林也许被定义为像这样的东西：</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;goblin grunt&quot;,
+  &quot;minHealth&quot;: 20,
+  &quot;maxHealth&quot;: 30,
+  &quot;resists&quot;: [&quot;cold&quot;, &quot;poison&quot;],
+  &quot;weaknesses&quot;: [&quot;fire&quot;, &quot;light&quot;]
+}
+</code></pre>
+<p>这看上去很易懂，你可以给哥布林大家族添加几个兄弟分支：</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;goblin wizard&quot;,
+  &quot;minHealth&quot;: 20,
+  &quot;maxHealth&quot;: 30,
+  &quot;resists&quot;: [&quot;cold&quot;, &quot;poison&quot;],
+  &quot;weaknesses&quot;: [&quot;fire&quot;, &quot;light&quot;],
+  &quot;spells&quot;: [&quot;fire ball&quot;, &quot;lightning bolt&quot;]
+}
+
+{
+  &quot;name&quot;: &quot;goblin archer&quot;,
+  &quot;minHealth&quot;: 20,
+  &quot;maxHealth&quot;: 30,
+  &quot;resists&quot;: [&quot;cold&quot;, &quot;poison&quot;],
+  &quot;weaknesses&quot;: [&quot;fire&quot;, &quot;light&quot;],
+  &quot;attacks&quot;: [&quot;short bow&quot;]
+}
+</code></pre>
+<p>显然, 重复的数据开始溢出臭味</p>
+<p>我们可以为对象添加<code>"prototype"</code>字段，记录委托对象的名字。 如果在此对象内没找到一个字段，那就去委托对象中查找。</p>
+<p>这样，我们可以简化我们的哥布林JSON内容：</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;goblin grunt&quot;,
+  &quot;minHealth&quot;: 20,
+  &quot;maxHealth&quot;: 30,
+  &quot;resists&quot;: [&quot;cold&quot;, &quot;poison&quot;],
+  &quot;weaknesses&quot;: [&quot;fire&quot;, &quot;light&quot;]
+}
+
+{
+  &quot;name&quot;: &quot;goblin wizard&quot;,
+  &quot;prototype&quot;: &quot;goblin grunt&quot;,
+  &quot;spells&quot;: [&quot;fire ball&quot;, &quot;lightning bolt&quot;]
+}
+
+{
+  &quot;name&quot;: &quot;goblin archer&quot;,
+  &quot;prototype&quot;: &quot;goblin grunt&quot;,
+  &quot;attacks&quot;: [&quot;short bow&quot;]
+}
+</code></pre>
+<p>由于弓箭手和术士都将grunt作为原型，我们就不需要在它们中重复血量，防御和弱点。 我们为数据模型增加的逻辑超级简单——<strong>基本的单一委托</strong>——但已经成功摆脱了一堆冗余。</p>
+<p>有趣的事情是，我们没有更进一步，把哥布林委托的抽象原型设置成“基本哥布林”。 相反，我们选择了最简单的哥布林，然后委托给它。</p>
+<p>在基于原型的系统中，对象可以克隆产生新对象是很自然的， 在这里也一样自然。这特别适合记录那些只有一处不同的实体的数据。</p>
+<h2 id="_14"><strong>单例模式</strong></h2>
+<p>私有的构造器保证了它是<em>唯一</em>的。 公开的静态方法<code>instance()</code>让任何地方的代码都能访问实例。 在首次被请求时, 它同样负责惰性实例化该单例</p>
+<ul>
+<li>只要没有环状依赖, 一个单例在初始化它自己的时甚至可以引用另一个单例</li>
+</ul>
+<p>把<code>FileSystem</code>变成单例：</p>
+<pre><code class="language-csharp">class FileSystem
+{
+public:
+  static FileSystem&amp; instance();
+
+  virtual ~FileSystem() {}
+  virtual char* readFile(char* path) = 0;
+  virtual void  writeFile(char* path, char* contents) = 0;
+
+protected:
+  FileSystem() {}
+};
+</code></pre>
+<p>灵巧之处在于如何创建实例：</p>
+<pre><code class="language-csharp">FileSystem&amp; FileSystem::instance()
+{
+  #if PLATFORM == PLAYSTATION3
+    static FileSystem *instance = new PS3FileSystem();
+  #elif PLATFORM == WII
+    static FileSystem *instance = new WiiFileSystem();
+  #endif
+
+  return *instance;
+}
+</code></pre>
+<p>通过一个简单的编译器转换, 我们把文件系统包装类绑定到合适的具体类型上。 整个代码库都可以使用<code>FileSystem::instance()</code>接触到文件系统, 而无需和任何平台相关的代码耦合。耦合发生在为特定平台写的<code>FileSystem</code>类实现文件中</p>
+<h3 id="_15"><strong>惰性初始化弊端</strong></h3>
+<p>在拥有虚拟内存和软性性能需求的PC里, 惰性初始化是一个小技巧。 游戏则是另一种状况。</p>
+<ul>
+<li>初始化系统需要消耗时间：分配内存, 加载资源, 等等。 如果初始化音频系统消耗了几百个毫秒, 我们需要控制它何时发生。 如果在第一次声音播放时惰性初始化它自己, 这可能发生在游戏的高潮部分, 导致可见的<strong>掉帧和断续</strong>的游戏体验。</li>
+<li>游戏通常需要<strong>严格管理在堆上分配的内存</strong>来避免碎片。 如果音频系统在初始化时分配到了堆上, 我们需要知道初始化在何时发生, 这样我们可以控制内存待在堆的哪里。</li>
+</ul>
+<p>大多数游戏都不使用惰性初始化。 相反, 它们像这样实现单例模式：</p>
+<pre><code class="language-csharp">class FileSystem
+{
+public:
+  static FileSystem&amp; instance() { return instance_; }
+
+private:
+  FileSystem() {}
+
+  static FileSystem instance_;
+};
+</code></pre>
+<p>与创建一个单例不同, 这里实际上是一个简单的静态类。 这并非坏事, 但是如果你需要的是静态类, 为什么不完全摆脱<code>instance()</code>方法,  直接使用静态函数呢？调用<code>Foo::bar()</code>比<code>Foo::instance().bar()</code>更简单,  也更明确地表明你在处理静态内存。</p>
+<blockquote>
+<p>通常使用单例而不是静态类的理由是,  如果你后来决定将静态类改为非静态的, 你需要修改每一个调用点。 理论上, 用单例就不必那么做, 因为你可以将实例传来传去, 像普通的实例方法一样使用。
+</p>
+</blockquote>
+<h3 id="_16"><strong>如何抉择？</strong></h3>
+<ol>
+<li>
+<p>看看你是不是真正地需要类</p>
+<blockquote>
+<p>没有管理器, 也没有问题。 糟糕设计的单例通常会“帮助”另一个类增加代码。 如果可以, 把所有的行为都移到单例帮助的类中。 毕竟, OOP就是让对象管理好自己。</p>
+<ol>
+<li>运行时检查并阻止多重实例化</li>
+</ol>
+</blockquote>
+<p>```csharp
+class FileSystem
+{
+public:
+  FileSystem()
+  {
+    assert(!instantiated_);
+    instantiated_ = true;
+  }</p>
+<p>~FileSystem() { instantiated_ = false; }</p>
+<p>private:
+  static bool instantiated_;
+};</p>
+<p>bool FileSystem::instantiated_ = false;
+```</p>
+<p>这个类允许任何人构建它, 如果你试图构建超过一个实例, 它会断言并失败。 只要正确的代码首先创建了实例, 那么就保证了没有其他代码可以接触实例或者创建自己的实例。 这个类保证满足了它关注的单一实例, 但是它没有指定类该如何被使用。</p>
+<p>断言函数是一种向你的代码中添加限制的方法。 当<code>assert()</code>被调用时, 它计算传入的表达式。 如果结果为<code>true</code>游戏继续。 结果为<code>false</code>, 它立刻停止游戏。 在debug build时, 这通常会启动调试器, 或至少打印失败断言所在的文件和行号。</p>
+<p><code>assert()</code>表示,  “我断言这个总该是真的。如果不是, 那就是漏洞, 我想立刻停止并处理它。” 这使得你可以在代码区域之间定义约束。 如果函数断言它的某个参数不能为<code>NULL</code>, 那就是说, “我和调用者定下了协议：传入的参数不会<code>NULL</code>。”</p>
+<p>断言帮助我们在游戏发生预期以外的事时<strong>立刻追踪漏洞,  而不是等到错误最终显现在用户可见的某些事物上</strong>。 它们是代码中的栅栏, 围住漏洞, 这样漏洞就不能从制造它的代码边逃开。</p>
+<p>这个实现的<strong>缺点</strong>是只在<em>运行时</em>检查并阻止多重实例化。 单例模式正相反, 通过类的自然结构, 在编译时就能确定实例是单一的。</p>
+</li>
+</ol>
+<h3 id="_17"><strong>如何给实例提供方便的访问方法？</strong></h3>
+<p>我们使用单例的一个主要原因是便利的访问, 而代价是——在我们不想要对象的地方, 也能轻易地使用。</p>
+<p>原则是在能完成工作的同时, 将变量写得尽可能局部。</p>
+<ol>
+<li>
+<p><strong>依赖注入</strong>: 不是代码出来调用某些全局量来确认依赖， 而是<strong>依赖通过参数被传进</strong>到需要它的代码中去</p>
+<blockquote>
+<p>面向切面编程👇</p>
+<p><a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">Aspect-oriented programming - Wikipedia</a></p>
+<ol>
+<li><strong>从基类中获得</strong>: 使用protected函数，让派生对象使用</li>
+</ol>
+<p>子类沙箱: 通过分享状态， 给实例以类的访问权限而无需让其全局可用</p>
+<ol>
+<li><strong>从已经是全局的东西中获取</strong>: 让现有的全局对象捎带需要的东西，来减少全局变量类的数目</li>
+<li><strong>从服务定位器中获得</strong></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
