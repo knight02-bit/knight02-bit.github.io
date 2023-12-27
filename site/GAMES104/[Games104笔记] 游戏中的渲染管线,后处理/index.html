@@ -1,0 +1,1214 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/">
+      
+      
+        <link rel="next" href="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>[Games104笔记] 游戏中的渲染管线,后处理 - 泥烟</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            泥烟
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [Games104笔记] 游戏中的渲染管线,后处理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    泥烟
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES101
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装 wsl, g++, eigen, cmake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture1 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture3 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture6抗锯齿与一点点深度缓存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture7~9 初学shading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES104
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES104
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    [Games104笔记] 游戏中的渲染管线,后处理
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记] 游戏中的渲染管线,后处理
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境光遮蔽算法及效果
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ao" class="md-nav__link">
+    <span class="md-ellipsis">
+      AO 环境遮挡
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AO 环境遮挡">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precomputed-ao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precomputed AO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssao" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSAO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSAO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSAO+
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbao-" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBAO-基于地平线的环境遮挡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gtao" class="md-nav__link">
+    <span class="md-ellipsis">
+      GTAO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtao" class="md-nav__link">
+    <span class="md-ellipsis">
+      RTAO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      反走样
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="反走样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      古老的方法: SSAA 超采样,多采样
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      较主流,实用且快:FXAA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taa" class="md-nav__link">
+    <span class="md-ellipsis">
+      较主流,TAA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ※后处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="※后处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boom
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tone-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Mapping,调亮度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tone Mapping,调亮度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      多项式拟合派系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aces" class="md-nav__link">
+    <span class="md-ellipsis">
+      “降维打击派系” ——ACES
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Grading,调颜色,简单实用,性价比高
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.21 基础架构1 [引擎架构分层，整体Pipeline]
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.28 基础架构2 『数据组织和管理』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]4.4 渲染系统1 『渲染数据组织』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    《算法精粹》
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            《算法精粹》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    斐波那契数列的多种实现和性能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境光遮蔽算法及效果
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ao" class="md-nav__link">
+    <span class="md-ellipsis">
+      AO 环境遮挡
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AO 环境遮挡">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precomputed-ao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precomputed AO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssao" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSAO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSAO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSAO+
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbao-" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBAO-基于地平线的环境遮挡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gtao" class="md-nav__link">
+    <span class="md-ellipsis">
+      GTAO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtao" class="md-nav__link">
+    <span class="md-ellipsis">
+      RTAO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      反走样
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="反走样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      古老的方法: SSAA 超采样,多采样
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      较主流,实用且快:FXAA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taa" class="md-nav__link">
+    <span class="md-ellipsis">
+      较主流,TAA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ※后处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="※后处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boom
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tone-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Mapping,调亮度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tone Mapping,调亮度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      多项式拟合派系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aces" class="md-nav__link">
+    <span class="md-ellipsis">
+      “降维打击派系” ——ACES
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Grading,调颜色,简单实用,性价比高
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>[Games104笔记] 游戏中的渲染管线,后处理</h1>
+
+<h3 id="_1">环境光遮蔽算法及效果</h3>
+<p><a href="https://vr.arvilab.com/blog/ambient-occlusion">★&gt;&gt;&gt;Ambient Occlusion: An Extensive Guide on Its Algorithms and Use in VR — ARVI VR (arvilab.com)</a></p>
+<blockquote>
+<p>翻译:</p>
+<p><a href="https://news.nweon.com/53836">什么是环境光遮蔽？都有哪些算法？又为何对AR/VR非常重要？</a></p>
+</blockquote>
+<p><a href="https://thegamedev.guru/unity-ray-tracing/ambient-occlusion-rtao/#basics-first-what-is-ambient-occlusion">&gt;&gt;&gt;The Dark Side Of Ray-Traced Ambient Occlusion (RTAO) | TheGamedev.Guru</a></p>
+<h3 id="ao">AO 环境遮挡</h3>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/2252e03aea2f43f9b691409b28a4e8c7.png" /></p>
+<h4 id="precomputed-ao">Precomputed AO</h4>
+<p>预计算环境遮挡</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/74ef18426bef4464ba05be99748e2538.png" /></p>
+<h4 id="ssao">SSAO</h4>
+<p>Screen Space Ambient Occlusion
+屏幕空间环境遮挡</p>
+<p><strong>💡立体空间采样的思想可取</strong>,用的人并不多</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/700fcc55c50e4c52b9be8628d1e586dd.png" /></p>
+<p><a href="https://baike.sogou.com/v53395367.htm;jsessionid=2C7CD3F6D8633D33D9F80331C0214D43.n2">&gt;&gt;&gt;ssao - 搜狗百科 (sogou.com)</a></p>
+<p>SSAO通过采样象素周围的信息，利用“逐象素场景深度计算”技术计算得出的深度值直接参与运算。</p>
+<p>效果确实错误还比较大，应该先进行简单的空间划分（或类似处理）然后计算。</p>
+<p>不过这种方法只是近似地模拟，效果并不正确，但确实能增强场景的层次感，让画面更细腻，让场景细节更加明显。</p>
+<p>不同于显卡驱动中普通的AO选项，burnout的SSAO是全动态的，无需预处理，无loading时间，无需消耗内存，不使用CPU，全由GPU处理，对GPU有较大的消耗</p>
+<p>SSAO默认是关闭的，可以在游戏视频选项中打开。</p>
+<blockquote>
+<p>SSAO比起185.20驱动中AO的优点：</p>
+<ul>
+<li>与场景复杂性无关</li>
+<li>无数据预处理，无loading时间，无系统内存分配</li>
+<li>动态渲染</li>
+<li>每个像素工作方式始终一致</li>
+<li>无CPU占用，完全通过GPU执行</li>
+<li>与流行显卡的管线整合相当容易</li>
+</ul>
+<p>缺点也是有的：</p>
+<ul>
+<li>由于采样全部在可见点上进行的，对于不可见点的遮挡影响会有错误的估算。</li>
+<li>颗粒感比较重，需要与动态模糊紧密配合才能取得较好效果。</li>
+</ul>
+</blockquote>
+<h5 id="ssao_1">SSAO+</h5>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/5a392deb3657425bbb5b76b96b06ce06.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/c21f00dcd1e84370a05fd89ce4ff6946.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/5feed35d78e54db48faee98c44ec81c3.png" /></p>
+<h4 id="hbao-">HBAO-基于地平线的环境遮挡</h4>
+<p>Horizon-based Ambient Occlusion.</p>
+<blockquote>
+<p>原理:</p>
+<p>HBAO使用一种基于物理的算法，用深度缓冲器采样来逼近一个积分。有一个特定的表面，其中的角度被测量，检查多少光线会被遮挡，不仅要考虑深度，还要考虑表面的法线与世界（地平线）的关系方向。</p>
+</blockquote>
+<p>HBAO在运作模式上与SSAO有什么区别呢？首先HBAO规定了一个半径为R的空间范围，对于范围外的空间不做渲染；此外对于一些低精度模型，遮蔽会导致错误的产生。</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/8716481ee19a4d9e86e34f3291066892.png" />
+<img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/79c6031aafa54ec68a6c34aff5f0b597.png" /></p>
+<p><a href="https://zhuanlan.zhihu.com/p/103683536">&gt;&gt;&gt;HBAO(屏幕空间的环境光遮蔽) - 知乎 (zhihu.com)</a></p>
+<h4 id="gtao">GTAO</h4>
+<p>GTAO - Ground Truth-based Ambient Occlusion 基于地面真实的环境遮挡</p>
+<blockquote>
+<p>GTAO引入了丢失的余弦因子，消除了衰减函数，并增加了<strong>多重反射的快速逼近</strong>。</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/6a1154f62bfe471284830f696ff7fa18.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/6543dc98281245e5ab5f6573f65a55d6.png" /></p>
+<p><a href="https://www.233tw.com/unreal/33065">&gt;&gt;&gt;Unreal 【UE4】 GTAO - 游戏编程 🕹️ (233tw.com)</a></p>
+<h4 id="rtao">RTAO</h4>
+<p>Ray-Tracing Ambient Occlusion 光线追踪环境遮挡</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/02b3af0f4cec468ca1fdeb5b6e8ad46f.png" /></p>
+<h3 id="fog">Fog</h3>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/cdf8f6a5aa0240b38b4e4fd6fd6faa3f.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/6b4152af89cc4b9691ba64c8f1f9c02c.png" /></p>
+<p>视锥</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/ff6097fbc91e4b93a56e938d0e048248.png" /></p>
+<h3 id="_2">反走样</h3>
+<p>anti-aliasing</p>
+<p>由高频信号和有限的渲染分辨率的不充分采样引起的一系列渲染假象</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/44687dfb4e1249d4bb3bce055e7959f8.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/6f8cab5d21524e7fa582258a6fa5a189.png" /></p>
+<h4 id="ssaa">古老的方法: SSAA 超采样,多采样</h4>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/8a3c45e676c7427fa9252f75305a58dd.png" /></p>
+<h4 id="fxaa">较主流,实用且快:FXAA</h4>
+<ul>
+<li>通过亮度找到边缘像素</li>
+<li>计算每个边缘像素的偏移量</li>
+<li>通过偏移量重新采样边缘像素，使其与邻居混合</li>
+</ul>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/ea3980e781904f8cb03b6abda0917bd1.png" /></p>
+<p>横竖卷积一下, 比较上下＆左右哪个差异大一点</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/ab6ad65ff76c49b5b84792c26d2b595b.png" /></p>
+<p>找到边的两个端点</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/b7eefc3b2ce947a9a6090490db82749c.png" /></p>
+<p>原理是相似三角形,</p>
+<p>比较左右端的长度, 来决定自己影响多一点还是受别人影响多一点</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/791857c75a3341b2ac9fd33f73af0e1e.png" /></p>
+<p>每个点找自己的edge, 效果很棒</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/64368d1db94240c8ac5b9e9e7ab5abdc.png" />
+<img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/3125c01d71c34362b8e6291b2c6d848c.png" /></p>
+<h4 id="taa">较主流,TAA</h4>
+<p>不需要在空间上做过多的采样, 而是在时间轴上找数据</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/f1e883d20bcc4ed9b30597e7bcbe1b74.png" /></p>
+<p>根据xyz方向进行rgb编码👉计算当前帧的和过去帧的权重(运动的物体话依赖当前帧多一些,比较静止的依赖过去帧多一些)</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/65fe9f8b43f04c3ea18641b09119a5e9.png" /></p>
+<p>TAA做的不好会有残影</p>
+<h3 id="_3">※后处理</h3>
+<p>应用于最终图像的任何算法。它可以出于色彩校正、对比等原因或现实原因(色调映射、视场深度等)</p>
+<p>步骤:</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/a20496fb0015433480e0589f8f3a0ed1.png" /></p>
+<h4 id="boom">Boom</h4>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/6d337079731d422a99f9a5cf8fa151a5.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/bbe889e8811e4cd993ca7366d75f906e.png" /></p>
+<p>取出高光(超过设定的阈值)</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/c1e09460b3344c6baca4d0470564547f.png" /></p>
+<p>高斯卷积, 不够大</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/feb27ad0001d4d7ea32cddf322cea8ec.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/d26323ceaee84c508d7015ea25d81135.png" /></p>
+<h4 id="tone-mapping">Tone Mapping,调亮度</h4>
+<p>解决暗处过暗|亮处过亮 以及色偏</p>
+<p>映射为0~1之间的值</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/b3b05a09a73f45159cb63d78dc92195c.png" /></p>
+<h5 id="_4">多项式拟合派系</h5>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/f235890eef2e4e3f9c783b7e7619b965.png" /></p>
+<h5 id="aces">“降维打击派系” ——ACES</h5>
+<p>美国电影艺术与科学学会之作</p>
+<p>适应于各种显示设备</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/35e3bcdf89ae454fb21c0d1863ab5a35.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/de92d1436e754c78844a610c5f45deae.png" /></p>
+<p><a href="https://zhuanlan.zhihu.com/p/21983679">&gt;&gt;&gt;Tone mapping进化论 - 知乎 (zhihu.com)</a></p>
+<h4 id="color-grading">Color Grading,调颜色,简单实用,性价比高</h4>
+<p>原始颜色与变化后的映射</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/202088d2c7d949d2a82a29999b69af95.png" />
+<img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/05600cdafad047e7b6392d65251f48c4.png" /></p>
+<p>对于美工很友好</p>
+<p><img alt="在这里插入图片描述" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/5d7a88f4871d436bb01ce43bfaa6e2c5.png" /></p>
+<p>性价比高</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86.assets/906fd94e71554f9b82d051026cc11e16.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

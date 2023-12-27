@@ -1,0 +1,930 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/">
+      
+      
+        <link rel="next" href="../%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>[Games104笔记]3.28 基础架构2 『数据组织和管理』 - 泥烟</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            泥烟
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [Games104笔记]3.28 基础架构2 『数据组织和管理』
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    泥烟
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES101
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装 wsl, g++, eigen, cmake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture1 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture3 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture6抗锯齿与一点点深度缓存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture7~9 初学shading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES104
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES104
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记] 游戏中的渲染管线,后处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.21 基础架构1 [引擎架构分层，整体Pipeline]
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.28 基础架构2 『数据组织和管理』
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.28 基础架构2 『数据组织和管理』
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      "组件化"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go之间的互动
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event" class="md-nav__link">
+    <span class="md-ellipsis">
+      👇event机制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      管理GO:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拓展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      课后有同学问道动画与物理之间的过渡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tick" class="md-nav__link">
+    <span class="md-ellipsis">
+      tick超时相关
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Games104笔记]4.4 渲染系统1 『渲染数据组织』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    《算法精粹》
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            《算法精粹》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    斐波那契数列的多种实现和性能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      "组件化"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go之间的互动
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event" class="md-nav__link">
+    <span class="md-ellipsis">
+      👇event机制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      管理GO:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拓展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      课后有同学问道动画与物理之间的过渡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tick" class="md-nav__link">
+    <span class="md-ellipsis">
+      tick超时相关
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>[Games104笔记]3.28 基础架构2 『数据组织和管理』</h1>
+
+<p>仅为个人学习,初学乍道,引用了很多书中的内容来解释老师说到的一些内容,欢迎交流学习</p>
+<p><strong>目录</strong></p>
+<p><a href="http://www.cnblogs.com/#面向对象">面向对象</a></p>
+<p><a href="http://www.cnblogs.com/#" title="组件化">"组件化"</a></p>
+<p><a href="http://www.cnblogs.com/#Go之间的互动">Go之间的互动</a></p>
+<p><a href="http://www.cnblogs.com/#👇event机制">👇event机制       </a></p>
+<p><a href="http://www.cnblogs.com/#管理GO%3A">管理GO:</a></p>
+<p><a href="http://www.cnblogs.com/#拓展">拓展</a></p>
+<p><a href="http://www.cnblogs.com/#课后有同学问道动画与物理之间的过渡">课后有同学问道动画与物理之间的过渡</a></p>
+<p><a href="http://www.cnblogs.com/#tick超时相关">tick超时相关</a></p>
+<hr />
+<hr />
+<p>静态物,动态物,地面,天空,植被</p>
+<blockquote>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16.png" /></p>
+<p>--《游戏引擎架构 第2版》p749</p>
+</blockquote>
+<h2 id="_1"><strong>面向对象</strong></h2>
+<p>属性+行为</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410371.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410382.png" /></p>
+<p><strong>但往往游戏中的事物没有明确的父子关系</strong></p>
+<blockquote>
+<p>常见问题: <strong>深且宽</strong></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/029f23f223e549ecbfd3f983c7492353.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/1b2690203e8241f1a8595848cdf70af3.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/456f6f7455b64f0a9ce6b4ac9c4d8e30.png" /></p>
+<p><strong>多重继承的弊端</strong><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/506e6fc918be49b9af63cd6e8398e77d.png" /></p>
+<p>--《游戏引擎架构 第2版》-p774</p>
+</blockquote>
+<p>👇</p>
+<h2 id="_2"><strong>"组件化"</strong></h2>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410393.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410394.png" /></p>
+<p>更加符合直觉</p>
+<h2 id="go"><strong>Go之间的互动</strong></h2>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410395.png" /></p>
+<p>更加清晰</p>
+<p>"解耦合"</p>
+<h2 id="event">👇event机制</h2>
+<p><strong>? 生产者消费者模型?</strong></p>
+<p>※可拓展的消息系统     </p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410396.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410397.png" /></p>
+<h2 id="go_1"><strong>管理GO:</strong></h2>
+<p>唯一的id标识</p>
+<blockquote>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/642b2b57ea524a76893103eba6a05d2e.png" /><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/b59b464816a245408da932f9911a736e.png" /></p>
+<p>--《游戏引擎架构 第2版》p767,768</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/69e2275a5a3843ce8ac3d73c94a82f78.png" /></p>
+<p>p769 </p>
+</blockquote>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-17036881410408.png" /></p>
+<p>很多时候场景不均匀, 难以打格子</p>
+<p>👇办法</p>
+<p><img alt="image-20231227225008041" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/image-20231227225008041.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-170368814104010.png" /></p>
+<p>八叉树</p>
+<p>更有效的场景管理方法(<strong>核心为空间管理</strong>)</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-170368814104011.png" /></p>
+<p>※BVH</p>
+<p>Bounding Volume Hierarchies</p>
+<p>包围体层次结构</p>
+<blockquote>
+<p>Everything is an object</p>
+<p>一切都是物体</p>
+<p>Game object could be described in the component-based way. States of game objects are updated in tick loops</p>
+<p>游戏对象可以用基于组件的方式来描述。游戏对象的状态在tick循环中被更新。</p>
+<p>Game objects interact with each other via event mechanism.Game objects are managed in a scene with efficient strategies</p>
+<p>游戏对象通过事件机制相互交互。游戏对象在场景中使用有效的策略管理。</p>
+</blockquote>
+<p>&gt;<strong>物体之间的绑定</strong></p>
+<p>tick的先后顺序</p>
+<p>往往并行,引入邮局(使时序严格一致, 线程同步)</p>
+<p><strong>时序很重要</strong></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA5rOl54Of%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16-170368814104012.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/27d8cb7ade3d437cb2f2e5bac4207655.gif" /></p>
+<h2 id="_3"><strong>拓展</strong></h2>
+<h3 id="_4"><strong>课后有同学问道动画与物理之间的过渡</strong></h3>
+<p>刚好在书中也看到了,这里引用一小部分</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/b03273221ec943dc987844af26e0558c.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/7d3fcc94cb5a4c1aaa200ea4d62da1b8.png" /> --《游戏引擎架构 第2版》p655,656</p>
+<h3 id="tick"><strong>tick超时相关</strong></h3>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/8544b357b9724672806a1fbd603e9a53.png" /></p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/a74e1431537f44fea998840770737d60.png" /><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/f8b870bed9fc4dce9f03787012ab9994.png" /></p>
+<p>--《游戏引擎架构 第2版》p315</p>
+<p><strong>事件排队</strong></p>
+<p>1.内容很多,详见</p>
+<p>-《游戏引擎架构 第2版》p821-836</p>
+<p>2.</p>
+<p><img alt="img" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/bf91906668ba4b3a9468c83e5cf6c1d1.png" /></p>
+<p><em>---[游戏编程模式].(Game.Programming.Patterns).(美)Robert.Nystrom</em> </p>
+<p>3.<a href="http://www.javashuo.com/article/p-sgexngks-ec.html">游戏框架设计Ⅰ—— 游戏中的事件机制 - JavaShuo<img alt="icon-default.png?t=M276" src="../%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F.assets/icon-default.png" />http://www.javashuo.com/article/p-sgexngks-ec.html</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
