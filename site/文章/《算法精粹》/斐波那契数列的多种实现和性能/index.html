@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../../python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="next" href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>泥烟</title>
+        <title>斐波那契数列的多种实现和性能 - 泥烟</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -65,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#0" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -77,7 +86,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
+    <a href="../../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -97,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              斐波那契数列的多种实现和性能
             
           </span>
         </div>
@@ -162,7 +171,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/readme/" class="md-tabs__link">
+      <a href="../../../readme/" class="md-tabs__link">
         
   
     
@@ -177,17 +186,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/%E6%96%87%E7%AB%A0/GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-tabs__link">
           
   
     
@@ -231,7 +244,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
+    <a href="../../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -249,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/readme/" class="md-nav__link">
+      <a href="../../../readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -266,8 +279,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -298,12 +313,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -317,7 +332,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             文章
@@ -380,7 +395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -401,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -422,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -443,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -464,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -540,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -561,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -582,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -603,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -679,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -700,7 +715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -721,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -742,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -814,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -878,7 +893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
+      <a href="../../debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
+      <a href="../../debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -981,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1002,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1023,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1093,7 +1108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
+      <a href="../../maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1163,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
+      <a href="../../python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1189,8 +1204,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1200,12 +1217,12 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
         
           
           <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
@@ -1219,7 +1236,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_8">
             <span class="md-nav__icon md-icon"></span>
             《算法精粹》
@@ -1230,10 +1247,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1242,6 +1268,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1309,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1330,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1351,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1372,7 +1399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1442,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/%E6%96%87%E7%AB%A0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+      <a href="../../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1488,6 +1515,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1499,8 +1528,153 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<p>[toc]</p>
+<h1 id="0">0. 普通斐波那契</h1>
+<pre><code class="language-python">import time
+start = time.time()
+
+def fib0(n: int) -&gt; int:
+    if n &lt; 2:
+        return n
+    return fib0(n-1) + fib0(n-2)
+
+print(&quot;fib0(40) = &quot;, fib0(40))
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end-start))
+</code></pre>
+<blockquote>
+<p>fib0(40) =  102334155
+程序运行时间为: 29.292827367782593 Seconds</p>
+</blockquote>
+<p><img alt="image" src="../%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD.assets/2138326-20230115154707557-1166377612.png" /></p>
+<h1 id="1">1. 结果缓存</h1>
+<blockquote>
+<p>每次计算任务完成后就把结果保存起来，这样在下次需要时即可直接检索出结果，而不需要一而再再而三地重复计算</p>
+</blockquote>
+<pre><code class="language-python">from typing import Dict
+import time
+start = time.time()
+memo: Dict[int, int] = {0: 0, 1: 1}
+
+def fib1(n: int) -&gt; int:
+    if n not in memo:
+        memo[n] = fib1(n-1) + fib1(n-2)
+    return memo[n]
+
+print(&quot;fib1(120) = &quot;, fib1(120))
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end-start))
+</code></pre>
+<blockquote>
+<p>fib1(120) =  5358359254990966640871840
+程序运行时间为: 0.005672931671142578 Seconds
+fib1(120) =  5358359254990966640871840
+程序运行时间为: 0.00408172607421875 Seconds
+fib1(120) =  5358359254990966640871840
+程序运行时间为: 0.004380702972412109 Seconds</p>
+</blockquote>
+<h1 id="2">2. 自动化结果缓存</h1>
+<blockquote>
+<ul>
+<li>每次用新的参数执行fib()时，该装饰器就会把返回值缓存起来。以后再用相同的参数调用fib()时，都会从缓存中读取该参数对应的fib()之前的返回值并返回</li>
+<li>@lru_cache的maxsize属性表示对所装饰的函数最多应该缓存多少次最近的调用结果，如果将其设置为None就表示没有限制
+<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)">Cache replacement policies</a>
+<img alt="image" src="../%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD.assets/2138326-20230115155305772-536945396.png" />
+<img alt="image" src="../%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD.assets/2138326-20230115163908950-559953534.png" /></li>
+</ul>
+</blockquote>
+<pre><code class="language-python">from functools import lru_cache
+import time
+start = time.time()
+
+@lru_cache(maxsize=None)
+def fib2(n: int) -&gt; int:
+    if n &lt; 2:
+        return n
+    return fib2(n-1) + fib2(n-2)
+
+print(&quot;fib2(120) = &quot;, fib2(120))
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end-start))
+</code></pre>
+<blockquote>
+<p>fib2(120) =  5358359254990966640871840
+程序运行时间为: 6.771087646484375e-05 Seconds
+fib2(120) =  5358359254990966640871840
+程序运行时间为: 7.05718994140625e-05 Seconds
+fib2(120) =  5358359254990966640871840
+程序运行时间为: 7.677078247070312e-05 Seconds</p>
+</blockquote>
+<h1 id="3">3. 迭代</h1>
+<pre><code class="language-python">import time
+start = time.time()
+
+def fib3(n: int) -&gt; int:
+    if n == 0: return 0
+    last: int = 0
+    next: int = 1
+    for _ in range(1, n):
+        last, next = next, last+next
+    return next
+
+print(&quot;fib3(120) = &quot;, fib3(120))
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end-start))
+</code></pre>
+<blockquote>
+<p>fib3(120) =  5358359254990966640871840
+程序运行时间为: 1.5020370483398438e-05 Seconds
+fib3(120) =  5358359254990966640871840
+程序运行时间为: 1.33514404296875e-05 Seconds
+fib3(120) =  5358359254990966640871840
+程序运行时间为: 1.430511474609375e-05 Seconds</p>
+</blockquote>
+<h1 id="4">4. 生成器</h1>
+<blockquote>
+<p>目前为止，已完成的这些函数都只能输出斐波那契序列中的单个值。如果要将到某个值之前的整个序列输出，又该怎么做呢？用yield语句很容易就能把fib5()转换为Python生成器。在对生成器进行迭代时，每轮迭代都会用yield语句从斐波那契序列中吐出一个值</p>
+</blockquote>
+<pre><code class="language-python">from typing import Generator
+import time
+start = time.time()
+
+def fib4(n: int) -&gt; Generator[int, None, None]:
+    yield 0
+    if n &gt; 0: yield 1
+    last: int = 0
+    next: int = 1
+    for _ in range(1, n):
+        last, next = next, last+next
+        yield next
+
+res = [_ for _ in fib4(120)]
+print(&quot;fib4(120) = &quot;, res[120])
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end-start))
+</code></pre>
+<blockquote>
+<p>fib4(120) =  5358359254990966640871840
+程序运行时间为: 0.004061222076416016 Seconds
+fib4(120) =  5358359254990966640871840
+程序运行时间为: 0.004450798034667969 Seconds
+fib4(120) =  5358359254990966640871840
+程序运行时间为: 0.004158735275268555 Seconds</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1542,10 +1716,10 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "toc.follow", "navigation.top", "search.highlight", "search.suggest"], "search": "/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "toc.follow", "navigation.top", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
     
   </body>
