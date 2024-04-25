@@ -18,7 +18,7 @@
     
     
       
-        <title>TRenderer - 泥烟</title>
+        <title>Trender note - 泥烟</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TRenderer
+              Trender note
             
           </span>
         </div>
@@ -2168,7 +2168,7 @@
           
   
   <span class="md-ellipsis">
-    TRenderer
+    Trender note
   </span>
   
 
@@ -2179,7 +2179,7 @@
         
   
   <span class="md-ellipsis">
-    TRenderer
+    Trender note
   </span>
   
 
@@ -2203,11 +2203,11 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      环境
+      环境(*:暂未使用)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="环境">
+    <nav class="md-nav" aria-label="环境(*:暂未使用)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2277,11 +2277,11 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      环境
+      环境(*:暂未使用)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="环境">
+    <nav class="md-nav" aria-label="环境(*:暂未使用)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2313,8 +2313,9 @@
                   
 
 
+<p>[toc]</p>
 <h1 id="trenderer">TRenderer</h1>
-<h2 id="_1">环境</h2>
+<h2 id="_1">环境(*:暂未使用)</h2>
 <ul>
 <li>
 <p>cmake 3.29.2</p>
@@ -2323,13 +2324,8 @@
 <p>GNU 9.2.0</p>
 </li>
 <li>
-<p>ninja 1.11.1</p>
+<p>*ninja 1.11.1(使用并行任务来编译工程)</p>
 </li>
-</ul>
-<blockquote>
-<p>使用并行任务来编译工程</p>
-</blockquote>
-<ul>
 <li>
 <p>assimp-5.2.5</p>
 </li>
@@ -2340,12 +2336,9 @@
 <p>glm</p>
 </li>
 <li>
-<p>tbb(并行编程库)(暂未使用...)</p>
+<p>*tbb(并行编程库)</p>
 </li>
 </ul>
-<blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/465700130">oneTBB系列链接整理 - 知乎 (zhihu.com)</a></p>
-</blockquote>
 <p><img alt="image-20240424163840058" src="../trender_note.assets/image-20240424163840058.png" /></p>
 <p><img alt="image-20240424163947632" src="../trender_note.assets/image-20240424163947632.png" /></p>
 <h3 id="assimp">记录:编译安装assimp并成功链接</h3>
@@ -2380,7 +2373,7 @@
 <p>相应的文件也是在这里(<code>./packages/assimp5.2.5/lib/cmake/assimp-5.2</code>)的,就是不知道为什么链接不上...</p>
 <p>咨询群友过后, 发现把动态库libassimp-5.dll放在build好的目录下即可解决(.exe所在目录)</p>
 <p><img alt="image-20240424164314406" src="../trender_note.assets/image-20240424164314406.png" /></p>
-<h1 id="_2">主要</h1>
+<h1 id="_2">主要结构体/类/算法</h1>
 <h2 id="basicdatastruture">BasicDataStruture</h2>
 <p><img alt="image-20240424230010138" src="../trender_note.assets/image-20240424230010138.png" /></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">;</span>
@@ -2481,27 +2474,70 @@
     -float shininess // 高光度
 }
 </code></pre></div>
+<h2 id="edgeequation">EdgeEquation</h2>
+<p><img alt="image-20240424223127871" src="../trender_note.assets/image-20240424223127871.png" /></p>
+<h3 id="_3">计算边缘方程的参数</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/140926917">图形学底层探秘 - 更现代的三角形光栅化与插值算法的实现与优化 - 知乎 (zhihu.com)</a></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">EdgeEquation</span><span class="o">::</span><span class="n">EdgeEquation</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Triangle</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tri</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="p">};</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">};</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">};</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">topLeftFlag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JudgeOnTopLeftEdge</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">,</span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">);</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="n">topLeftFlag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JudgeOnTopLeftEdge</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenPos</span><span class="p">,</span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">);</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="n">topLeftFlag</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JudgeOnTopLeftEdge</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenPos</span><span class="p">,</span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenPos</span><span class="p">);</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="n">twoArea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">twoArea</span><span class="p">;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p><code>EdgeEquation</code> 的构造函数，通过三角形的屏幕空间坐标计算边缘方程的参数，在构造函数中进行了初始化设置，为后续的三角形光栅化处理提供了基础的边缘方程计算和判断。</p>
+<ol>
+<li>计算边缘方程的参数：</li>
+<li>首先计算了三条边的斜率参数 I 和 J，以及常数项 K。这些参数用于后续的边缘方程计算。</li>
+<li>I、J、K 的计算基于三角形的三个顶点的屏幕空间坐标，利用差分计算两个点的坐标差。</li>
+<li><code>topLeftFlag</code> 数组用于存储判断三角形的每条边是否在屏幕上部左侧的标志，这个标志在判断像素是否在三角形内部时会用到。</li>
+<li><code>twoArea</code> 是三角形的两倍面积，用于面剔除判断和像素插值计算。</li>
+<li>
+<p><code>delta</code> 是计算插值时使用的参数，它是 <code>1 / twoArea</code>。</p>
+</li>
+<li>
+<p>代码中的 <code>JudgeOnTopLeftEdge</code> 函数用于判断某个点是否在另外两个点的上部或者左侧，这是判断三角形边缘在屏幕上部左侧的标志。
+</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="camera">Camera</h2>
+<p><img alt="image-20240425110405053" src="../trender_note.assets/image-20240425110405053.png" /></p>
+<h2 id="shader">Shader</h2>
+<p><img alt="image-20240424224943212" src="../trender_note.assets/image-20240424224943212.png" /></p>
 <h2 id="blinnphongshader">BlinnPhongShader</h2>
 <p><img alt="image-20240424215631283" src="../trender_note.assets/image-20240424215631283.png" /></p>
+<h3 id="fragmentshader">FragmentShader</h3>
 <h2 id="framebuffer">FrameBuffer</h2>
 <p><img alt="image-20240424215836621" src="../trender_note.assets/image-20240424215836621.png" /></p>
 <h2 id="mesh">Mesh</h2>
 <p><img alt="image-20240424221931723" src="../trender_note.assets/image-20240424221931723.png" /></p>
 <h2 id="model">Model</h2>
 <p><img alt="image-20240424221855310" src="../trender_note.assets/image-20240424221855310.png" /></p>
-<h2 id="shader">Shader</h2>
-<p><img alt="image-20240424224943212" src="../trender_note.assets/image-20240424224943212.png" /></p>
 <h2 id="texture">Texture</h2>
 <p><img alt="image-20240424225350696" src="../trender_note.assets/image-20240424225350696.png" /></p>
-<h2 id="edgeequation">EdgeEquation</h2>
-<p><img alt="image-20240424223127871" src="../trender_note.assets/image-20240424223127871.png" /></p>
 <h2 id="trendererdevice">TRendererDevice</h2>
 <p><img alt="image-20240424223243136" src="../trender_note.assets/image-20240424223243136.png" /></p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="n">TRendererDevice</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">TRendererDevice</span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="n">TRendererDevice</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">TRendererDevice</span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <p>是在 <code>TRendererDevice</code> 类中定义特殊的成员函数，用于控制对象的拷贝和移动操作。</p>
 <ol>
@@ -2522,6 +2558,313 @@
 </li>
 </ol>
 <p>这些删除操作符的作用是为了防止对象的拷贝和移动，从而保证类的对象在程序中不会被意外地复制或移动，确保代码的稳定性和安全性。通常情况下，如果某个类的对象不需要被拷贝或移动，就可以将对应的拷贝构造函数、移动构造函数、拷贝赋值运算符和移动赋值运算符标记为删除。</p>
+<h3 id="half-space">Half-Space 三角形光栅化算法</h3>
+<p><a href="https://www.researchgate.net/publication/286441992_Accelerated_Half-Space_Triangle_Rasterization">(PDF) Accelerated Half-Space Triangle Rasterization (researchgate.net)</a></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Half-Space 三角形光栅化算法</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">TRendererDevice::RasterizationTriangle</span><span class="p">(</span><span class="n">Triangle</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tri</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">CoordI4D</span><span class="w"> </span><span class="n">boundingBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetBoundingBox</span><span class="p">(</span><span class="n">tri</span><span class="p">);</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">xMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boundingBox</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">yMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boundingBox</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">xMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boundingBox</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">yMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boundingBox</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="n">EdgeEquation</span><span class="w"> </span><span class="n">triEdge</span><span class="p">(</span><span class="n">tri</span><span class="p">);</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">faceCulling</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">triEdge</span><span class="p">.</span><span class="n">twoArea</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">triEdge</span><span class="p">.</span><span class="n">twoArea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="n">Fragment</span><span class="w"> </span><span class="n">frag</span><span class="p">;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="n">VectorI3D</span><span class="w"> </span><span class="n">cy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triEdge</span><span class="p">.</span><span class="n">GetResult</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="w"> </span><span class="n">yMin</span><span class="p">);</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yMin</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">yMax</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="n">VectorI3D</span><span class="w"> </span><span class="n">cx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cy</span><span class="p">;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xMin</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">xMax</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">JudgeInsideTriangle</span><span class="p">(</span><span class="n">triEdge</span><span class="p">,</span><span class="w"> </span><span class="n">cx</span><span class="p">))</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">                </span><span class="n">Vector3D</span><span class="w"> </span><span class="n">barycentric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triEdge</span><span class="p">.</span><span class="n">GetBarycentric</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">screenDepth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateInterpolation</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">screenDepth</span><span class="p">,</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">screenDepth</span><span class="p">,</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">screenDepth</span><span class="p">,</span><span class="w"> </span><span class="n">barycentric</span><span class="p">);</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">frameBuffer</span><span class="p">.</span><span class="n">JudgeDepth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">screenDepth</span><span class="p">))</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">                </span><span class="p">{</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">                    </span><span class="kt">float</span><span class="w"> </span><span class="n">viewDepth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">barycentric</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">ndcSpacePos</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">barycentric</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">ndcSpacePos</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">barycentric</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">ndcSpacePos</span><span class="p">.</span><span class="n">w</span><span class="p">);</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">                    </span><span class="n">frag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ConstructFragment</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">screenDepth</span><span class="p">,</span><span class="w"> </span><span class="n">viewDepth</span><span class="p">,</span><span class="w"> </span><span class="n">tri</span><span class="p">,</span><span class="w"> </span><span class="n">barycentric</span><span class="p">);</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">                    </span><span class="n">shader</span><span class="o">-&gt;</span><span class="n">FragmentShader</span><span class="p">(</span><span class="n">frag</span><span class="p">);</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">                    </span><span class="n">frameBuffer</span><span class="p">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="n">frag</span><span class="p">.</span><span class="n">screenPos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">frag</span><span class="p">.</span><span class="n">screenPos</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="n">frag</span><span class="p">.</span><span class="n">fragmentColor</span><span class="p">);</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">            </span><span class="n">triEdge</span><span class="p">.</span><span class="n">UpX</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">        </span><span class="n">triEdge</span><span class="p">.</span><span class="n">UpY</span><span class="p">(</span><span class="n">cy</span><span class="p">);</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>半空间三角形栅格化算法，即对三角形进行像素化处理以便在屏幕上进行渲染。</p>
+<p>主要步骤如下：</p>
+<ol>
+<li>获取三角形的包围盒：</li>
+<li>
+<p>首先调用 <code>GetBoundingBox(tri)</code> 获取三角形的包围盒，得到包围盒的最小和最大的 x、y 坐标。</p>
+</li>
+<li>
+<p>创建边缘方程对象：</p>
+</li>
+<li>
+<p>使用 <code>EdgeEquation triEdge(tri)</code> 创建一个边缘方程对象，该对象用于后续判断像素是否在三角形内部。</p>
+</li>
+<li>
+<p>面剔除判断：</p>
+</li>
+<li>如果启用了面剔除（<code>faceCulling</code> 为真），并且三角形的两倍面积小于等于 0，则直接返回，不进行后续的像素处理。</li>
+<li>
+<p>否则，如果三角形的两倍面积等于 0，也直接返回，因为这种情况下三角形是退化的，不需要进行像素处理。</p>
+</li>
+<li>
+<p>逐像素处理：</p>
+</li>
+<li>从包围盒的最小 x、y 坐标开始，遍历包围盒内的每个像素。</li>
+<li>对于每个像素，通过边缘方程判断其是否在三角形内部（调用 <code>JudgeInsideTriangle(triEdge, cx)</code>）。</li>
+<li>如果在三角形内部，则计算其重心坐标（barycentric）和屏幕深度（screenDepth），并根据重心坐标插值计算视图空间深度（viewDepth）。</li>
+<li>利用计算得到的像素信息，构造一个片元对象（<code>frag = ConstructFragment(x, y, screenDepth, viewDepth, tri, barycentric)</code>），然后调用着色器的片元着色器方法 <code>shader-&gt;FragmentShader(frag)</code> 进行光照计算，最后将计算得到的颜色值设置到帧缓冲区的对应像素位置上。</li>
+</ol>
+<p>总体来说，这段代码是对三角形进行光栅化处理的核心部分，通过边缘方程判断像素是否在三角形内部，然后进行像素插值计算深度和颜色，最终将计算得到的颜色值渲染到帧缓冲区中。</p>
+</blockquote>
+<h3 id="bresenham">Bresenham 画线算法</h3>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Bresenham 画线算法</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">TRendererDevice::DrawLine</span><span class="p">(</span><span class="n">Line</span><span class="o">&amp;</span><span class="w"> </span><span class="n">line</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">{</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="c1">// 将线段的起点和终点坐标转换为整数,并且限制在屏幕范围内</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">steep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="c1">// 如果线段在x方向上的变化量小于y方向上的变化量,则将x和y互换,标记为steep</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">y0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y1</span><span class="p">))</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">);</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">);</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="n">steep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="c1">// 如果起点x坐标大于终点x坐标,则交换起点和终点的x和y坐标</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">);</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">);</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x0</span><span class="p">;</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">    </span><span class="c1">// 判断y方向上的变化方向</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dy</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">dy</span><span class="p">;</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">dx</span><span class="p">;</span><span class="w">              </span><span class="c1">// 计算误差值</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">steep</span><span class="p">)</span><span class="n">frameBuffer</span><span class="p">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">lineColor</span><span class="p">);</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">frameBuffer</span><span class="p">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">lineColor</span><span class="p">);</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="w">        </span><span class="n">e</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dy</span><span class="p">);</span><span class="w">          </span><span class="c1">// 更新误差值</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="w">            </span><span class="n">e</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dx</span><span class="p">);</span>
+</span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="w">        </span><span class="o">++</span><span class="n">x</span><span class="p">;</span><span class="w">                    </span><span class="c1">// 移动到下一个像素点</span>
+</span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p><a href="https://www.baidu.com/link?url=RZ670kfXaeOpyIeNpedK13vK-0w0BmDboix5-94kdbvrV7gAHY4MVpl9vXBjiK0ZIITPRpEJddI8w4dl61Sot_&amp;wd=&amp;eqid=805ba529000180f0000000036629db26">高级计算机图形学 中科大课件 光栅化 Bresenham画线算法</a></p>
+<p><a href="https://www.cnblogs.com/gamesky/archive/2012/08/21/2648623.html">Bresenham快速画直线算法 - 冷夜 - 网游编程技术 - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://deepnight.net/tutorial/bresenham-magic-raycasting-line-of-sight-pathfinding/">Deepnight Games | Bresenham algorithm</a></p>
+<blockquote>
+<p><a href="https://www.gcores.com/articles/150791">译介丨简单介绍Bresenham直线算法 | 机核 GCORES</a></p>
+</blockquote>
+<p><a href="https://tastones.com/stackoverflow/algorithm/line-algorithm/bresenham_line_drawing_algorithm/">Bresenham 线绘制算法 | 他山教程，只选择最优质的自学材料 (tastones.com)</a></p>
+<p>Bresenham 直线算法是一种用于绘制直线的经典算法，它能够高效地计算出直线上的各个像素点，适用于计算机图形学中的线段绘制和光栅化。<code>主要针对整数坐标系下的直线绘制</code>，核心思想是通过计算直线斜率的变化，利用误差项来控制像素点的绘制位置，从而实现直线的连续绘制。</p>
+<p>Bresenham 直线算法的基本步骤：</p>
+<ol>
+<li>
+<p>对于给定的直线起点 (x0, y0) 和终点 (x1, y1)，计算直线斜率的绝对值 |m|，其中 m = (y1 - y0) / (x1 - x0)。</p>
+</li>
+<li>
+<p>根据直线的斜率 |m| 的大小，分为两种情况处理：</p>
+</li>
+<li>当 |m| &lt;= 1 时，直线的倾斜程度较小，在 x 方向上步进；</li>
+<li>
+<p>当 |m| &gt; 1 时，直线的倾斜程度较大，在 y 方向上步进。</p>
+</li>
+<li>
+<p>根据斜率的不同，选择适当的步进方式，并计算误差项 e 的初始值。</p>
+</li>
+<li>
+<p>进入主循环，根据步进方式逐个计算并绘制像素点，同时更新误差项 e：</p>
+</li>
+<li>当斜率 |m| &lt;= 1 时，每次步进 x 方向一个像素，误差项 e 的更新公式为 e += 2dy - 2dx，其中 dx 表示 x 方向的步进，dy 表示 y 方向的步进。</li>
+<li>
+<p>当斜率 |m| &gt; 1 时，每次步进 y 方向一个像素，误差项 e 的更新公式为 e += 2dx - 2dy。</p>
+</li>
+<li>
+<p>在每次更新误差项 e 后，判断 e 是否超过阈值（通常为 dx 或 dy 的一半），若超过阈值，则向 x 或 y 方向步进一个像素，并调整误差项 e。</p>
+</li>
+<li>
+<p>循环直到绘制完成，即直线的终点坐标达到目标值。
+</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="cohen-sutherland-sutherland-hodgman">Cohen-Sutherland &amp; Sutherland-Hodgman 算法(齐次空间裁剪)</h3>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Cohen-Sutherland算法(线段裁剪)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Line</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">::</span><span class="n">ClipLine</span><span class="p">(</span><span class="n">Line</span><span class="o">&amp;</span><span class="w"> </span><span class="n">line</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="c1">// 计算线段端点的裁剪码</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">Coord3D</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">screenLines</span><span class="p">),</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">Coord3D</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">screenLines</span><span class="p">)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="c1">// 如果两个端点都在裁剪区域内，则直接返回</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]).</span><span class="n">none</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="c1">// 如果两个端点都在裁剪区域外，则直接丢弃该直线</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]).</span><span class="n">any</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="c1">// 如果两个端点在不同的裁剪区域内部或外部</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="c1">// 裁剪码是通过位编码来表示点的位置关系的</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="c1">// 对两个裁剪码进行位异或运算,取索引为i的位,可检查两端点在第i位上是否不同</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="k">if</span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="n">i</span><span class="p">])</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">            </span><span class="c1">// 计算直线端点到裁剪平面的距离</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateDistance</span><span class="p">(</span><span class="n">Coord3D</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">screenLines</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateDistance</span><span class="p">(</span><span class="n">Coord3D</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">screenLines</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">            </span><span class="c1">// 计算交点处的插值系数</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">da</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">db</span><span class="p">);</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">            </span><span class="c1">// 计算交点的屏幕坐标</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">            </span><span class="n">CoordI2D</span><span class="w"> </span><span class="n">np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateInterpolation</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">alpha</span><span class="p">);</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">            </span><span class="c1">// 根据裁剪平面的不同，更新直线的端点和裁剪码</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">da</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">                </span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">;</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">                </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">Coord3D</span><span class="p">(</span><span class="n">np</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">screenLines</span><span class="p">);</span>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">                </span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">;</span>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">                </span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">Coord3D</span><span class="p">(</span><span class="n">np</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">screenLines</span><span class="p">);</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="p">}</span>
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a>
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="c1">// Sutherland-Hodgman 算法(齐次空间裁剪)</span>
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Triangle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">::</span><span class="n">ClipTriangle</span><span class="p">(</span><span class="n">Triangle</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tri</span><span class="p">)</span>
+</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="p">{</span>
+</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a><span class="w">    </span><span class="c1">// 计算三角形三个顶点的裁剪码</span>
+</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="w">        </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">),</span>
+</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="w">        </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">),</span>
+</span><span id="__span-7-54"><a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a><span class="w">        </span><span class="n">GetClipCode</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">)</span>
+</span><span id="__span-7-55"><a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-7-56"><a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>
+</span><span id="__span-7-57"><a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a><span class="w">    </span><span class="c1">// 如果三个顶点的裁剪码均为0,即三角形完全在视锥体内,无需裁剪,直接返回原始三角形</span>
+</span><span id="__span-7-58"><a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="w">    </span><span class="c1">// 如果三个顶点的裁剪码的与运算结果为非0,即三角形完全在视锥体外部,丢弃该三角形</span>
+</span><span id="__span-7-59"><a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a><span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">]).</span><span class="n">none</span><span class="p">())</span>
+</span><span id="__span-7-60"><a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">tri</span><span class="p">};</span>
+</span><span id="__span-7-61"><a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a><span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">]).</span><span class="n">any</span><span class="p">())</span>
+</span><span id="__span-7-62"><a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+</span><span id="__span-7-63"><a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a>
+</span><span id="__span-7-64"><a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a><span class="w">    </span><span class="c1">// 检查三角形是否与近裁剪平面相交</span>
+</span><span id="__span-7-65"><a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a><span class="w">    </span><span class="k">if</span><span class="p">(((</span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">((</span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
+</span><span id="__span-7-66"><a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-67"><a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Vertex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
+</span><span id="__span-7-68"><a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a><span class="w">        </span><span class="c1">// 遍历三个边,对与近裁剪平面相交的边进行裁剪</span>
+</span><span id="__span-7-69"><a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-7-70"><a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-7-71"><a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-7-72"><a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a>
+</span><span id="__span-7-73"><a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">code</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">code</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="w">      </span><span class="c1">// 边完全在内部</span>
+</span><span id="__span-7-74"><a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-7-75"><a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a><span class="w">                </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span>
+</span><span id="__span-7-76"><a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-7-77"><a id="__codelineno-7-77" name="__codelineno-7-77" href="#__codelineno-7-77"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">code</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="w">  </span><span class="c1">// 边与近裁剪平面相交</span>
+</span><span id="__span-7-78"><a id="__codelineno-7-78" name="__codelineno-7-78" href="#__codelineno-7-78"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-7-79"><a id="__codelineno-7-79" name="__codelineno-7-79" href="#__codelineno-7-79"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateDistance</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-7-80"><a id="__codelineno-7-80" name="__codelineno-7-80" href="#__codelineno-7-80"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateDistance</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-7-81"><a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">da</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">db</span><span class="p">);</span>
+</span><span id="__span-7-82"><a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a><span class="w">                </span><span class="n">Vertex</span><span class="w"> </span><span class="n">np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateInterpolation</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="w"> </span><span class="n">alpha</span><span class="p">);</span>
+</span><span id="__span-7-83"><a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a><span class="w">                </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">np</span><span class="p">);</span>
+</span><span id="__span-7-84"><a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-7-85"><a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">code</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">code</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="w">  </span><span class="c1">// 边与近裁剪平面相交</span>
+</span><span id="__span-7-86"><a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-7-87"><a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateDistance</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-7-88"><a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateDistance</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">clipSpacePos</span><span class="p">,</span><span class="w"> </span><span class="n">viewPlanes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-7-89"><a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a><span class="w">                </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">da</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">db</span><span class="p">);</span>
+</span><span id="__span-7-90"><a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a><span class="w">                </span><span class="n">Vertex</span><span class="w"> </span><span class="n">np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateInterpolation</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tri</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="w"> </span><span class="n">alpha</span><span class="p">);</span>
+</span><span id="__span-7-91"><a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a><span class="w">                </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">np</span><span class="p">);</span>
+</span><span id="__span-7-92"><a id="__codelineno-7-92" name="__codelineno-7-92" href="#__codelineno-7-92"></a><span class="w">                </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span>
+</span><span id="__span-7-93"><a id="__codelineno-7-93" name="__codelineno-7-93" href="#__codelineno-7-93"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-7-94"><a id="__codelineno-7-94" name="__codelineno-7-94" href="#__codelineno-7-94"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-95"><a id="__codelineno-7-95" name="__codelineno-7-95" href="#__codelineno-7-95"></a><span class="w">        </span><span class="c1">// 返回裁剪后的三角形</span>
+</span><span id="__span-7-96"><a id="__codelineno-7-96" name="__codelineno-7-96" href="#__codelineno-7-96"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ConstructTriangle</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+</span><span id="__span-7-97"><a id="__codelineno-7-97" name="__codelineno-7-97" href="#__codelineno-7-97"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-98"><a id="__codelineno-7-98" name="__codelineno-7-98" href="#__codelineno-7-98"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Triangle</span><span class="o">&gt;</span><span class="p">{</span><span class="n">tri</span><span class="p">};</span>
+</span><span id="__span-7-99"><a id="__codelineno-7-99" name="__codelineno-7-99" href="#__codelineno-7-99"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>Cohen-Sutherland算法和Sutherland-Hodgman算法都是常见的线段裁剪算法，用于对线段或多边形进行裁剪操作，特别是在计算机图形学中应用广泛。它们基于不同的思想和处理方式，分别适用于线段和多边形的裁剪，可以有效地提高渲染效率和图形显示效果。</p>
+<h3 id="cohen-sutherland">Cohen-Sutherland算法（线段裁剪）</h3>
+<ol>
+<li><strong>思想</strong>：</li>
+<li>Cohen-Sutherland算法采用线段与视口边界的裁剪码比较的思想，将视口划分为9个区域，每个区域对应一个裁剪码，表示线段相对于视口边界的位置关系。</li>
+<li>
+<p>通过比较线段两端点的裁剪码，可以确定线段与视口边界的相交情况，并进行裁剪操作。</p>
+</li>
+<li>
+<p><strong>步骤</strong>：</p>
+</li>
+<li>计算线段两端点的裁剪码，并进行位运算比较。</li>
+<li>根据裁剪码的组合情况，确定线段与视口边界的位置关系，进行裁剪处理。</li>
+<li>如果线段完全在视口内，则保留线段；如果线段完全在视口外，则舍弃；如果线段部分在视口内部，则对线段进行裁剪。</li>
+</ol>
+<h3 id="sutherland-hodgman">Sutherland-Hodgman算法（多边形裁剪）</h3>
+<ol>
+<li>
+<p><strong>思想</strong>：</p>
+</li>
+<li>
+<p>Sutherland-Hodgman算法主要用于对多边形进行裁剪操作，它采用多边形顶点的位置关系和裁剪边的位置关系来确定裁剪结果。</p>
+</li>
+<li>
+<p>算法基于逐顶点的迭代处理，通过对多边形的每个顶点进行裁剪，逐步得到裁剪后的多边形。</p>
+</li>
+<li>
+<p><strong>步骤</strong>：</p>
+</li>
+<li>对多边形的每条边进行检查，判断边是否与裁剪边界相交。</li>
+<li>如果边完全在裁剪边界内，则保留整条边。</li>
+<li>如果边与裁剪边界相交，则计算交点，将交点添加到裁剪后的多边形顶点列表中。</li>
+<li>最后根据裁剪后的顶点列表重新构建裁剪后的多边形。</li>
+</ol>
+<p>齐次空间裁剪是对三维空间中的物体进行裁剪的一种方法，与传统的Cohen-Sutherland算法(主要用于二维直线裁剪)有所不同
+</p>
+<p><a href="https://www.geeksforgeeks.org/polygon-clipping-sutherland-hodgman-algorithm/">Polygon Clipping | Sutherland–Hodgman Algorithm - GeeksforGeeks</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/418043558">2D 游戏物理引擎 - 多边形的裁剪与堆叠 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h1 id="_4">图形学知识点回顾</h1>
+<h2 id="_5">渲染管线</h2>
+<p><img alt="image-20240425094544277" src="../trender_note.assets/image-20240425094544277.png" /></p>
+<p><img alt="image-20240425094723427" src="../trender_note.assets/image-20240425094723427.png" /></p>
+<p><img alt="image-20240425094756335" src="../trender_note.assets/image-20240425094756335.png" /></p>
+<p><img alt="image-20240425094810138" src="../trender_note.assets/image-20240425094810138.png" /></p>
+<p><img alt="image-20240425094844397" src="../trender_note.assets/image-20240425094844397.png" /></p>
+<p><img alt="image-20240425094856855" src="../trender_note.assets/image-20240425094856855.png" /></p>
 <h1 id="cpp">cpp</h1>
 <h2 id="mesh-default">Mesh() = default;有什么作用</h2>
 <p>在C++中，<code>Mesh() = default;</code>是一个使用默认构造函数的声明。当您使用<code>Mesh()</code>这种形式声明构造函数时，编译器会生成一个默认构造函数，该构造函数会对类的成员变量进行初始化。如果没有显式声明构造函数，编译器会为类生成一个默认构造函数，这个默认构造函数会对类的基本数据类型进行零初始化（例如，整型数据会初始化为0，浮点型数据会初始化为0.0）。</p>
@@ -2558,19 +2901,24 @@
 <p><strong>光照计算</strong>：在光照计算中，缩放因子可以<code>影响光照效果的强度</code>。例如，在 Phong 光照模型中，光照强度与法向量和光线方向的夹角以及缩放因子等因素相关。</p>
 </li>
 </ol>
+<h2 id="pitchyaw">俯仰角（pitch）和偏航角（yaw）</h2>
+<ul>
+<li><strong>俯仰角（Pitch）</strong>：俯仰角是指相对于参考平面（通常是水平面）的上下旋转角度。当俯仰角为正时，物体或相机向上旋转；当俯仰角为负时，物体或相机向下旋转。在图形学中，俯仰角常用来调整相机的仰角，从而改变观察者的视角。</li>
+<li><strong>偏航角（Yaw）</strong>：偏航角是指相对于参考方向（通常是水平方向）的左右旋转角度。当偏航角为正时，物体或相机向左旋转；当偏航角为负时，物体或相机向右旋转。在图形学中，偏航角常用来调整相机的水平旋转角度，从而改变观察者的水平方向。</li>
+</ul>
 <h2 id="debug">DEBUG(⛔:未解决 / 🌈:已解决)</h2>
 <h2 id="error-cmakefilestrendererdevicecppobj-in-function-shadershader">🌈[error]: CMakeFiles/.../TRendererDevice.cpp.obj: in function `Shader::~Shader()':</h2>
 <p>error: CMakeFiles/TRenderer.dir/TRendererCore/TRendererDevice.cpp.obj: in function `Shader::~Shader()':</p>
 <p>K:\code\QTProject\TRenderer\TRendererCore\Shader.hpp:13: error: undefined reference to `__imp__ZTV6Shader'</p>
 <p>声明了一个析构函数 <code>~Shader()</code>, 但是没有提供对应的定义</p>
 <p>需要在实现文件（ Shader.cpp）中提供对析构函数 <code>~Shader()</code> 的定义。例如：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Shader</span><span class="o">::~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="c1">// 对象销毁时需要执行的代码</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Shader</span><span class="o">::~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// 对象销毁时需要执行的代码</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>而本项目中Shader 类是一个纯虚基类, 则需要为析构函数提供一个纯虚函数定义。</p>
 <p>将析构函数定义为纯虚函数：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span></code></pre></div>
 <p>然后可在派生类中实现该纯虚析构函数。</p>
 <h2 id="shader-trendererdevice">附:<code>Shader</code> 类在 <code>TRendererDevice</code> 类中的作用</h2>
@@ -2580,19 +2928,25 @@
 <p>在 <code>TRendererDevice.h</code> 中, <code>Shader</code> 类起到了定义一个抽象基类的作用。这个抽象基类是一个纯虚类, 它定义了一些虚函数 <code>VertexShader</code> 和 <code>FragmentShader</code>, 这些函数需要派生类来实现。</p>
 <p>这样做的目的是<code>为了实现着色器的多态性</code>, 允许用户根据需要创建不同的着色器类(如顶点着色器、片元着色器)并实现这些虚函数, 以达到不同的渲染效果。</p>
 <p>具体来说, <code>Shader</code> 类的定义在 <code>Shader.hpp</code> 文件中, 包含了以下成员函数声明：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">VertexShader</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vertex</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FragmentShader</span><span class="p">(</span><span class="n">Fragment</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fragment</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">VertexShader</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vertex</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FragmentShader</span><span class="p">(</span><span class="n">Fragment</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fragment</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span></code></pre></div>
 <p>在 <code>TRendererDevice</code> 类中, 有一个指向 <code>Shader</code> 类或其派生类对象的智能指针：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Shader</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shader</span><span class="p">;</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Shader</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shader</span><span class="p">;</span>
 </span></code></pre></div>
 <p>通过这个成员变量, <code>TRendererDevice</code> 类可以在渲染过程中使用用户指定的着色器来处理顶点和片元的着色逻辑。</p>
 <p>在 <code>TRendererDevice</code> 类的渲染过程中, 可能会调用 <code>Shader</code> 类中定义的虚函数, 例如上面的VertexShader和FragmentShader</p>
 <p>这些函数会在派生类中被实现, 从而实现具体的顶点和片元着色逻辑。
 </p>
 </blockquote>
-<h1 id="_3">杂</h1>
+<h1 id="_6">文档,博客</h1>
+<h2 id="qt">Qt</h2>
 <p><a href="https://blog.csdn.net/qq_37468571/article/details/132294606">QtCreator类结构生成模板说明</a></p>
+<h2 id="opengl">OpenGL</h2>
+<p><a href="https://learnopengl.com/Model-Loading/Mesh">LearnOpenGL - 网格 --- LearnOpenGL - Mesh</a></p>
+<p>https://learnopengl-cn.readthedocs.io/zh/latest</p>
+<p><a href="https://zhuanlan.zhihu.com/p/465700130">oneTBB系列链接整理 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/65495373">三角形重心坐标 - 知乎 (zhihu.com)</a></p>
 
 
 
