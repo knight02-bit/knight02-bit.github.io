@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -9,16 +9,18 @@
       
       
       
-        <link rel="prev" href="../../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        <link rel="prev" href="../mkdocs%E8%87%AA%E5%AE%9A%E4%B9%89/">
       
       
+        <link rel="next" href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      
+      <link rel="icon" href="../../../niyan.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>Trender note - 泥烟</title>
+        <title>TRenderer - 泥烟</title>
       
     
     
@@ -44,6 +46,10 @@
       
     
     
+      <link rel="stylesheet" href="../../../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="../../../assets/css/simpleLightbox.min.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -59,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -69,7 +75,7 @@
       
         
         <a href="#trenderer" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -83,11 +89,10 @@
   
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../../../battery-half.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Trender note
+              TRenderer
             
           </span>
         </div>
@@ -124,27 +129,29 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -158,7 +165,7 @@
   
     
       
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -172,7 +179,7 @@
   
     
   
-  Home
+  >>>
 
       </a>
     </li>
@@ -241,6 +248,26 @@
   
 
       
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+          
+  
+    
+  
+  读书笔记
+
+        </a>
+      </li>
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -267,12 +294,13 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../../../battery-half.svg" alt="logo">
 
     </a>
     泥烟
@@ -291,7 +319,7 @@
         
   
   <span class="md-ellipsis">
-    Home
+    >>>
   </span>
   
 
@@ -443,8 +471,6 @@
       
         
           
-        
-      
         
       
         
@@ -1445,7 +1471,7 @@
             
   
   <span class="md-ellipsis">
-    《算法精粹》
+    人工智能
   </span>
   
 
@@ -1454,76 +1480,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_9">
-            <span class="md-nav__icon md-icon"></span>
-            《算法精粹》
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    斐波那契数列的多种实现和性能
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    人工智能
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_10">
             <span class="md-nav__icon md-icon"></span>
             人工智能
           </label>
@@ -1551,10 +1507,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_1" >
         
           
-          <label class="md-nav__link" for="__nav_4_10_1" id="__nav_4_10_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9_1" id="__nav_4_9_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1565,8 +1521,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_10_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_10_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_1">
             <span class="md-nav__icon md-icon"></span>
             机器学习
           </label>
@@ -1641,6 +1597,8 @@
       
         
       
+        
+      
     
     
     
@@ -1650,10 +1608,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
         
           
-          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1664,8 +1622,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
             <span class="md-nav__icon md-icon"></span>
             工具
           </label>
@@ -1683,6 +1641,27 @@
   
   <span class="md-ellipsis">
     Cmake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Workflow
   </span>
   
 
@@ -1722,7 +1701,7 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
         
           
           
@@ -1739,8 +1718,8 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
             <span class="md-nav__icon md-icon"></span>
             常用命令
           </label>
@@ -1776,10 +1755,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
         
           
-          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1790,8 +1769,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12">
             <span class="md-nav__icon md-icon"></span>
             性能优化
           </label>
@@ -1852,10 +1831,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
         
           
-          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1866,8 +1845,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_14">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
             <span class="md-nav__icon md-icon"></span>
             数据结构与算法
           </label>
@@ -1985,10 +1964,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
         
           
-          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1999,8 +1978,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_15">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14">
             <span class="md-nav__icon md-icon"></span>
             翻译
           </label>
@@ -2055,10 +2034,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
         
           
-          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2069,8 +2048,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_16">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15">
             <span class="md-nav__icon md-icon"></span>
             设计模式
           </label>
@@ -2118,6 +2097,8 @@
       
         
       
+        
+      
     
     
     
@@ -2127,10 +2108,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_17" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" checked>
         
           
-          <label class="md-nav__link" for="__nav_4_17" id="__nav_4_17_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2141,12 +2122,33 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_17_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_17">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_16">
             <span class="md-nav__icon md-icon"></span>
             项目记录
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs%E8%87%AA%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mkdocs自定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2168,7 +2170,7 @@
           
   
   <span class="md-ellipsis">
-    Trender note
+    TRenderer
   </span>
   
 
@@ -2179,7 +2181,7 @@
         
   
   <span class="md-ellipsis">
-    Trender note
+    TRenderer
   </span>
   
 
@@ -2187,7 +2189,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -2196,7 +2198,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2224,10 +2226,482 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要结构体/类/算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主要结构体/类/算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basicdatastruture" class="md-nav__link">
+    <span class="md-ellipsis">
+      BasicDataStruture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgeequation" class="md-nav__link">
+    <span class="md-ellipsis">
+      EdgeEquation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EdgeEquation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算边缘方程的参数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blinnphongshader" class="md-nav__link">
+    <span class="md-ellipsis">
+      BlinnPhongShader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fragmentshader" class="md-nav__link">
+    <span class="md-ellipsis">
+      FragmentShader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framebuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      FrameBuffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mesh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trendererdevice" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRendererDevice
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TRendererDevice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#half-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Half-Space 三角形光栅化算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bresenham" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bresenham 画线算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cohen-sutherland-sutherland-hodgman" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cohen-Sutherland &amp; Sutherland-Hodgman 算法(齐次空间裁剪)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cohen-sutherland" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cohen-Sutherland算法（线段裁剪）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sutherland-hodgman" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sutherland-Hodgman算法（多边形裁剪）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      尝试使用多线程优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="尝试使用多线程优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      不开多线程时
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tbb-openglmp-c11" class="md-nav__link">
+    <span class="md-ellipsis">
+      🆚对比:TBB, openglMP, c++11原生多线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🆚对比:TBB, openglMP, c++11原生多线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onetbbqt" class="md-nav__link">
+    <span class="md-ellipsis">
+      oneTBB(尚未解决与QT发生的冲突)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c11-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++11 的thread库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    读书笔记
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            读书笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    《垃圾回收的算法与实现》
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            《垃圾回收的算法与实现》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    note
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    《算法精粹》
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            《算法精粹》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    斐波那契数列的多种实现和性能
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2255,56 +2729,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      环境(*:暂未使用)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="环境(*:暂未使用)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#assimp" class="md-nav__link">
-    <span class="md-ellipsis">
-      记录:编译安装assimp并成功链接
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -2313,8 +2737,8 @@
                   
 
 
-<p>[toc]</p>
 <h1 id="trenderer">TRenderer</h1>
+<p>[toc]</p>
 <h2 id="_1">环境(*:暂未使用)</h2>
 <ul>
 <li>
@@ -2339,8 +2763,8 @@
 <p>*tbb(并行编程库)</p>
 </li>
 </ul>
-<p><img alt="image-20240424163840058" src="../trender_note.assets/image-20240424163840058.png" /></p>
-<p><img alt="image-20240424163947632" src="../trender_note.assets/image-20240424163947632.png" /></p>
+<p><img alt="image-20240424163840058" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041721734.png" tag="3" /></p>
+<p><img alt="image-20240424163947632" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041722741.png" tag="3" /></p>
 <h3 id="assimp">记录:编译安装assimp并成功链接</h3>
 <blockquote>
 <p>参考资料: </p>
@@ -2362,7 +2786,7 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>install
 </span></code></pre></div>
 <p>但是还是链接不上.dll 动态库, </p>
-<p><img alt="image-20240423112532267" src="../trender_note.assets/image-20240423112532267.png" /></p>
+<p><img alt="image-20240423112532267" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041722765.png" tag="3" /></p>
 <p>明明已经在CMakeList.txt中配置了</p>
 <div class="language-cmake highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">assimp_DIR</span><span class="w"> </span><span class="s">./packages/assimp5.2.5/lib/cmake/assimp-5.2</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -2372,10 +2796,10 @@
 </span></code></pre></div>
 <p>相应的文件也是在这里(<code>./packages/assimp5.2.5/lib/cmake/assimp-5.2</code>)的,就是不知道为什么链接不上...</p>
 <p>咨询群友过后, 发现把动态库libassimp-5.dll放在build好的目录下即可解决(.exe所在目录)</p>
-<p><img alt="image-20240424164314406" src="../trender_note.assets/image-20240424164314406.png" /></p>
-<h1 id="_2">主要结构体/类/算法</h1>
-<h2 id="basicdatastruture">BasicDataStruture</h2>
-<p><img alt="image-20240424230010138" src="../trender_note.assets/image-20240424230010138.png" /></p>
+<p><img alt="image-20240424164314406" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041722460.png" tag="3" /></p>
+<h2 id="_2">主要结构体/类/算法</h2>
+<h3 id="basicdatastruture">BasicDataStruture</h3>
+<p><img alt="image-20240424230010138" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041722904.png" tag="3" /></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">using</span><span class="w"> </span><span class="n">Vector2D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">using</span><span class="w"> </span><span class="n">Vector3D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">;</span>
@@ -2474,9 +2898,9 @@
     -float shininess // 高光度
 }
 </code></pre></div>
-<h2 id="edgeequation">EdgeEquation</h2>
-<p><img alt="image-20240424223127871" src="../trender_note.assets/image-20240424223127871.png" /></p>
-<h3 id="_3">计算边缘方程的参数</h3>
+<h3 id="edgeequation">EdgeEquation</h3>
+<p><img alt="image-20240424223127871" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041722804.png" tag="3" /></p>
+<h4 id="_3">计算边缘方程的参数</h4>
 <p><a href="https://zhuanlan.zhihu.com/p/140926917">图形学底层探秘 - 更现代的三角形光栅化与插值算法的实现与优化 - 知乎 (zhihu.com)</a></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">EdgeEquation</span><span class="o">::</span><span class="n">EdgeEquation</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Triangle</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tri</span><span class="p">)</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
@@ -2502,8 +2926,12 @@
 <blockquote>
 <p><code>EdgeEquation</code> 的构造函数，通过三角形的屏幕空间坐标计算边缘方程的参数，在构造函数中进行了初始化设置，为后续的三角形光栅化处理提供了基础的边缘方程计算和判断。</p>
 <ol>
-<li>计算边缘方程的参数：</li>
-<li>首先计算了三条边的斜率参数 I 和 J，以及常数项 K。这些参数用于后续的边缘方程计算。</li>
+<li>
+<p>计算边缘方程的参数：</p>
+</li>
+<li>
+<p>首先计算了三条边的斜率参数 I 和 J，以及常数项 K。这些参数用于后续的边缘方程计算。</p>
+</li>
 <li>I、J、K 的计算基于三角形的三个顶点的屏幕空间坐标，利用差分计算两个点的坐标差。</li>
 <li><code>topLeftFlag</code> 数组用于存储判断三角形的每条边是否在屏幕上部左侧的标志，这个标志在判断像素是否在三角形内部时会用到。</li>
 <li><code>twoArea</code> 是三角形的两倍面积，用于面剔除判断和像素插值计算。</li>
@@ -2511,28 +2939,27 @@
 <p><code>delta</code> 是计算插值时使用的参数，它是 <code>1 / twoArea</code>。</p>
 </li>
 <li>
-<p>代码中的 <code>JudgeOnTopLeftEdge</code> 函数用于判断某个点是否在另外两个点的上部或者左侧，这是判断三角形边缘在屏幕上部左侧的标志。
-</p>
+<p>代码中的 <code>JudgeOnTopLeftEdge</code> 函数用于判断某个点是否在另外两个点的上部或者左侧，这是判断三角形边缘在屏幕上部左侧的标志。</p>
 </li>
 </ol>
 </blockquote>
-<h2 id="camera">Camera</h2>
-<p><img alt="image-20240425110405053" src="../trender_note.assets/image-20240425110405053.png" /></p>
-<h2 id="shader">Shader</h2>
-<p><img alt="image-20240424224943212" src="../trender_note.assets/image-20240424224943212.png" /></p>
-<h2 id="blinnphongshader">BlinnPhongShader</h2>
-<p><img alt="image-20240424215631283" src="../trender_note.assets/image-20240424215631283.png" /></p>
+<h3 id="camera">Camera</h3>
+<p><img alt="image-20240425110405053" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723623.png" tag="3" /></p>
+<h3 id="shader">Shader</h3>
+<p><img alt="image-20240424224943212" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723923.png" tag="3" /></p>
+<h3 id="blinnphongshader">BlinnPhongShader</h3>
+<p><img alt="image-20240424215631283" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723392.png" tag="3" /></p>
 <h3 id="fragmentshader">FragmentShader</h3>
-<h2 id="framebuffer">FrameBuffer</h2>
-<p><img alt="image-20240424215836621" src="../trender_note.assets/image-20240424215836621.png" /></p>
-<h2 id="mesh">Mesh</h2>
-<p><img alt="image-20240424221931723" src="../trender_note.assets/image-20240424221931723.png" /></p>
-<h2 id="model">Model</h2>
-<p><img alt="image-20240424221855310" src="../trender_note.assets/image-20240424221855310.png" /></p>
-<h2 id="texture">Texture</h2>
-<p><img alt="image-20240424225350696" src="../trender_note.assets/image-20240424225350696.png" /></p>
-<h2 id="trendererdevice">TRendererDevice</h2>
-<p><img alt="image-20240424223243136" src="../trender_note.assets/image-20240424223243136.png" /></p>
+<h3 id="framebuffer">FrameBuffer</h3>
+<p><img alt="image-20240424215836621" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723608.png" tag="3" /></p>
+<h3 id="mesh">Mesh</h3>
+<p><img alt="image-20240424221931723" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723022.png" tag="3" /></p>
+<h3 id="model">Model</h3>
+<p><img alt="image-20240424221855310" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723086.png" tag="3" /></p>
+<h3 id="texture">Texture</h3>
+<p><img alt="image-20240424225350696" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723154.png" tag="3" /></p>
+<h3 id="trendererdevice">TRendererDevice</h3>
+<p><img alt="image-20240424223243136" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723971.png" tag="3" /></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">TRendererDevice</span><span class="p">(</span><span class="n">TRendererDevice</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
@@ -2558,7 +2985,7 @@
 </li>
 </ol>
 <p>这些删除操作符的作用是为了防止对象的拷贝和移动，从而保证类的对象在程序中不会被意外地复制或移动，确保代码的稳定性和安全性。通常情况下，如果某个类的对象不需要被拷贝或移动，就可以将对应的拷贝构造函数、移动构造函数、拷贝赋值运算符和移动赋值运算符标记为删除。</p>
-<h3 id="half-space">Half-Space 三角形光栅化算法</h3>
+<h4 id="half-space">Half-Space 三角形光栅化算法</h4>
 <p><a href="https://www.researchgate.net/publication/286441992_Accelerated_Half-Space_Triangle_Rasterization">(PDF) Accelerated Half-Space Triangle Rasterization (researchgate.net)</a></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Half-Space 三角形光栅化算法</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">TRendererDevice::RasterizationTriangle</span><span class="p">(</span><span class="n">Triangle</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tri</span><span class="p">)</span>
@@ -2627,7 +3054,7 @@
 </ol>
 <p>总体来说，这段代码是对三角形进行光栅化处理的核心部分，通过边缘方程判断像素是否在三角形内部，然后进行像素插值计算深度和颜色，最终将计算得到的颜色值渲染到帧缓冲区中。</p>
 </blockquote>
-<h3 id="bresenham">Bresenham 画线算法</h3>
+<h4 id="bresenham">Bresenham 画线算法</h4>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Bresenham 画线算法</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">TRendererDevice::DrawLine</span><span class="p">(</span><span class="n">Line</span><span class="o">&amp;</span><span class="w"> </span><span class="n">line</span><span class="p">)</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">{</span>
@@ -2711,12 +3138,11 @@
 <p>在每次更新误差项 e 后，判断 e 是否超过阈值（通常为 dx 或 dy 的一半），若超过阈值，则向 x 或 y 方向步进一个像素，并调整误差项 e。</p>
 </li>
 <li>
-<p>循环直到绘制完成，即直线的终点坐标达到目标值。
-</p>
+<p>循环直到绘制完成，即直线的终点坐标达到目标值。</p>
 </li>
 </ol>
 </blockquote>
-<h3 id="cohen-sutherland-sutherland-hodgman">Cohen-Sutherland &amp; Sutherland-Hodgman 算法(齐次空间裁剪)</h3>
+<h4 id="cohen-sutherland-sutherland-hodgman">Cohen-Sutherland &amp; Sutherland-Hodgman 算法(齐次空间裁剪)</h4>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Cohen-Sutherland算法(线段裁剪)</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Line</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TRendererDevice</span><span class="o">::</span><span class="n">ClipLine</span><span class="p">(</span><span class="n">Line</span><span class="o">&amp;</span><span class="w"> </span><span class="n">line</span><span class="p">)</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">{</span>
@@ -2852,25 +3278,158 @@
 <li>如果边与裁剪边界相交，则计算交点，将交点添加到裁剪后的多边形顶点列表中。</li>
 <li>最后根据裁剪后的顶点列表重新构建裁剪后的多边形。</li>
 </ol>
-<p>齐次空间裁剪是对三维空间中的物体进行裁剪的一种方法，与传统的Cohen-Sutherland算法(主要用于二维直线裁剪)有所不同
-</p>
+<p>齐次空间裁剪是对三维空间中的物体进行裁剪的一种方法，与传统的Cohen-Sutherland算法(主要用于二维直线裁剪)有所不同</p>
+<p><a href="https://blog.csdn.net/m0_56494923/article/details/128512626">Sutherland–Hodgman 算法介绍(简单易懂)_sutherland-hodgman-CSDN博客</a></p>
 <p><a href="https://www.geeksforgeeks.org/polygon-clipping-sutherland-hodgman-algorithm/">Polygon Clipping | Sutherland–Hodgman Algorithm - GeeksforGeeks</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/418043558">2D 游戏物理引擎 - 多边形的裁剪与堆叠 - 知乎 (zhihu.com)</a></p>
 </blockquote>
-<h1 id="_4">图形学知识点回顾</h1>
-<h2 id="_5">渲染管线</h2>
-<p><img alt="image-20240425094544277" src="../trender_note.assets/image-20240425094544277.png" /></p>
-<p><img alt="image-20240425094723427" src="../trender_note.assets/image-20240425094723427.png" /></p>
-<p><img alt="image-20240425094756335" src="../trender_note.assets/image-20240425094756335.png" /></p>
-<p><img alt="image-20240425094810138" src="../trender_note.assets/image-20240425094810138.png" /></p>
-<p><img alt="image-20240425094844397" src="../trender_note.assets/image-20240425094844397.png" /></p>
-<p><img alt="image-20240425094856855" src="../trender_note.assets/image-20240425094856855.png" /></p>
-<h1 id="cpp">cpp</h1>
-<h2 id="mesh-default">Mesh() = default;有什么作用</h2>
+<h2 id="_4">尝试使用多线程优化</h2>
+<h3 id="_5">不开多线程时</h3>
+<p>我的电脑cpu规格: <a href="https://www.techpowerup.com/gpu-specs/geforce-gtx-1650-ti-mobile.c3512">NVIDIA GeForce GTX 1650 Ti Mobile Specs | TechPowerUp GPU Database</a></p>
+<p>(顶点)</p>
+<p><img alt="image-20240505115709642" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614508.png" tag="3" /></p>
+<p>(顶点三角形)</p>
+<p><img alt="image-20240505114010140" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614509.png" tag="3" /></p>
+<p>(渲染)</p>
+<p><img alt="image-20240505115819096" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614510.png" tag="3" /></p>
+<h3 id="tbb-openglmp-c11">🆚对比:TBB, openglMP, c++11原生多线程</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Library</th>
+<th style="text-align: left;">Provider</th>
+<th style="text-align: left;">Implementation Approach</th>
+<th style="text-align: left;">Affinity</th>
+<th style="text-align: left;">Affinity Setup Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>OpenMP 4.0</strong></td>
+<td style="text-align: left;">Intel</td>
+<td style="text-align: left;">parallel for pragma with reduction clause</td>
+<td style="text-align: left;">threads pinned to cores</td>
+<td style="text-align: left;">KMP_AFFINITY environment variable</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TBB 4.4</strong></td>
+<td style="text-align: left;">Intel</td>
+<td style="text-align: left;">parallel_reduce functor</td>
+<td style="text-align: left;">threads pinned to cores</td>
+<td style="text-align: left;">affinity_partitioner and custom task_scheduler_observer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>C++11 Threads</strong></td>
+<td style="text-align: left;">GNU (libstdc++, GCC 4.8)</td>
+<td style="text-align: left;">thread pool with task queue, return via future</td>
+<td style="text-align: left;">threads pinned to cores</td>
+<td style="text-align: left;">pthreads API</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><a href="https://www.xcelerit.com/computing-benchmarks/software/multi-threading/">Benchmarks: Threading - OpenMP vs TBB vs C++11 | Xcelerit</a></p>
+<p><a href="https://www.cnblogs.com/carsonzhu/p/17131175.html">C++并行编程探讨分析（OpenMP &amp; TBB &amp; Thread Pool） - 小金乌会发光－Z&amp;M - 博客园 (cnblogs.com)</a></p>
+</blockquote>
+<h4 id="onetbbqt">oneTBB(尚未解决与QT发生的冲突)</h4>
+<p><code>CMakeLists.txt</code></p>
+<div class="language-cmake highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">TBB_DIR</span><span class="w"> </span><span class="s">./packages/oneapi-tbb-2021.1.1/lib/cmake/tbb</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">find_package</span><span class="p">(</span><span class="s">TBB</span><span class="w"> </span><span class="s">CONFIG</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">TRenderer</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">TBB::tbb</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tbb/parallel_for.h&gt;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tbb/parallel_for_each.h&gt;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tbb/blocked_range2d.h&gt;</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w">        </span><span class="n">tbb</span><span class="o">::</span><span class="n">parallel_for</span><span class="p">(</span><span class="n">tbb</span><span class="o">::</span><span class="n">blocked_range</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">triangleList</span><span class="p">.</span><span class="n">size</span><span class="p">()),</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="n">tbb</span><span class="o">::</span><span class="n">blocked_range</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">r</span><span class="p">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">                </span><span class="n">ProcessTriangle</span><span class="p">(</span><span class="n">triangleList</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="p">});</span>
+</span></code></pre></div>
+<p><img alt="image-20240505100543032" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614511.png" tag="3" /></p>
+<p><a href="https://github.com/oneapi-src/oneTBB/issues/547">profiling.h conflicts with Qt · Issue #547 · oneapi-src/oneTBB (github.com)</a></p>
+<h4 id="c11-thread">C++11 的thread库</h4>
+<blockquote>
+<h1 id="include">include <thread></h1>
+</blockquote>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span><span class="w"> </span><span class="n">threads</span><span class="p">;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">triangleList</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">threads</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="n">ProcessTriangle</span><span class="p">(</span><span class="n">triangleList</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">threads</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="kr">thread</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><img alt="image-20240505112623679" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614513.png" tag="3" /></p>
+<p>帧率更低了...</p>
+<p>应该是线程开的太多</p>
+<p>换成16线程</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span><span class="w"> </span><span class="n">threads</span><span class="p">;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">numThreads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c1">// 要开启的线程数量</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">// 计算每个线程处理的元素数量</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">elementsPerThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triangleList</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">numThreads</span><span class="p">;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triangleList</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">numThreads</span><span class="p">;</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1">// 创建线程</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">startIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numThreads</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">threadElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementsPerThread</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="n">threads</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">size_t</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">            </span><span class="n">ProcessTriangle</span><span class="p">(</span><span class="n">triangleList</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="n">startIdx</span><span class="p">,</span><span class="w"> </span><span class="n">startIdx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadElements</span><span class="p">);</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="n">startIdx</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">threadElements</span><span class="p">;</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="p">}</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="c1">// 等待线程执行完毕</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">threads</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">    </span><span class="kr">thread</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>使用后</p>
+<p><img alt="image-20240505115939399" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614514.png" tag="3" /></p>
+<p><img alt="image-20240505120025028" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614515.png" tag="3" /></p>
+<p><img alt="image-20240505120203100" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405051614516.png" tag="3" /></p>
+</blockquote>
+<p>我又测试了一下开12线程(我的CPU有12核),发现CPU占用</p>
+<h4 id="openmp">OpenMP</h4>
+<p>OpenMP 在大多数平台上都有良好的支持，而 std::thread 则依赖于 C++11 标准库和编译器的实现，需要确保平台和编译器的兼容性</p>
+<p><code>CMakeLists.txt</code></p>
+<div class="language-cmake highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">find_package</span><span class="p">(</span><span class="s">OpenMP</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">TRenderer</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">OpenMP::OpenMP_CXX</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">        </span><span class="cp">#pragma omp parallel for</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">triangleList</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">            </span><span class="n">ProcessTriangle</span><span class="p">(</span><span class="n">triangleList</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">        </span><span class="p">}</span>
+</span></code></pre></div>
+<p>目前和thread达到的效果区别不大, <code>有待测试</code></p>
+<h2 id="_6">图形学知识点回顾</h2>
+<h3 id="_7">渲染管线</h3>
+<p><img alt="image-20240425094544277" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723843.png" tag="3" /></p>
+<p><img alt="image-20240425094723427" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723828.png" tag="3" /></p>
+<p><img alt="image-20240425094756335" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723345.png" tag="3" /></p>
+<p><img alt="image-20240425094810138" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723446.png" tag="3" /></p>
+<p><img alt="image-20240425094844397" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723790.png" tag="3" /></p>
+<p><img alt="image-20240425094856855" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405041723552.png" tag="3" /></p>
+<h2 id="cpp">cpp</h2>
+<h3 id="mesh-default">Mesh() = default;有什么作用</h3>
 <p>在C++中，<code>Mesh() = default;</code>是一个使用默认构造函数的声明。当您使用<code>Mesh()</code>这种形式声明构造函数时，编译器会生成一个默认构造函数，该构造函数会对类的成员变量进行初始化。如果没有显式声明构造函数，编译器会为类生成一个默认构造函数，这个默认构造函数会对类的基本数据类型进行零初始化（例如，整型数据会初始化为0，浮点型数据会初始化为0.0）。</p>
 <p>使用<code>Mesh() = default;</code>的声明方式，您在某种程度上告诉编译器：使用默认的构造函数，而不需要您自己手动实现构造函数。这样可以简化代码，尤其是对于没有特殊构造逻辑的类。</p>
-<h1 id="some-tips">some tips</h1>
-<h2 id="vector4d-vectori4d"><code>Vector4D</code> 和 <code>VectorI4D</code></h2>
+<h2 id="some-tips">some tips</h2>
+<h3 id="vector4d-vectori4d"><code>Vector4D</code> 和 <code>VectorI4D</code></h3>
 <p><code>Vector4D</code> 和 <code>VectorI4D</code> 都表示四维向量，但它们的数据类型有所不同：</p>
 <ol>
 <li><strong>Vector4D</strong>：</li>
@@ -2885,7 +3444,7 @@
 <li>例如，一个 <code>VectorI4D</code> 可以表示为 <code>(x, y, z, w)</code>，其中 <code>x</code>, <code>y</code>, <code>z</code> 是整数坐标，<code>w</code> 可以用于其他整数数据。</li>
 </ol>
 <p><code>Vector4D</code> 和 <code>VectorI4D</code> 在表示的数据类型上有所不同，一个是浮点数向量，另一个是整数向量，适用于不同的数据处理场景。</p>
-<h2 id="w">缩放因子w</h2>
+<h3 id="w">缩放因子w</h3>
 <p>缩放因子可以在多个场合下使用，如几何变换、透视投影、齐次坐标处理以及光照计算等方面，用来调整物体的大小、深度、权重或者其他影响因素。</p>
 <ol>
 <li>
@@ -2901,50 +3460,49 @@
 <p><strong>光照计算</strong>：在光照计算中，缩放因子可以<code>影响光照效果的强度</code>。例如，在 Phong 光照模型中，光照强度与法向量和光线方向的夹角以及缩放因子等因素相关。</p>
 </li>
 </ol>
-<h2 id="pitchyaw">俯仰角（pitch）和偏航角（yaw）</h2>
+<h3 id="pitchyaw">俯仰角（pitch）和偏航角（yaw）</h3>
 <ul>
 <li><strong>俯仰角（Pitch）</strong>：俯仰角是指相对于参考平面（通常是水平面）的上下旋转角度。当俯仰角为正时，物体或相机向上旋转；当俯仰角为负时，物体或相机向下旋转。在图形学中，俯仰角常用来调整相机的仰角，从而改变观察者的视角。</li>
 <li><strong>偏航角（Yaw）</strong>：偏航角是指相对于参考方向（通常是水平方向）的左右旋转角度。当偏航角为正时，物体或相机向左旋转；当偏航角为负时，物体或相机向右旋转。在图形学中，偏航角常用来调整相机的水平旋转角度，从而改变观察者的水平方向。</li>
 </ul>
 <h2 id="debug">DEBUG(⛔:未解决 / 🌈:已解决)</h2>
-<h2 id="error-cmakefilestrendererdevicecppobj-in-function-shadershader">🌈[error]: CMakeFiles/.../TRendererDevice.cpp.obj: in function `Shader::~Shader()':</h2>
+<h3 id="error-cmakefilestrendererdevicecppobj-in-function-shadershader">🌈[error]: CMakeFiles/.../TRendererDevice.cpp.obj: in function `Shader::~Shader()':</h3>
 <p>error: CMakeFiles/TRenderer.dir/TRendererCore/TRendererDevice.cpp.obj: in function `Shader::~Shader()':</p>
 <p>K:\code\QTProject\TRenderer\TRendererCore\Shader.hpp:13: error: undefined reference to `__imp__ZTV6Shader'</p>
 <p>声明了一个析构函数 <code>~Shader()</code>, 但是没有提供对应的定义</p>
 <p>需要在实现文件（ Shader.cpp）中提供对析构函数 <code>~Shader()</code> 的定义。例如：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Shader</span><span class="o">::~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// 对象销毁时需要执行的代码</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">Shader</span><span class="o">::~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="c1">// 对象销毁时需要执行的代码</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>而本项目中Shader 类是一个纯虚基类, 则需要为析构函数提供一个纯虚函数定义。</p>
 <p>将析构函数定义为纯虚函数：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shader</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span></code></pre></div>
 <p>然后可在派生类中实现该纯虚析构函数。</p>
-<h2 id="shader-trendererdevice">附:<code>Shader</code> 类在 <code>TRendererDevice</code> 类中的作用</h2>
+<h4 id="shader-trendererdevice">附:<code>Shader</code> 类在 <code>TRendererDevice</code> 类中的作用</h4>
 <p><code>Shader</code> 类在 <code>TRendererDevice</code> 类中的作用是定义了一个抽象的着色器接口, </p>
 <p>从而允许用户根据需要实现不同的着色器类来定制渲染效果。</p>
 <blockquote>
 <p>在 <code>TRendererDevice.h</code> 中, <code>Shader</code> 类起到了定义一个抽象基类的作用。这个抽象基类是一个纯虚类, 它定义了一些虚函数 <code>VertexShader</code> 和 <code>FragmentShader</code>, 这些函数需要派生类来实现。</p>
 <p>这样做的目的是<code>为了实现着色器的多态性</code>, 允许用户根据需要创建不同的着色器类(如顶点着色器、片元着色器)并实现这些虚函数, 以达到不同的渲染效果。</p>
 <p>具体来说, <code>Shader</code> 类的定义在 <code>Shader.hpp</code> 文件中, 包含了以下成员函数声明：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">VertexShader</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vertex</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FragmentShader</span><span class="p">(</span><span class="n">Fragment</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fragment</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">VertexShader</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vertex</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FragmentShader</span><span class="p">(</span><span class="n">Fragment</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fragment</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span></code></pre></div>
 <p>在 <code>TRendererDevice</code> 类中, 有一个指向 <code>Shader</code> 类或其派生类对象的智能指针：</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Shader</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shader</span><span class="p">;</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Shader</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shader</span><span class="p">;</span>
 </span></code></pre></div>
 <p>通过这个成员变量, <code>TRendererDevice</code> 类可以在渲染过程中使用用户指定的着色器来处理顶点和片元的着色逻辑。</p>
 <p>在 <code>TRendererDevice</code> 类的渲染过程中, 可能会调用 <code>Shader</code> 类中定义的虚函数, 例如上面的VertexShader和FragmentShader</p>
-<p>这些函数会在派生类中被实现, 从而实现具体的顶点和片元着色逻辑。
-</p>
+<p>这些函数会在派生类中被实现, 从而实现具体的顶点和片元着色逻辑。</p>
 </blockquote>
-<h1 id="_6">文档,博客</h1>
-<h2 id="qt">Qt</h2>
+<h2 id="_8">文档,博客</h2>
+<h3 id="qt">Qt</h3>
 <p><a href="https://blog.csdn.net/qq_37468571/article/details/132294606">QtCreator类结构生成模板说明</a></p>
-<h2 id="opengl">OpenGL</h2>
-<p><a href="https://learnopengl.com/Model-Loading/Mesh">LearnOpenGL - 网格 --- LearnOpenGL - Mesh</a></p>
-<p>https://learnopengl-cn.readthedocs.io/zh/latest</p>
+<h3 id="opengl">OpenGL</h3>
+<p><a href="https://learnopengl.com/Model-Loading/Mesh">LearnOpenGL - Mesh</a></p>
+<p><a href="https://learnopengl-cn.readthedocs.io/zh/latest/">LearnOpenGL - CN</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/465700130">oneTBB系列链接整理 - 知乎 (zhihu.com)</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/65495373">三角形重心坐标 - 知乎 (zhihu.com)</a></p>
 
@@ -2970,7 +3528,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -3001,10 +3559,16 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.integrate", "toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+      
+        <script src="../../../assets/js/simpleLightbox.min.js"></script>
+      
+        <script src="../../../assets/js/custom.js"></script>
       
     
   </body>
