@@ -9,23 +9,25 @@
       
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../">
       
       
+        <link rel="next" href="../%E5%AF%B9QD-LP-FIFO%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E7%AE%80%E6%98%93%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
       
-      <link rel="icon" href="../../niyan.png">
+      
+      <link rel="icon" href="../../../niyan.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>FIFO 优于 LRU：惰性提升和快速降级的威力 - 泥烟</title>
+        <title>[原文] FIFO 优于 LRU 惰性提升和快速降级的威力 - 泥烟</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,11 +46,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/css/custom.css">
+      <link rel="stylesheet" href="../../../assets/css/custom.css">
     
-      <link rel="stylesheet" href="../../assets/css/simpleLightbox.min.css">
+      <link rel="stylesheet" href="../../../assets/css/simpleLightbox.min.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -88,9 +90,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
+    <a href="../../.." title="泥烟" class="md-header__button md-logo" aria-label="泥烟" data-md-component="logo">
       
-  <img src="../../battery-half.svg" alt="logo">
+  <img src="../../../battery-half.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -107,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FIFO 优于 LRU：惰性提升和快速降级的威力
+              [原文] FIFO 优于 LRU    惰性提升和快速降级的威力
             
           </span>
         </div>
@@ -172,7 +174,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -191,7 +193,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E5%8D%9A%E6%96%87/" class="md-tabs__link">
+        <a href="../../../%E5%8D%9A%E6%96%87/" class="md-tabs__link">
           
   
     
@@ -211,7 +213,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E5%8F%8B%E9%93%BE/" class="md-tabs__link">
+        <a href="../../../%E5%8F%8B%E9%93%BE/" class="md-tabs__link">
           
   
     
@@ -231,7 +233,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E5%A2%A8/%E6%95%99%E5%91%98/" class="md-tabs__link">
+        <a href="../../../%E5%A2%A8/%E6%95%99%E5%91%98/" class="md-tabs__link">
           
   
     
@@ -251,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E6%97%A5%E5%BF%97/" class="md-tabs__link">
+        <a href="../../../%E6%97%A5%E5%BF%97/" class="md-tabs__link">
           
   
     
@@ -271,7 +273,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+        <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
           
   
     
@@ -293,7 +295,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -336,9 +338,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
+    <a href="../../.." title="泥烟" class="md-nav__button md-logo" aria-label="泥烟" data-md-component="logo">
       
-  <img src="../../battery-half.svg" alt="logo">
+  <img src="../../../battery-half.svg" alt="logo">
 
     </a>
     泥烟
@@ -353,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -424,7 +426,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E5%8D%9A%E6%96%87/" class="md-nav__link ">
+            <a href="../../../%E5%8D%9A%E6%96%87/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -487,7 +489,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E5%8D%9A%E6%96%87/GAMES101/" class="md-nav__link ">
+            <a href="../../../%E5%8D%9A%E6%96%87/GAMES101/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -520,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -541,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -583,7 +585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -604,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -819,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -840,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -882,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -954,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1020,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1041,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1062,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/debug/linux/%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91%2Cubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/debug/linux/%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91%2Cubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1144,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1165,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1186,7 +1188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1256,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1326,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1439,7 +1441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%9E%84%E5%BB%BA%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%9E%84%E5%BB%BA%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1460,7 +1462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%80%9F%E5%8A%A9%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E7%AE%80%E8%A6%81%E4%BA%86%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%80%9F%E5%8A%A9%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E7%AE%80%E8%A6%81%E4%BA%86%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1540,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E5%B7%A5%E5%85%B7/cmake/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E5%B7%A5%E5%85%B7/cmake/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1561,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1610,7 +1612,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E5%8D%9A%E6%96%87/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link ">
+            <a href="../../../%E5%8D%9A%E6%96%87/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1693,7 +1695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1714,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1735,7 +1737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1756,7 +1758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1826,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E7%BF%BB%E8%AF%91/%E9%A5%AE%E6%B0%B4%E6%80%9D%E6%BA%90%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E7%BF%BB%E8%AF%91/%E9%A5%AE%E6%B0%B4%E6%80%9D%E6%BA%90%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1896,7 +1898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1966,7 +1968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%8D%9A%E6%96%87/%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/trender_note/" class="md-nav__link">
+      <a href="../../../%E5%8D%9A%E6%96%87/%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/trender_note/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2025,7 +2027,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E5%8F%8B%E9%93%BE/" class="md-nav__link ">
+            <a href="../../../%E5%8F%8B%E9%93%BE/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2104,7 +2106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%A2%A8/%E6%95%99%E5%91%98/" class="md-nav__link">
+      <a href="../../../%E5%A2%A8/%E6%95%99%E5%91%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2155,7 +2157,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E6%97%A5%E5%BF%97/" class="md-nav__link ">
+            <a href="../../../%E6%97%A5%E5%BF%97/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2219,7 +2221,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2274,7 +2276,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2307,7 +2309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2358,7 +2360,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/" class="md-nav__link ">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2391,7 +2393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2442,7 +2444,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
+            <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2475,7 +2477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+      <a href="../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2538,7 +2540,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2572,6 +2574,51 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FIFO 优于 LRU：惰性提升和快速降级的威力
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            FIFO 优于 LRU：惰性提升和快速降级的威力
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -2584,7 +2631,7 @@
           
   
   <span class="md-ellipsis">
-    FIFO 优于 LRU：惰性提升和快速降级的威力
+    [原文] FIFO 优于 LRU    惰性提升和快速降级的威力
   </span>
   
 
@@ -2595,7 +2642,7 @@
         
   
   <span class="md-ellipsis">
-    FIFO 优于 LRU：惰性提升和快速降级的威力
+    [原文] FIFO 优于 LRU    惰性提升和快速降级的威力
   </span>
   
 
@@ -2637,7 +2684,7 @@
         <li class="md-nav__item">
   <a href="#lazy-promotion" class="md-nav__link">
     <span class="md-ellipsis">
-      Lazy Promotion 懒惰促销
+      Lazy Promotion 懒惰提升
     </span>
   </a>
   
@@ -2679,6 +2726,35 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AF%B9QD-LP-FIFO%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E7%AE%80%E6%98%93%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对QD-LP-FIFO的理解和简易代码实现
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2708,27 +2784,29 @@ by Juncheng Yang</p>
 </blockquote>
 <h1 id="fifo-is-better-than-lru-the-power-of-lazy-promotion-and-quick-demotion">FIFO is Better than LRU: the Power of Lazy Promotion and Quick Demotion</h1>
 <blockquote>
-<p><strong>TL;DR</strong> Historically FIFO-based algorithms are thought to be less efficient (having higher miss ratios) than LRU-based algorithms. In this blog, we introduce two techniques, <strong>lazy promotion</strong>, which promotes objects only at eviction time, and <strong>quick demotion</strong>, which removes most new objects quickly. We will show that
-TL;DR 历史上，基于 FIFO 的算法被认为比基于 LRU 的算法效率较低（具有较高的丢失率）。在本博客中，我们介绍两种技术：惰性提升（仅在驱逐时提升对象）和快速降级（快速删除大多数新对象）。我们将证明</p>
+<p><strong>TL;DR</strong> Historically FIFO-based algorithms are thought to be less efficient (having higher miss ratios) than LRU-based algorithms. In this blog, we introduce two techniques, <strong>lazy promotion</strong>, which promotes objects only at eviction time, and <strong>quick demotion</strong>, which removes most new objects quickly. We will show that<strong>TL;DR</strong></p>
+<p>历史上，基于FIFO的算法被认为比基于LRU的算法效率低（具有更高的未命中率）。</p>
+<p>在这篇博客中，我们介绍了两种技术，<strong>懒惰提升</strong>，它只在驱逐时提升对象，以及<strong>快速降级</strong>，它快速移除大多数新对象。我们将展示：</p>
 <ul>
 <li>Conventional-wisdom-suggested “weak LRUs”, e.g., FIFO-Reinsertion, is actually more efficient (having lower miss ratios) than LRU;
-  传统智慧建议的“弱 LRU”，例如 FIFO 重新插入，实际上比 LRU 更有效（具有更低的丢失率）；</li>
+  传统智慧建议的“弱LRU”，例如FIFO-Reinsertion（FIFO重新插入），实际上比LRU更有效（具有更低的未命中率）；</li>
 <li>Simply evicting most new objects can improve state-of-the-art algorithm’s efficiency.
-  简单地驱逐大多数新对象就可以提高最先进算法的效率。</li>
+  简单地驱逐大多数新对象可以提高最先进算法的效率；</li>
 <li>Eviction algorithms can be designed like building LEGOs by adding <strong>lazy promotion</strong> and <strong>quick demotion</strong> on top of FIFO.
-  驱逐算法的设计可以像搭建乐高积木一样，在 FIFO 之上添加惰性提升和快速降级。</li>
+  驱逐算法可以像搭乐高积木一样设计，通过在FIFO之上添加<strong>懒惰提升</strong>和<strong>快速降级</strong>。</li>
 </ul>
 </blockquote>
 <h2 id="background">Background 背景</h2>
-<p>Caching is a well-known and widely deployed technique to speed up data access, reduce repeated computation and data transfer. A core component of a cache is the eviction algorithm, which chooses the objects stored in the limited cache space. Two metrics describe the performance of an eviction algorithm: efficiency measured by the miss ratio and throughput measured by the number of requests served per second.
-缓存是一种众所周知且广泛部署的技术，用于加速数据访问、减少重复计算和数据传输。<u>缓存的核心组件是逐出算法</u>，它选择存储在有限缓存空间中的对象。有两个指标描述逐出算法的性能：通过<u>未命中率</u>衡量的效率和通过<u>每秒服务的请求数</u>衡量的吞吐量。</p>
+<p>Caching is a well-known and widely deployed technique to speed up data access, reduce repeated computation and data transfer. A core component of a cache is the eviction algorithm, which chooses the objects stored in the limited cache space. Two metrics describe the performance of an eviction algorithm: efficiency measured by the miss ratio and throughput measured by the number of requests served per second.</p>
+<p>缓存是一种众所周知且广泛部署的技术，用于加快数据访问速度，减少重复计算和数据传输。<u>缓存的核心组件是驱逐算法</u>，它选择存储在有限缓存空间中的对象。两个指标描述了驱逐算法的性能：效率通过<u>未命中率</u>来衡量，吞吐量通过<u>每秒服务的请求数</u>来衡量。</p>
 <p>The study of cache eviction algorithms has a long history, with a majority of the work centered around LRU (that is, to evict the least-recently-used object). LRU maintains a doubly-linked list, promoting objects to the head of the list upon cache hits and evicting the object at the tail of the list when needed. Belady and others found that memory access patterns often exhibit temporal locality — “the most recently used pages were most likely to be reused in the immediate future”. Thus, LRU using <em>recency</em> to promote objects was found to be better than FIFO.</p>
-<p>Most eviction algorithms designed to achieve high efficiency start from LRU. For example, many algorithms, such as ARC, SLRU, 2Q, MQ, and multi-generational LRU, use multiple LRU queues to separate hot and cold objects. Some algorithms, e.g., LIRS and LIRS2, maintain an LRU queue but use different metrics to promote objects. While other algorithms, e.g., LRFU, EE-LRU, LeCaR, and CACHEUS, augment LRU’s recency with different metrics. In addition, many recent works, e.g., Talus, improve LRU’s ability to handle scan and loop requests.
-大多数旨在实现高效率的驱逐算法都是从 LRU 开始的。例如，很多算法，如ARC、SLRU、2Q、MQ、多代LRU等，都使用多个LRU队列来分离热对象和冷对象。一些算法，例如 LIRS 和 LIRS2，维护 LRU 队列，但使用不同的度量来提升对象。而其他算法，例如 LRFU、EE-LRU、LeCaR 和 CACHEUS，则通过不同的指标来增强 LRU 的新近度。此外，许多最近的工作，例如 Talus，提高了 LRU 处理扫描和循环请求的能力。</p>
-<p>Besides efficiency, there have been fruitful studies on enhancing the cache’s throughput performance and thread scalability. Each cache hit in LRU promotes an object to the head of the queue, which requires updating at least six pointers guarded by locks. These overheads are not acceptable in many deployments that need high performance. Thus, performance-centric systems often use FIFO-based algorithms to avoid LRU’s overheads. For example, FIFO-Reinsertion and variants of CLOCK have been developed, which serve as LRU approximations. <em>It is often perceived that these algorithms trade miss ratio for better throughput and scalability.</em>
-除了效率之外，在增强缓存的吞吐量性能和线程可扩展性方面也进行了卓有成效的研究。 LRU 中的每次缓存命中都会将一个对象提升到队列的头部，这需要更新至少六个受锁保护的指针。这些开销在许多需要高性能的部署中是不可接受的。因此，以性能为中心的系统通常使用基于 FIFO 的算法来避免 LRU 的开销。例如，已经开发了 FIFO 重新插入和 CLOCK 变体，它们用作 LRU 近似。人们通常认为这些算法以丢失率换取更好的吞吐量和可扩展性。</p>
-<p>In this blog, I am going to show that FIFO is in-fact better than LRU not only because it is faster, more scalable, but also more efficient and effective (having lower miss ratios).
-在这篇博客中，我将展示 FIFO 实际上比 LRU 更好，不仅因为它更快、更具可扩展性，而且也更高效和有效（具有更低的丢失率）。</p>
+<p>缓存驱逐算法的研究有着悠久的历史，大部分工作都集中在LRU上（即驱逐最近最少使用的对象）。LRU维护一个双向链表，在缓存命中时将对象提升到链表头部，在需要时驱逐链表尾部的对象。Belady等人发现，内存访问模式经常表现出时间局部性——“最近使用的页面最有可能在不久的将来被重用”。因此，使用“最近性”来提升对象的LRU被发现比FIFO更好。</p>
+<p>Most eviction algorithms designed to achieve high efficiency start from LRU. For example, many algorithms, such as ARC, SLRU, 2Q, MQ, and multi-generational LRU, use multiple LRU queues to separate hot and cold objects. Some algorithms, e.g., LIRS and LIRS2, maintain an LRU queue but use different metrics to promote objects. While other algorithms, e.g., LRFU, EE-LRU, LeCaR, and CACHEUS, augment LRU’s recency with different metrics. In addition, many recent works, e.g., Talus, improve LRU’s ability to handle scan and loop requests.</p>
+<p>大多数旨在实现高效率的驱逐算法都是从LRU开始的。例如，许多算法，如ARC、SLRU、2Q、MQ和多代LRU，使用多个LRU队列来分离热门和冷门对象。一些算法，例如LIRS和LIRS2，维护一个LRU队列，但使用不同的指标来提升对象。而其他算法，例如LRFU、EE-LRU、LeCaR和CACHEUS，用不同的指标增强LRU的最近性。此外，许多近期的工作，例如Talus，提高了LRU处理扫描和循环请求的能力。</p>
+<p>Besides efficiency, there have been fruitful studies on enhancing the cache’s throughput performance and thread scalability. Each cache hit in LRU promotes an object to the head of the queue, which requires updating at least six pointers guarded by locks. These overheads are not acceptable in many deployments that need high performance. Thus, performance-centric systems often use FIFO-based algorithms to avoid LRU’s overheads. For example, FIFO-Reinsertion and variants of CLOCK have been developed, which serve as LRU approximations. <em>It is often perceived that these algorithms trade miss ratio for better throughput and scalability.</em></p>
+<p>除了效率，还对提高缓存的吞吐量性能和线程可扩展性进行了富有成果的研究。在LRU中，每个缓存命中都会将对象提升到队列的头部，这需要更新至少六个由锁保护的指针。这些开销在许多需要高性能的部署中是不可接受的。因此，以性能为中心的系统通常使用基于FIFO的算法来避免LRU的开销。例如，已经开发了FIFO-Reinsertion和CLOCK的变种，它们作为LRU的近似。通常认为这些算法为了更好的吞吐量和可扩展性而牺牲了未命中率。</p>
+<p>In this blog, I am going to show that FIFO is in-fact better than LRU not only because it is faster, more scalable, but also more efficient and effective (having lower miss ratios).</p>
+<p>在这篇博客中，我将展示FIFO实际上比LRU更好，不仅因为它更快、更可扩展，而且更有效、更高效（具有更低的未命中率）。</p>
 <h2 id="why-fifo-and-what-it-needs-fifo">Why FIFO and What it needs 为什么采用 FIFO 以及它需要什么</h2>
 <p>FIFO has many benefits over LRU. For example, FIFO has <em>less metadata</em> and requires no metadata update on each cache hit, and thus is <em>faster and more scalable</em> than LRU. In contrast, LRU requires updating six pointers on each cache hit, which is not friendly for modern computer architecture due to random memory accesses. Moreover, FIFO is always the first choice when implementing a flash cache because it does not incur write amplification. Although FIFO has throughput and scalability benefits, it is common wisdom that FIFO is less effective (having higher miss ratio) than LRU.
 与 LRU 相比，FIFO 有很多优点。例如，FIFO 具有较少的元数据，并且不需要在每次缓存命中时更新元数据，因此比 LRU 更快且更具可扩展性。相比之下，<u>LRU 需要在每次缓存命中时更新 6 个指针，由于随机内存访问，这对于现代计算机架构并不友好</u>。此外，在实现闪存缓存时，FIFO 始终是首选，因为它不会产生写放大。尽管 FIFO 具有吞吐量和可扩展性优势，但众所周知，FIFO 的效率不如 LRU（具有更高的丢失率）。</p>
@@ -2737,10 +2815,10 @@ TL;DR 历史上，基于 FIFO 的算法被认为比基于 LRU 的算法效率较
 <p>To understand the various factors that affect the miss ratio, we introduce a cache abstraction. A cache can be viewed as a logically total-ordered queue with four operations: insertion, removal, promotion, and demotion. Objects in the cache can be compared and ordered based on some metric (e.g., time since the last request), and the eviction algorithm evicts the least valuable object based on the metric. Insertion and removal are user-controlled operations, where removal can either be directly invoked by the user or indirectly via the use of time-to-live (TTL). Promotion and demotion are internal operations of the cache used to maintain the logical ordering between objects.
 为了了解影响未命中率的各种因素，我们引入了缓存抽象。缓存可以被视为逻辑上全序队列，具有四种操作：插入、删除、提升和降级。可以根据某些指标（例如，自上次请求以来的时间）对缓存中的对象进行比较和排序，并且驱逐算法根据该指标驱逐最不有价值的对象。插入和删除是用户控制的操作，其中删除可以由用户直接调用，也可以通过使用生存时间 (TTL) 间接调用。升级和降级是缓存的内部操作，用于维护对象之间的逻辑顺序。</p>
 <p>We observe that most eviction algorithms use promotion to update the ordering between objects. For example, all the LRU-based algorithms promote objects to the head of the queue on cache hits, which we call eager promotion. Meanwhile, demotion is performed implicitly: when an object is promoted, other objects are passively demoted. We call this process passive demotion, a slow process as objects need to traverse through the cache queue before being evicted. However, we will show that instead of eager promotion and passive demotion, eviction algorithms should use <strong>lazy promotion</strong> and <strong>quick demotion</strong>.
-我们观察到大多数驱逐算法使用提升来更新对象之间的顺序。例如，所有基于 LRU 的算法都会在缓存命中时将对象提升到队列的头部，我们称之为急切提升。同时，降级是隐式执行的：当一个对象升级时，其他对象会被动降级。我们将此过程称为被动降级，这是一个缓慢的过程，因为对象在被逐出之前需要遍历缓存队列。然而，我们将证明驱逐算法应该使用惰性提升和快速降级，而不是急切提升和被动降级。</p>
-<h2 id="lazy-promotion">Lazy Promotion 懒惰促销</h2>
+我们观察到大多数驱逐算法使用提升来更新对象之间的顺序。例如，所有基于 LRU 的算法都会在缓存命中时将对象提升到队列的头部，我们称之为急切提升。同时，降级是隐式执行的：当一个对象升级时，其他对象会被动降级。我们将此过程称为被动降级，这是一个缓慢的过程，因为对象在被逐出之前需要遍历缓存队列。然而，我们将证明<u>驱逐算法应该使用惰性提升和快速降级</u>，而不是急切提升和被动降级。</p>
+<h2 id="lazy-promotion">Lazy Promotion 懒惰提升</h2>
 <p>To avoid popular objects from being evicted while not incurring much performance overhead, we propose adding <strong>lazy promotion</strong> on top of FIFO (called LP-FIFO), which <em>promotes objects only when they are about to be evicted</em>. <strong>lazy promotion</strong> aims to retain popular objects with minimal effort. An example is FIFO-Reinsertion (note that FIFO-Reinsertion, 1-bit CLOCK, and Second Chance are different implementations of the same eviction algorithm): an object is reinserted at eviction time if it has been requested while in the cache.
-为了避免流行的对象被驱逐，同时又不会产生太多性能开销，我们建议在 FIFO 之上添加惰性提升（称为 LP-FIFO），仅在对象即将被驱逐时才提升对象。惰性促销旨在以最小的努力保留受欢迎的对象。一个例子是 FIFO 重新插入（请注意，FIFO 重新插入、1 位时钟和第二次机会是同一逐出算法的不同实现）：如果对象在缓存中时被请求，则在逐出时重新插入对象。</p>
+为了避免活跃的对象被驱逐，同时又不会产生太多性能开销，我们建议在 FIFO 之上添加惰性提升（称为 LP-FIFO），仅在对象即将被驱逐时才提升对象。惰性促销旨在以最小的努力保留受欢迎的对象。一个例子是 FIFO 重新插入（请注意，FIFO-Reinsertion、1-bit CLOCK和Second Chance 是同一逐出算法的不同实现）：如果对象在缓存中时被请求，则在逐出时重新插入对象。</p>
 <p>LP-FIFO has several benefits over eager promotion (promoting on every access) used in LRU-based algorithms.
 与基于 LRU 的算法中使用的急切提升（在每次访问时进行提升）相比，LP-FIFO 有几个优点。</p>
 <ul>
@@ -2893,7 +2971,7 @@ QD-LP-FIFO 的设计通过对 LP 和 QD 技术进行创新，为设计简单而�
 <p>This work is published at HotOS’23, more details can be found <a href="https://dl.acm.org/doi/10.1145/3593856.3595887">here</a>, and the slides can be found <a href="https://jasony.me/slides/hotos23-qdlp.pdf">here</a>.
 这项工作发表在 HotOS’23，更多细节可以在这里找到，幻灯片可以在这里找到。</p>
 <p>Juncheng Yang 2024</p>
-<p>·</p>
+<hr />
 
 
 
@@ -3005,16 +3083,16 @@ QD-LP-FIFO 的设计通过对 LP 和 QD 技术进行创新，为设计简单而�
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.integrate", "toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
-        <script src="../../assets/js/jquery-3.2.1.min.js"></script>
+        <script src="../../../assets/js/jquery-3.2.1.min.js"></script>
       
-        <script src="../../assets/js/simpleLightbox.min.js"></script>
+        <script src="../../../assets/js/simpleLightbox.min.js"></script>
       
-        <script src="../../assets/js/custom.js"></script>
+        <script src="../../../assets/js/custom.js"></script>
       
     
   </body>
