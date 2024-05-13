@@ -1088,7 +1088,7 @@ Mac 上的一些细节优化
     --color-secondary-container: #EADDFF;
     --color-on-secondary-container: #1D192B;
 
-    --color-tertiary: #7D5260;
+    --color-tertiary: #0e82c2;
     --color-on-tertiary: #FFFFFF;
     --color-tertiary-container: #FFD8E4;
     --color-on-tertiary-container: #31111D;
@@ -1098,16 +1098,16 @@ Mac 上的一些细节优化
     --color-error-container: #F9DEDC;
     --color-on-error-container: #410E0B;
 
-    /*
+    /* 
     系统变量
     Typora base.css/base-control.css/windows.css 所带的变量
     */
     /* 背景颜色 */
-    --bg-color: #202124;
+    --bg-color: #f6f8fc;
     /* 文字颜色 */
-    --text-color: #f5f5f5;
+    --text-color: #333333;
     /* 选择的文字背景颜色 */
-    --select-text-bg-color: #3d444d;
+    --select-text-bg-color: #B5D6FC;
     /* 选择的文字颜色 */
     --select-text-font-color: auto;
     /* 侧边栏颜色 */
@@ -1115,7 +1115,7 @@ Mac 上的一些细节优化
     /* 菜单边框 */
     --window-border: 1px solid #e9e9e9;
     /* 侧边栏活跃文件背景颜色 */
-    --active-file-bg-color: #777;
+    --active-file-bg-color: #eee;
     /* 侧边栏活跃文件文字颜色 */
     --active-file-text-color: inherit;
     /* 侧边栏活跃文件边框颜色 */
@@ -1123,11 +1123,11 @@ Mac 上的一些细节优化
     /* 侧边栏宽度 */
     --sidebar-width: 256px;
     /*代码块背景*/
-    --code-block-bg-color: #272822;
+    --code-block-bg-color: #f6f7f8;
     /*latex背景*/
     --rawblock-edit-panel-bd: var(--code-block-bg-color);
 
-    /*
+    /* 
     主题变量
     主题所设置的变量
     */
@@ -1136,45 +1136,44 @@ Mac 上的一些细节优化
     /*等宽代码字体*/
     --font-family-monospace: "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     /* 编辑区背景颜色 */
-    --write-bg-color: rgba(51, 51, 51, 0.8);
+    --write-bg-color: var(--color-white);
     /* 圆角 */
     --radius: 5px;
     /* 圆角 hover */
     --hover-radius: 24px;
     /* 标题颜色 */
-    --title-color: var(--color-white);
+    --title-color: #1f1f1f;
     /* 链接颜色 */
-    --link-color: #0e82c2;
+    --link-color: #0842a0;
     /* 标题前的指示标志 */
     --md-heading-before-color: var(--link-color);
     /*右键菜单*/
-    --dropdown-menu-color: var(--color-black);
+    --dropdown-menu-color: var(--color-white);
     /*菜单按钮*/
-    --long-btn-color: #202020;
-    --long-btn-normal: 10px 10px 20px #1b1b1b, -10px -10px 20px #252525;
-    --long-btn-hover: 5px 5px 10px #1b1b1b, -5px -5px 10px #252525;
-    --long-btn-hover-bg: linear-gradient(145deg, #1d1d1d, #222222);
-    --recent-file-panel-action-btn: 4px 4px 9px #1b1b1b, -4px -4px 9px #252525;
-    --recent-file-panel-action-btn-hover: 4px 4px 9px #1b1b1b, -4px -4px 9px #252525;
-    --recent-file-panel-action-btn-hover-bg: linear-gradient(145deg, #1d1d1d, #222222);
-    --recent-file-panel-action-btn-active-bg: inset 4px 4px 9px #1b1b1b, inset -4px -4px 9px #252525;
+    --long-btn-color: #e6eef4;
+    --long-btn-normal: 10px 10px 20px #c4cacf, -10px -10px 20px #ffffff;
+    --long-btn-hover-bg: linear-gradient(145deg, #cfd6dc, #f6ffff);
+    --long-btn-hover: 5px 5px 10px #c4cacf, -5px -5px 10px #ffffff;
+    --recent-file-panel-action-btn: 4px 4px 9px #d6dde3, -4px -4px 9px #f6ffff;
+    --recent-file-panel-action-btn-hover: 4px 4px 9px #d6dde3, -4px -4px 9px #f6ffff;
+    --recent-file-panel-action-btn-hover-bg: linear-gradient(145deg, #cfd6dc, #f6ffff);
+    --recent-file-panel-action-btn-active-bg: inset 4px 4px 9px #d6dde3, inset -4px -4px 9px #f6ffff;
 
     /*高亮背景颜色*/
-    --mark-bg-color: var(--color-tertiary);
+    --mark-bg-color: var(--color-primary-container);
     /*高亮文字颜色*/
-    --mark-text-color: var(--color-white);
+    --mark-text-color: var(--color-black);
     /* 引用字体颜色 */
-    --blockquote-font-color: var(--color-white);
+    --blockquote-font-color: var(--color-on-primary-container);
     /* 引用背景颜色 */
-    --blockquote-bg-color: #9c8fb0;
-
+    --blockquote-bg-color: var(--color-primary-container);
 
     /* 行内代码颜色 */
-    --inline-code-color: #03d2c1;
+    --inline-code-color: #008f83;
     /*表格首行背景颜色*/
-    --table-first-bg-color: #1a1a16;
+    --table-first-bg-color: #f8f9fa;
     /*表格编辑条颜色*/
-    --ty-table-edit-bg-color: #999999;
+    --ty-table-edit-bg-color: var(--color-white);
     /*表格其他行背景颜色*/
     /* --table-other-bg-color: var(--color-tertiary-container); */
 
@@ -1182,25 +1181,25 @@ Mac 上的一些细节优化
     --table-border-color: #e1e3e1;
 
     /* YAML 背景颜色 */
-    --meta-block-bg-color: #50383a;
+    --meta-block-bg-color: var(--color-tertiary-container);
     /* YAML 文字颜色 */
-    --meta-block-font-color: var(--color-white);
+    --meta-block-font-color: var(--color-on-tertiary-container);
 
     /* active 背景 */
-    --sidebar-active-bg-color: rgba(255, 255, 255, .3);
+    --sidebar-active-bg-color: #d3e3fd;
     /* --sidebar-active-bg-color: #fce8e6; */
     /* hover 背景 */
-    --sidebar-hover-bg-color: rgba(255, 255, 255, 0.4);
+    --sidebar-hover-bg-color: rgba(32, 33, 36, 0.059);
 
     /*搜索栏 focus 颜色*/
-    --file-library-search-input-focus-color: var(--color-black);
+    --file-library-search-input-focus-color: var(--color-white);
     /*最近文件单数背景*/
-    --recent-file-panel-n-bg-color: rgb(66, 66, 66);
-    --recent-file-panel-n-color: #e1e1e1;
+    --recent-file-panel-n-bg-color: #c0c0c0;
+    --recent-file-panel-n-color: var(--color-black);
 
     /*操作按钮*/
-    --titlebar-bg-color: #999;
-    --titlebar-top-bg-color: var(--color-primary);
+    --titlebar-bg-color: #EDEDED;
+    --titlebar-top-bg-color: var(--color-primary-container);
 
 }
 
@@ -1216,6 +1215,10 @@ Mac 上的一些细节优化
     transition-timing-function: ease-in-out;
     /*box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);*/
     /*box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .2);*/
+}
+
+.md-fences::selection {
+    color: var(--select-text-bg-color);
 }
 
 /* .md-fences:hover::before {
@@ -1249,7 +1252,7 @@ Mac 上的一些细节优化
 .md-fences:hover::after {
     content: attr(lang);
     transition-duration: 200ms;
-    color: var(--color-tertiary-container);
+    color: var(--color-tertiary);
     text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
     font-size: .8rem;
     font-style: italic;
@@ -1269,154 +1272,111 @@ Mac 上的一些细节优化
     border-right: 0
 }
 
-.CodeMirror {
-    background: #272822;
-    color: #f8f8f2
+.cm-s-inner .CodeMirror-linenumber {
+    color: #6d8a88
 }
 
-.cm-s-inner .CodeMirror-line::selection, .cm-s-inner .CodeMirror-line > span::selection, .cm-s-inner .CodeMirror-line > span > span::selection {
-    background: rgba(73, 72, 62, .99)
+.cm-s-inner div.CodeMirror-selected {
+    background: #e0e0e0
 }
 
-.cm-s-inner .CodeMirror-line::-moz-selection, .cm-s-inner .CodeMirror-line > span::-moz-selection, .cm-s-inner .CodeMirror-line > span > span::-moz-selection {
-    background: rgba(73, 72, 62, .99)
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::selection {
+    background: #e0e0e0
 }
 
-.cm-s-inner .CodeMirror-gutters {
-    background: #272822;
-    border-right: 0
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+    background: #e0e0e0
 }
 
 .cm-s-inner .CodeMirror-guttermarker {
-    color: #fff
+    color: #ac4142
 }
 
 .cm-s-inner .CodeMirror-guttermarker-subtle {
-    color: #d0d0d0
+    color: #b0b0b0
 }
 
 .cm-s-inner .CodeMirror-linenumber {
-    color: #d0d0d0
+    color: #b0b0b0
+}
+
+.cm-s-inner .CodeMirror-linenumbers {
+    background-color: var(--code-block-bg-color)
 }
 
 .cm-s-inner .CodeMirror-cursor {
-    border-left: 1px solid #f8f8f0
+    border-left: 1px solid #505050
 }
 
 .cm-s-inner span.cm-comment {
-    color: #75715e
+    color: #8f5536
 }
 
 .cm-s-inner span.cm-atom {
-    color: #ae81ff
+    color: #aa759f
 }
 
 .cm-s-inner span.cm-number {
-    color: #ae81ff
+    color: #aa759f
 }
 
-.cm-s-inner span.cm-comment.cm-attribute {
-    color: #97b757
-}
-
-.cm-s-inner span.cm-comment.cm-def {
-    color: #bc9262
-}
-
-.cm-s-inner span.cm-comment.cm-tag {
-    color: #bc6283
-}
-
-.cm-s-inner span.cm-comment.cm-type {
-    color: #5998a6
-}
-
-.cm-s-inner span.cm-attribute, .cm-s-inner span.cm-property {
-    color: #a6e22e
+.cm-s-inner span.cm-attribute,
+.cm-s-inner span.cm-property {
+    color: #90a959
 }
 
 .cm-s-inner span.cm-keyword {
-    color: #f92672
-}
-
-.cm-s-inner span.cm-builtin {
-    color: #66d9ef
+    color: #ac4142
 }
 
 .cm-s-inner span.cm-string {
-    color: #e6db74
+    color: #f4bf75
 }
 
 .cm-s-inner span.cm-variable {
-    color: #f8f8f2
+    color: #90a959
 }
 
 .cm-s-inner span.cm-variable-2 {
-    color: #9effff
-}
-
-.cm-s-inner span.cm-type, .cm-s-inner span.cm-variable-3 {
-    color: #66d9ef
+    color: #6a9fb5
 }
 
 .cm-s-inner span.cm-def {
-    color: #fd971f
+    color: #d28445
 }
 
 .cm-s-inner span.cm-bracket {
-    color: #f8f8f2
+    color: #202020
 }
 
 .cm-s-inner span.cm-tag {
-    color: #f92672
-}
-
-.cm-s-inner span.cm-header {
-    color: #ae81ff
+    color: #ac4142
 }
 
 .cm-s-inner span.cm-link {
-    color: #ae81ff
+    color: #aa759f
 }
 
 .cm-s-inner span.cm-error {
-    background: #f92672;
-    color: #f8f8f0
+    /*background: #ac4142;*/
+    color: var(--color-error)
 }
 
 .cm-s-inner .CodeMirror-matchingbracket {
-    text-decoration: underline;
-    color: #fff !important
+    color: #f5f5f5 !important;
+    background-color: #6a9fb5 !important
 }
 
-/*-------
-绘图
--------*/
-svg .edgePath .path {
-    stroke: var(--color-tertiary-container) !important;
-}
-
-svg marker[id*="arrowhead"] path {
-    stroke: var(--color-tertiary-container) !important;
-    fill: var(--color-tertiary-container) !important;
-}
-
-svg line[class*="messageLine"] {
-    stroke: #999 !important;
-}
-
-
-svg text.messageText,
-svg text.loopText,
-svg text.loopText tspan {
-    fill: #fff !important;
-}
 
 
 </style><title>index</title>
 </head>
 <body class='typora-export os-windows typora-export-show-outline typora-export-collapse-outline'><div class='typora-export-content'>
-<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1 outline-item-open"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#泥烟の导航站">泥烟の导航站</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#✒博客主页">✒博客主页</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#意向×-臆想√">🚀意向× 臆想√</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#☃关于我">☃关于我</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#联系方式">☎️联系方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#常用网站访问不了的需要">⭐️常用网站(访问不了的需要🚀)</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒课程">🪒课程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒论坛咨询项目">🪒论坛/咨询/项目</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒个人博客gitbook">🪒个人博客/gitbook</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒工具">🪒工具</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#大模型">大模型</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒资源站">🪒资源站</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒动漫">🪒动漫</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒其他">🪒其他</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#阅读清单">📖阅读清单</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='泥烟の导航站'><span>泥烟の导航站</span></h1><p>&nbsp;</p><blockquote><p><span>我的首页(×) 我的收藏夹(√)</span></p></blockquote><p>&nbsp;</p><h2 id='✒博客主页'><span>✒博客主页</span></h2><p>&nbsp;</p><blockquote><p><a href='https://www.cnblogs.com/knight02'><span>泥烟 - 博客园</span></a></p></blockquote><blockquote><p><a href='https://knight02-bit.github.io/site/'><span>泥烟 - Mkdocs</span></a></p></blockquote><blockquote><p><a href='https://blog.csdn.net/qq_39391544?type=blog'><span>泥烟 - CSDN博客</span></a></p></blockquote><p>&nbsp;</p><h2 id='意向×-臆想√'>🚀<span>意向× 臆想√</span></h2><p>&nbsp;</p><p><code>高性能计算</code><span>, </span><code>性能优化</code><span>, </span><del><span>计算机图形学</span></del><span>, </span><code>机器学习</code><span>, </span><code>后端</code></p><p>&nbsp;</p><h2 id='☃关于我'><span>☃关于我</span></h2><p>&nbsp;</p><p><span>一战落榜的二伯五练习生,不会唱跳只会gap</span></p><p><span>走了很久的路还没有找到自己的末流coder</span></p><p><span>目前是&quot;厚积薄发&quot;中的&#39;积薄&#39;</span></p><p><span>是傍晚时分海面的落日, 是落也是升</span></p><p><span>是&quot;游龙当归海,海不迎我自来也&quot;中的&#39;当归&#39;</span></p><p><span>是因为一做视频就掉粉所以不敢做的比利比利up主</span></p><p><span>是没什么干粮的自干五、高原红</span></p><p><span>有着三年吟游写诗、五年素描功底、酷狗听歌十级的半业余烧烤师傅</span></p><p><span>曾经是管人痴, 现在是媳妇儿眼里的快乐小狗</span></p><p>&nbsp;</p><h2 id='联系方式'>☎️<span>联系方式</span></h2><blockquote><p>📫<a href='mailto:tsjkht@foxmail.com' target='_blank' class='url'>tsjkht@foxmail.com</a></p></blockquote><blockquote><p><span>交流群(QQ):</span><strong><span>825862410</span></strong></p><p><img src="https://s21.ax1x.com/2024/05/13/pkeX57D.png" referrerpolicy="no-referrer"></p></blockquote><p>&nbsp;</p><h2 id='常用网站访问不了的需要'>⭐️<span>常用网站(访问不了的需要</span>🚀<span>)</span></h2><p>&nbsp;</p><h3 id='🪒课程'><span>🪒课程</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://missing-semester-cn.github.io/'><span>the missing semester of your cs education</span></a></td><td style='text-align:center;' ><span>计算机教育中缺失的一课</span></td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://csdiy.wiki/CS学习规划/'><code>CS自学指南</code></a></td><td style='text-align:center;' ><span>超赞</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.coursera.org/courses'><span>coursera</span></a></td><td style='text-align:center;' ><span>国外大型公开在线课程</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.nvidia.cn/training/'><span>NVIDIA 深度学习培训中心（DLI）/ 实战培训</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.acwing.com/activity/'><span>AcWing</span></a></td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='🪒论坛咨询项目'><span>🪒论坛/咨询/项目</span></h3><blockquote><p><strong><span>减少浏览杂乱讯息的时间, 看更专业更有营养的文字</span></strong></p></blockquote><blockquote><p><em><span>&quot;Tell me and I forget. Show me and I remember. Involve me and I understand.&quot;</span>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1 outline-item-open"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#泥烟の导航站">泥烟の导航站</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#✒博客主页">✒博客主页</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#意向×-臆想√">🚀意向× 臆想√</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#☃关于我">☃关于我</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#联系方式">☎️联系方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#常用网站访问不了的需要">⭐️常用网站(访问不了的需要🚀)</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒课程">🪒课程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒论坛咨询项目">🪒论坛/咨询/项目</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒个人博客gitbook">🪒个人博客/gitbook</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒工具">🪒工具</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#大模型">大模型</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒资源站">🪒资源站</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒动漫">🪒动漫</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🪒其他">🪒其他</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#阅读清单">📖阅读清单</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='泥烟の导航站'><span>泥烟の导航站</span></h1><p>&nbsp;</p><blockquote><p><span>我的首页(×) 我的收藏夹(√)</span></p></blockquote><p>&nbsp;</p><h2 id='✒博客主页'><span>✒博客主页</span></h2><p>&nbsp;</p><blockquote><p><a href='https://www.cnblogs.com/knight02'><span>泥烟 - 博客园</span></a></p></blockquote><blockquote><p><a href='https://knight02-bit.github.io/site/'><span>泥烟 - Mkdocs</span></a></p></blockquote><blockquote><p><a href='https://blog.csdn.net/qq_39391544?type=blog'><span>泥烟 - CSDN博客</span></a></p></blockquote><p>&nbsp;</p><h2 id='意向×-臆想√'>🚀<span>意向× 臆想√</span></h2><p>&nbsp;</p><p><code>高性能计算</code><span>, </span><code>性能优化</code><span>, </span><del><span>计算机图形学</span></del><span>, </span><code>机器学习</code><span>, </span><code>后端</code></p><p>&nbsp;</p><h2 id='☃关于我'><span>☃关于我</span></h2><p>&nbsp;</p><p><span>一战落榜的二伯五练习生,不会唱跳只会gap</span></p><p><span>走了很久的路还没有找到自己的末流coder</span></p><p><span>目前是&quot;厚积薄发&quot;中的&#39;积薄&#39;</span></p><p><span>是傍晚时分海面的落日, 是落也是升</span></p><p><span>是&quot;游龙当归海,海不迎我自来也&quot;中的&#39;当归&#39;</span></p><p><span>是因为一做视频就掉粉所以不敢做的比利比利up主</span></p><p><span>是没什么干粮的自干五、高原红</span></p><p><span>有着三年吟游写诗、五年素描功底、酷狗听歌十级的半业余烧烤师傅</span></p><p><span>曾经是管人痴, 现在是媳妇儿眼里的快乐小狗</span></p><p>&nbsp;</p><h2 id='联系方式'>☎️<span>联系方式</span></h2><blockquote><p>📫<a href='mailto:tsjkht@foxmail.com' target='_blank' class='url'>tsjkht@foxmail.com</a></p></blockquote><blockquote><p><span>交流群(QQ):</span><strong><span>825862410</span></strong></p><p><img src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405122147263.jpeg" referrerpolicy="no-referrer"></p></blockquote><p>&nbsp;</p><h2 id='常用网站访问不了的需要'>⭐️<span>常用网站(访问不了的需要</span>🚀<span>)</span></h2><p>&nbsp;</p><h3 id='🪒课程'><span>🪒课程</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://missing-semester-cn.github.io/'><span>the missing semester of your cs education</span></a></td><td style='text-align:center;' ><span>计算机教育中缺失的一课</span></td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://csdiy.wiki/CS学习规划/'><code>CS自学指南</code></a></td><td style='text-align:center;' ><span>超赞</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.coursera.org/courses'><span>coursera</span></a></td><td style='text-align:center;' ><span>国外大型公开在线课程</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.nvidia.cn/training/'><span>NVIDIA 深度学习培训中心（DLI）/ 实战培训</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.acwing.com/activity/'><span>AcWing</span></a></td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='🪒论坛咨询项目'><span>🪒论坛/咨询/项目</span></h3><blockquote><p><strong><span>减少浏览杂乱讯息的时间, 看更专业更有营养的文字</span></strong></p></blockquote><blockquote><p><em><span>&quot;Tell me and I forget. Show me and I remember. Involve me and I understand.&quot;</span>
 <span>“告诉我，我就会忘记。展示给我，我就会记住。让我参与，我就会理解。”</span></em></p></blockquote><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://www.oschina.net/news'><span>开源资讯 - </span><code>OSCHINA</code><span> - 中文开源技术交流社区</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://tool.lu/article/'><span>文库 (tool.lu)</span></a></td><td style='text-align:center;' ><span>站主每天都会分享一些公众号的技术文章</span></td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://hellogithub.com/'><code>HelloGitHub</code></a></td><td style='text-align:center;' ><span>我的</span><code>每月必看</code><span>(28号更新热门项目月刊)</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://learn-anything.xyz/'><span>Learn Anything</span></a></td><td style='text-align:center;' ><span>学习知识时的推荐路径(貌似不怎么全)</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.infoq.cn/'><span>InfoQ</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://segmentfault.com/blogs'><span>SegmentFault 思否</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://www.techbeat.net/'><span>TechBeat</span></a></td><td style='text-align:center;' ><span>专注于人工智能、计算机视觉、机器学习等领域的资讯平台，提供最新的研究成果、行业动态、优质好文和精选Talk</span></td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://indienova.com/'><span>indienova 独立游戏</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.gamersky.com/'><span>游民星空</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://news.nweon.com/xr'><span>映维网资讯 (nweon.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://stackoverflow.com/'><span>Stack Overflow</span></a></td><td style='text-align:center;' ><span>也可订阅每周新闻和感兴趣的主题</span></td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><code>reddit</code><span>:  </span><a href='https://www.reddit.com/user/ashish2199/m/cs_student_subs/'><span>Programming-Subreddits</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://dev.to/'><span>DEV Community</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://news.ycombinator.com/'><code>Hacker News</code></a></td><td style='text-align:center;' ><span>针对程序员的新闻聚合, </span><br><span>可邮箱订阅&gt;&gt;</span><a href='https://hndigest.com/'><span>Hacker News Digest</span></a><br><a href='https://www.supertechfans.com/cn'><span>HackerNews 每日 AI 摘要</span></a></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://hackernoon.com/'><span>HackerNoon</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://www.kaggle.com/discussions'><span>Kaggle - Discussions </span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://huggingface.co/blog/zh'><span>Hugging Face – blog</span></a></td><td style='text-align:center;' ><a href='https://huggingface.co/docs/hub/index'><span>Hugging Face Hub documentation</span></a></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://the-algorithms.com/zh_Hans'><span>The Algorithms (the-algorithms.com)</span></a></td><td style='text-align:center;' ><span>GitHub的开源算法库</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='http://www.asmedu.net/bbs/forum.jsp'><span>《汇编语言》论坛 </span></a></td><td style='text-align:center;' ><span>王爽老师的《汇编语言》通俗易懂</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://tophub.today/c/developer'><span>今日热榜 - 开发 - 科技</span></a></td><td style='text-align:center;' ><span>各种热榜, 杂</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.bookstack.cn/explore'><span>书栈网 · BookStack</span></a></td><td style='text-align:center;' ><span>收录一些官方文档和gitbook</span></td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='🪒个人博客gitbook'><span>🪒个人博客/gitbook</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://www.ruanyifeng.com/blog/'><span>阮一峰的网络日志 (uanyifeng.com)</span></a></td><td style='text-align:center;' ><span>我的</span><code>周五必看</code></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://samwho.dev/blog/'><span>samwho - all posts (samwho.dev)</span></a></td><td style='text-align:center;' ><span>高质量,不过更新频率很低</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://johnnysswlab.com/'><span>Johnny&#39;s Software Lab (johnnysswlab.com)</span></a></td><td style='text-align:center;' ><span>文章都是关于c/c++性能&amp;内存子系统性能&amp;性能优化、分析&amp;并行编程</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://wdxtub.com/work/'><span>不周山作品集 / 小土刀 2.0 (wdxtub.com) </span></a></td><td style='text-align:center;' ><code>读薄/读厚 CSAPP</code></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://fengmuzi2003.gitbook.io/csapp3e'><span>CSAPP重点解读 (gitbook)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.cnblogs.com/timlly/p/13512787.html'><span>剖析虚幻渲染体系 - 0向往0 (cnblogs.com)</span></a></td><td style='text-align:center;' ><span>巨巨巨多, 愿称之为古希腊掌管</span><code>虚幻剖析</code><span>的佬</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://blog.apassbydreg.work/'><span>Blog of Martin Z He (apassbydreg.work)</span></a></td><td style='text-align:center;' ><span>游戏&amp;图形学</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://xiaolincoding.com/'><span>小林coding (xiaolincoding.com)</span></a></td><td style='text-align:center;' ><span>一些net&amp;os&amp;co&amp;sql的图解和面经</span></td></tr></tbody></table></figure><h3 id='🪒工具'><span>🪒工具</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.52pojie.cn/forum.php?mod=guide&amp;view=digest'><span>最新精华 - 吾爱破解</span></a></td><td style='text-align:center;' ><span>看些有趣的</span><code>小玩意</code></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://pangniao.net/haoruan/'><span>好软 - 胖鸟网</span></a></td><td style='text-align:center;' ><span>分享一些好用/神奇的软件</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.connectedpapers.com/'><span>Connected Papers / Find and explore academic papers</span></a></td><td style='text-align:center;' ><span>在可视化图表中探索相关</span><code>学术论文</code></td></tr><tr><td style='text-align:center;' ><span>🔱</span></td><td style='text-align:center;' ><a href='https://wangchujiang.com/reference/'><span>Quick Reference</span></a></td><td style='text-align:center;' ><span>供开发人员快速参考的</span><code>速查表</code></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://excalidraw.com/'><span>Excalidraw</span></a></td><td style='text-align:center;' ><code>手绘风格</code><span>的白板工具</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://devtool.tech/'><span>开发者武器库 · 属于程序员的工具箱 (devtool.tech)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><h4 id='大模型'><span>大模型</span></h4><p><code>一些用过感觉还可以的</code></p><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' ><strong><span>国内</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://kimi.moonshot.cn/'><span>Kimi.ai (moonshot.cn)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://metaso.cn/'><span>秘塔AI搜索 (metaso.cn)</span></a></td><td style='text-align:center;' ><span>写作,写论文</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://tongyi.aliyun.com/qianwen'><span>通义 (aliyun.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://chatglm.cn/main/alltoolsdetail'><span>智谱清言 (chatglm.cn)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://devv.ai/zh?ref=ai-bot.cn'><span>Devv AI</span></a></td><td style='text-align:center;' ><span>主要解答编程问题</span></td></tr><tr><td style='text-align:center;' >🚀</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://chat.openai.com/chat'><span>ChatGPT</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://explorer.globe.engineer/?utm_source=ai-bot.cn'><span>Globe Explorer</span></a></td><td style='text-align:center;' ><code>结构化知识</code><span>AI搜索引擎</span></td></tr></tbody></table></figure><p><a href='https://ai-bot.cn/'><span>AI工具集合  国内外AI工具集导航大全 (ai-bot.cn)</span></a></p><p><a href='https://www.toolai.io/'><span>ToolAI - The world&#39;s most complete and comprehensive collection of AI artificial intelligence tools</span></a></p><p>&nbsp;</p><h3 id='🪒资源站'><span>🪒资源站</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' ><strong><span>图书</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >🚀<a href='https://pangniao.net/z-library-zui-xin-di-zhi.html'><span>Z-Library最新地址</span></a></td><td style='text-align:center;' ><a href='https://pangniao.net/go/aHR0cHM6Ly96bGlicmFyeS1zZy5zZS8'><span>https://zlibrary-sg.se/</span></a><br><a href='https://pangniao.net/go/aHR0cHM6Ly96bGlicmFyeS1oay5zZS8'><span>https://zlibrary-hk.se/</span></a><br><a href='https://pangniao.net/go/aHR0cHM6Ly9zaW5nbGVsb2dpbi5zZS8'><span>https://singlelogin.se/</span></a></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='http://www.banshujiang.cn/'><span>搬书匠- 电子书(EBook) </span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.bookstack.cn/explore'><span>书栈网 · BookStack</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><strong><span>节点分享</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.gaofumei.net/'><span>PC在线云端 - IT资讯与技术分享站 (gaofumei.net)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><strong><span>行业</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://365.kdocs.cn/l/ct4bcS9xHD3K'><span>游鲨游戏行业资料共享文档 (kdocs.cn)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://sandtripper.cn/WSID/'><span>岗位查询 - What Should I Do (sandtripper.cn)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><strong><span>其他</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://adzhp.xyz/favorites/yueduxiaoshuo'><span>爱达杂货铺 (adzhp.xyz)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.acgbox.link/'><span>ACG盒子 - 专注ACG的导航网站 (acgbox.link)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://subhd.tv/'><span>分享交流下载字幕平台 - SubHD</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><span>知乎严选:</span><br><a href='https://onehu.xyz/'><span>我不是盐神 (onehu.xyz)</span></a><span> </span><br><span> </span><a href='https://www.yanxuanwk.com/'><span>盐选文库 (yanxuanwk.com)</span><br></a><a href='https://www.yuque.com/dayuyu-ualcu/azo1ge'><span>知乎盐选库 (yuque.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='🪒动漫'><span>🪒动漫</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' >🔗</th><th style='text-align:center;' >🎈</th></tr></thead><tbody><tr><td style='text-align:center;' ><strong><span>动画</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.yhdmz.org/'><span>樱花动漫(yhdmz.org)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://anime.girigirilove.com/'><span>girigiri爱动漫 (girigirilove.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.mfan.tv/'><span>萌番（M站） (mfan.tv)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.hdddex.com/'><span>EDD动漫-E站(hdddex.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.mfan.tv/'><span>咕咕番(gugufan.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://yuc.wiki/'><span>YuC&#39;s AnimeList</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='http://www.animetox.com/'><span>Animex动漫社 (animetox.com)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://mikanani.me/'><span>蜜柑计划(mikanani.me)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://share.dmhy.org/topics/list/sort_id/2'><span>動漫花園資源網dmhy.org)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.agemys.net/'><span>AGE动漫 (agemys.net)</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><strong><span>漫画</span></strong></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.mangabz.com/'><span>mangabz</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.hisoman.com/'><span>搜漫</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.copymanga.tv/'><span>拷贝漫画</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://komiic.com/'><span>komiic</span></a></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><a href='https://www.animetox.com/category/source/manga'><span>Animex动漫社 - 漫画</span></a></td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='🪒其他'><span>🪒其他</span></h3><p><a href='https://www.zhihu.com/question/629894384/answer/3323541406'><span>程序员每天会阅读哪些技术网站来提升自己? - 知乎 </span></a></p><p>&nbsp;</p><h2 id='阅读清单'>📖<span>阅读清单</span></h2><p><a href='https://github.com/ssloy/tinyrenderer/wiki'><span>ssloy/tinyrenderer Wiki (github.com)</span></a></p><p><a href='https://weblog.jamisbuck.org/2010/12/29/maze-generation-eller-s-algorithm.html'><span>Buckblog: Maze Generation: Eller&#39;s Algorithm (jamisbuck.org)</span></a></p><p><a href='https://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking'><span>Buckblog: Maze Generation: Recursive Backtracking (jamisbuck.org)</span></a></p><p><a href='https://distill.pub/'><span>Distill — Latest articles about machine learning</span></a></p><p><a href='https://samwho.dev/hashing/'><span>Hashing</span></a></p><p><span>刻意练习:</span><a href='https://fs.blog/deliberate-practice-guide/'><span>The Ultimate Deliberate Practice Guide: How to Be the Best (fs.blog)</span></a></p><p>&nbsp;</p><p><a href='https://mp.weixin.qq.com/s?__biz=MjM5OTc2ODUxMw==&amp;mid=2649866846&amp;idx=1&amp;sn=21a7d748949592442776d61fc8453c72&amp;chksm=bf331af0884493e6a7061a8f85bb5e7de42dea5d80a2916c3b6249eba557bd7600ef024e9cab&amp;mpshare=1&amp;scene=23&amp;srcid=1017qwnVFQtGoGBQcfH1teYF&amp;sharer_sharetime=1666022132449&amp;sharer_shareid=dffc202f0e993ce02fe61bef9e75574c#rd'><span>任天堂制作人：游戏的本质 (公众号)</span></a></p><p><a href='https://mp.weixin.qq.com/s/wjrcO2Ej7BEThWVsCnXEtA'><span>Chrome 浏览器运行原理你了解多少？ (公众号)</span></a></p><p><a href='https://zhuanlan.zhihu.com/p/574855539'><span>古建筑程序化生成(PCG)方案改进探索 - 知乎</span></a></p><p><a href='https://zhuanlan.zhihu.com/p/126345392'><span>GBuffer的压缩及CryEngine的MicroGBuffer的实现 - 知乎</span></a></p></div></div>
 
 <script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
