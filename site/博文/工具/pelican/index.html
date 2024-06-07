@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../cmake/">
+        <link rel="prev" href="../git/">
       
       
-        <link rel="next" href="../pelican/">
+        <link rel="next" href="../../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
       
       
       <link rel="icon" href="../../../niyan.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Git - 泥烟</title>
+        <title>Pelican - 泥烟</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learn-git-branching" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Git
+              Pelican
             
           </span>
         </div>
@@ -1566,6 +1566,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1580,7 +1601,7 @@
           
   
   <span class="md-ellipsis">
-    Git
+    Pelican
   </span>
   
 
@@ -1591,7 +1612,7 @@
         
   
   <span class="md-ellipsis">
-    Git
+    Pelican
   </span>
   
 
@@ -1611,36 +1632,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#learn-git-branching" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Learn Git Branching
+      创建虚拟环境
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#git-workflow" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Git Workflow
+      安装库
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#git" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Git 指南
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      如何离线使用 Git
+      启动
     </span>
   </a>
   
@@ -1650,27 +1662,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pelican/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pelican
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2855,20 +2846,29 @@
                   
 
 
-  <h1>Git</h1>
+  <h1>Pelican</h1>
 
-<h2 id="learn-git-branching">Learn Git Branching</h2>
-<p><a href="https://learngitbranching.js.org/?locale=zh_CN">Learn Git Branching</a></p>
-<h2 id="git-workflow">Git Workflow</h2>
-<p><img alt="r/git - Git Cheat Sheet" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405201748534.png" tag="tag" /></p>
-<p><img alt="" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061047508.png" tag="tag" /></p>
-<h2 id="git">Git 指南</h2>
-<p><a href="https://medium.com/@jake.page91/the-guide-to-git-i-never-had-a89048d4703a">The guide to Git I never had.. 🩺 Doctors have stethoscopes. | by Jake Page | Apr, 2024 | Medium</a></p>
-<h2 id="git_1">如何离线使用 Git</h2>
 <blockquote>
-<p>作者介绍没有网络怎样备份 Git 仓库，比如把本地仓库推送到 U 盘</p>
+<blockquote>
+<p>静态网站生成器，让你可以通过编写 Markdown、reStructuredText 等格式的文本文件来创建网站，支持生成 RSS、代码语法高亮、插件扩展等功能。</p>
 </blockquote>
-<p><a href="https://www.gibbard.me/using_git_offline/">Using Git offline (gibbard.me)</a></p>
+</blockquote>
+<h2 id="_1">创建虚拟环境</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">pelican</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">conda</span> <span class="n">activate</span> <span class="n">pelican</span>
+</span></code></pre></div>
+<h2 id="_2">安装库</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># 计划使用 Markdown 作为标记格式</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;pelican[markdown]&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 排版增强功能需要的库</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">typogrify</span>
+</span></code></pre></div>
+<h2 id="_3">启动</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 在初始调用时设置新的项目路径</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span> <span class="o">--</span><span class="n">path</span> <span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">desired</span><span class="o">/</span><span class="n">directory</span>
+</span></code></pre></div>
+<p><img alt="image-20240522112535988" src="../pelican.assets/image-20240522112535988.png" /></p>
 
 
 
