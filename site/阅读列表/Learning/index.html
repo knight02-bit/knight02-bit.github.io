@@ -3524,6 +3524,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3567,10 +3568,10 @@
 <h3 id="5">5. 代码问题与改进点</h3>
 <ul>
 <li>
-<p><strong>MSE计算错误</strong>：
+<p><strong>MSE计算错误</strong>：<br />
   <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sum_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">training_output</span><span class="p">)</span>  <span class="c1"># 错误</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">sum_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>         <span class="c1"># 正确</span>
-</span></code></pre></div>
+</span></code></pre></div><br />
   原代码错误地将类别索引传入MSE函数，而非One-hot编码的期望值，导致类型错误。</p>
 </li>
 <li>
@@ -3587,10 +3588,10 @@
 <li><strong>反向传播顺序</strong>：从输出层到输入层逐层计算，确保误差正确传播。</li>
 </ul>
 <h3 id="7">7. 示例执行流程</h3>
-<p>假设网络结构为2-2-1（输入2节点，隐藏层2节点，输出1节点），训练样本为([0.5, 0.1], 0)：
-1. <strong>前向传播</strong>：输入经隐藏层计算，输出层生成预测值。
-2. <strong>误差计算</strong>：预测值与期望值[1, 0]（假设修正后）的差值。
-3. <strong>反向传播</strong>：计算各层delta，从输出层开始反向调整权重。
+<p>假设网络结构为2-2-1（输入2节点，隐藏层2节点，输出1节点），训练样本为([0.5, 0.1], 0)：<br />
+1. <strong>前向传播</strong>：输入经隐藏层计算，输出层生成预测值。<br />
+2. <strong>误差计算</strong>：预测值与期望值[1, 0]（假设修正后）的差值。<br />
+3. <strong>反向传播</strong>：计算各层delta，从输出层开始反向调整权重。<br />
 4. <strong>权重更新</strong>：根据delta和学习率更新参数，减小预测误差。</p>
 <h3 id="_1">总结</h3>
 <p>该代码正确实现了MLP的核心逻辑，但需修正MSE计算错误，并建议改进损失函数及增加输入校验。理解代码逻辑需重点掌握前向传播、反向传播的数学原理及类的交互方式。</p>
@@ -3607,6 +3608,9 @@
 
 
                 
+
+  
+
               </article>
             </div>
           

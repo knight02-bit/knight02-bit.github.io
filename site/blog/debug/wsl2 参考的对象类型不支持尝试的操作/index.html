@@ -3580,6 +3580,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3589,18 +3590,18 @@
 <p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061755879.png" tag="3" /></p>
 <h2 id="_1">原因</h2>
 <blockquote>
-<p>使用代理软件，或游戏加速服务，winsock出现问题。
+<p>使用代理软件，或游戏加速服务，winsock出现问题。<br />
 可以通过注册表的方式，从winsock中排除wsl即可</p>
 </blockquote>
 <h2 id="_2">新增注册表信息</h2>
-<p>新建.reg后缀的文本文件, 内容为
+<p>新建.reg后缀的文本文件, 内容为<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Windows Registry Editor Version 5.00
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\AppId_Catalog\0408F7A3]
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&quot;AppFullPath&quot;=&quot;C:\\Windows\\System32\\wsl.exe&quot;
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>&quot;PermittedLspCategories&quot;=dword:80000000
-</span></code></pre></div>
-执行后
+</span></code></pre></div><br />
+执行后<br />
 <img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061755946.png" tag="3" /></p>
 
 
@@ -3672,6 +3673,9 @@
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

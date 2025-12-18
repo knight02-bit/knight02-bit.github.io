@@ -3650,6 +3650,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3742,7 +3743,7 @@ Collecting grpcio&lt;=1.67.1,&gt;=1.49.1 (from pymilvus==2.5.10-&gt;pymilvus[mod
 </span></code></pre></div>
 <p>检查 collection 是否已存在，如果存在则删除它</p>
 <blockquote>
-<p>Collection 是一个二维表，具有固定的列和变化的行。每列代表一个字段，每行代表一个实体。要实现这样的结构化数据管理，需要一个 Schema。要插入的每个实体都必须符合 Schema 中定义的约束条件。
+<p>Collection 是一个二维表，具有固定的列和变化的行。每列代表一个字段，每行代表一个实体。要实现这样的结构化数据管理，需要一个 Schema。要插入的每个实体都必须符合 Schema 中定义的约束条件。<br />
 你可以确定 Collections 的方方面面，包括其 Schema、索引参数、度量类型，以及是否在创建时加载，以确保集合完全满足你的要求。</p>
 </blockquote>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="n">milvus_client</span><span class="o">.</span><span class="n">has_collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">):</span>
@@ -3959,6 +3960,9 @@ Milvus 将数据存储分为两类：插入的数据和元数据。插入的数�
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

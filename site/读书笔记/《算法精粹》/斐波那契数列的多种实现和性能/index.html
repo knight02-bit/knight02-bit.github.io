@@ -3607,6 +3607,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3628,7 +3629,7 @@
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序运行时间为: </span><span class="si">%s</span><span class="s1"> Seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
 </span></code></pre></div>
 <blockquote>
-<p>fib0(40) =  102334155
+<p>fib0(40) =  102334155<br />
 程序运行时间为: 29.292827367782593 Seconds</p>
 </blockquote>
 <p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061223137.png" tag="3" /></p>
@@ -3651,20 +3652,20 @@
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序运行时间为: </span><span class="si">%s</span><span class="s1"> Seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
 </span></code></pre></div>
 <blockquote>
-<p>fib1(120) =  5358359254990966640871840
-程序运行时间为: 0.005672931671142578 Seconds
-fib1(120) =  5358359254990966640871840
-程序运行时间为: 0.00408172607421875 Seconds
-fib1(120) =  5358359254990966640871840
+<p>fib1(120) =  5358359254990966640871840<br />
+程序运行时间为: 0.005672931671142578 Seconds<br />
+fib1(120) =  5358359254990966640871840<br />
+程序运行时间为: 0.00408172607421875 Seconds<br />
+fib1(120) =  5358359254990966640871840<br />
 程序运行时间为: 0.004380702972412109 Seconds</p>
 </blockquote>
 <h2 id="2">2. 自动化结果缓存</h2>
 <blockquote>
 <ul>
 <li>每次用新的参数执行fib()时，该装饰器就会把返回值缓存起来。以后再用相同的参数调用fib()时，都会从缓存中读取该参数对应的fib()之前的返回值并返回</li>
-<li>@lru_cache的maxsize属性表示对所装饰的函数最多应该缓存多少次最近的调用结果，如果将其设置为None就表示没有限制
-<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)">Cache replacement policies</a>
-<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061223138.png" tag="3" />
+<li>@lru_cache的maxsize属性表示对所装饰的函数最多应该缓存多少次最近的调用结果，如果将其设置为None就表示没有限制<br />
+<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)">Cache replacement policies</a><br />
+<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061223138.png" tag="3" /><br />
 <img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061223139.png" tag="3" /></li>
 </ul>
 </blockquote>
@@ -3683,11 +3684,11 @@ fib1(120) =  5358359254990966640871840
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序运行时间为: </span><span class="si">%s</span><span class="s1"> Seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
 </span></code></pre></div>
 <blockquote>
-<p>fib2(120) =  5358359254990966640871840
-程序运行时间为: 6.771087646484375e-05 Seconds
-fib2(120) =  5358359254990966640871840
-程序运行时间为: 7.05718994140625e-05 Seconds
-fib2(120) =  5358359254990966640871840
+<p>fib2(120) =  5358359254990966640871840<br />
+程序运行时间为: 6.771087646484375e-05 Seconds<br />
+fib2(120) =  5358359254990966640871840<br />
+程序运行时间为: 7.05718994140625e-05 Seconds<br />
+fib2(120) =  5358359254990966640871840<br />
 程序运行时间为: 7.677078247070312e-05 Seconds</p>
 </blockquote>
 <h2 id="3">3. 迭代</h2>
@@ -3707,11 +3708,11 @@ fib2(120) =  5358359254990966640871840
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序运行时间为: </span><span class="si">%s</span><span class="s1"> Seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
 </span></code></pre></div>
 <blockquote>
-<p>fib3(120) =  5358359254990966640871840
-程序运行时间为: 1.5020370483398438e-05 Seconds
-fib3(120) =  5358359254990966640871840
-程序运行时间为: 1.33514404296875e-05 Seconds
-fib3(120) =  5358359254990966640871840
+<p>fib3(120) =  5358359254990966640871840<br />
+程序运行时间为: 1.5020370483398438e-05 Seconds<br />
+fib3(120) =  5358359254990966640871840<br />
+程序运行时间为: 1.33514404296875e-05 Seconds<br />
+fib3(120) =  5358359254990966640871840<br />
 程序运行时间为: 1.430511474609375e-05 Seconds</p>
 </blockquote>
 <h2 id="4">4. 生成器</h2>
@@ -3737,11 +3738,11 @@ fib3(120) =  5358359254990966640871840
 </span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序运行时间为: </span><span class="si">%s</span><span class="s1"> Seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
 </span></code></pre></div>
 <blockquote>
-<p>fib4(120) =  5358359254990966640871840
-程序运行时间为: 0.004061222076416016 Seconds
-fib4(120) =  5358359254990966640871840
-程序运行时间为: 0.004450798034667969 Seconds
-fib4(120) =  5358359254990966640871840
+<p>fib4(120) =  5358359254990966640871840<br />
+程序运行时间为: 0.004061222076416016 Seconds<br />
+fib4(120) =  5358359254990966640871840<br />
+程序运行时间为: 0.004450798034667969 Seconds<br />
+fib4(120) =  5358359254990966640871840<br />
 程序运行时间为: 0.004158735275268555 Seconds</p>
 </blockquote>
 
@@ -3814,6 +3815,9 @@ fib4(120) =  5358359254990966640871840
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

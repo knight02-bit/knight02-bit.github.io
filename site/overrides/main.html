@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+
+  {% if page.meta.git_revision_date_localized or page.meta.revision_date %}
+    <hr>
+    <div class="md-source-date">
+      <small>
+        最后更新: {{ page.meta.git_revision_date_localized or page.meta.revision_date }}
+      </small>
+    </div>
+  {% endif %}
+{% endblock %}

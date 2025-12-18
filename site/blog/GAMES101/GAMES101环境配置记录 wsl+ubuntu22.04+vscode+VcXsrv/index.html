@@ -3626,6 +3626,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3661,28 +3662,28 @@
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>-- Configuring incomplete, errors occurred!
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>See also &quot;/root/g101/h1/build/CMakeFiles/CMakeOutput.log&quot;.
 </span></code></pre></div>
-<p>捣鼓了大半天,总算在(wsl)ubuntu 22.04上配好了opencv开发环境
-参考,包括但不限于:
-https://blog.csdn.net/weixin_52402390/article/details/122341561
+<p>捣鼓了大半天,总算在(wsl)ubuntu 22.04上配好了opencv开发环境<br />
+参考,包括但不限于:<br />
+https://blog.csdn.net/weixin_52402390/article/details/122341561<br />
 https://blog.csdn.net/Undefinedefity/article/details/106180033</p>
-<p>其中,在make -j时, 我出现了缺openjpeg.h头文件的错误,导致make: *** [Makefile:****] 错误 2
-<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709052.png" tag="3" />
-解决方案:
+<p>其中,在make -j时, 我出现了缺openjpeg.h头文件的错误,导致make: *** [Makefile:****] 错误 2<br />
+<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709052.png" tag="3" /><br />
+解决方案:<br />
 https://github.com/uclouvain/openjpeg/blob/master/INSTALL.md</p>
 <p><code>在补好缺的依赖后一定把之前opencv build的删掉,重新cmake,make一遍</code></p>
 <h2 id="wsl-xfce4-windows-vcxsrv">wsl xfce4 连接 windows VcXsrv</h2>
 <p>参考:https://www.bilibili.com/video/BV1RK411n79v</p>
 <h3 id="1">1.配置</h3>
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo vim /etc/resolv.conf
-</span></code></pre></div>
+</span></code></pre></div><br />
 记住其中的IP</p>
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo vim ~/.bashrc
-</span></code></pre></div>
-加入如下两行,此处打码部分即为上方的IP
+</span></code></pre></div><br />
+加入如下两行,此处打码部分即为上方的IP<br />
 <img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709053.png" tag="3" /></p>
 <h3 id="2vcxsrv">2.启动VcXsrv</h3>
-<p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709054.png" tag="3" />
-<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709055.png" tag="3" />
+<p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709054.png" tag="3" /><br />
+<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709055.png" tag="3" /><br />
 <img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709056.png" tag="3" /></p>
 <h3 id="3wsl-startxfce4">3.wsl输入 startxfce4</h3>
 <p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061709057.png" tag="3" /></p>
@@ -3756,6 +3757,9 @@ https://github.com/uclouvain/openjpeg/blob/master/INSTALL.md</p>
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

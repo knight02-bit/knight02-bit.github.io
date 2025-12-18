@@ -3763,6 +3763,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3782,7 +3783,7 @@
 <p>预计算环境遮挡</p>
 <p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711468.png" tag="3" /></p>
 <h4 id="ssao">SSAO</h4>
-<p>Screen Space Ambient Occlusion
+<p>Screen Space Ambient Occlusion<br />
 屏幕空间环境遮挡</p>
 <p><strong>💡立体空间采样的思想可取</strong>,用的人并不多</p>
 <p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711469.png" tag="3" /></p>
@@ -3809,8 +3810,8 @@
 </ul>
 </blockquote>
 <h5 id="ssao_1">SSAO+</h5>
-<p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711470.png" tag="3" />
-<img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711471.png" tag="3" />
+<p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711470.png" tag="3" /><br />
+<img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711471.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711472.png" tag="3" /></p>
 <h4 id="hbao-">HBAO-基于地平线的环境遮挡</h4>
 <p>Horizon-based Ambient Occlusion.</p>
@@ -3819,7 +3820,7 @@
 <p>HBAO使用一种基于物理的算法，用深度缓冲器采样来逼近一个积分。有一个特定的表面，其中的角度被测量，检查多少光线会被遮挡，不仅要考虑深度，还要考虑表面的法线与世界（地平线）的关系方向。</p>
 </blockquote>
 <p>HBAO在运作模式上与SSAO有什么区别呢？首先HBAO规定了一个半径为R的空间范围，对于范围外的空间不做渲染；此外对于一些低精度模型，遮蔽会导致错误的产生。</p>
-<p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711473.png" tag="3" />
+<p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711473.png" tag="3" /><br />
 <img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711474.png" tag="3" /></p>
 <p><a href="https://zhuanlan.zhihu.com/p/103683536">&gt;&gt;&gt;HBAO(屏幕空间的环境光遮蔽) - 知乎 (zhihu.com)</a></p>
 <h4 id="gtao">GTAO</h4>
@@ -3827,21 +3828,21 @@
 <blockquote>
 <p>GTAO引入了丢失的余弦因子，消除了衰减函数，并增加了<strong>多重反射的快速逼近</strong>。</p>
 </blockquote>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711475.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711475.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711476.png" tag="3" /></p>
 <p><a href="https://www.233tw.com/unreal/33065">&gt;&gt;&gt;Unreal 【UE4】 GTAO - 游戏编程 🕹️ (233tw.com)</a></p>
 <h4 id="rtao">RTAO</h4>
 <p>Ray-Tracing Ambient Occlusion 光线追踪环境遮挡</p>
 <p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711477.png" tag="3" /></p>
 <h3 id="fog">Fog</h3>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711478.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711478.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711479.png" tag="3" /></p>
 <p>视锥</p>
 <p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711480.png" tag="3" /></p>
 <h3 id="_2">反走样</h3>
 <p>anti-aliasing</p>
 <p>由高频信号和有限的渲染分辨率的不充分采样引起的一系列渲染假象</p>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711481.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711481.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711482.png" tag="3" /></p>
 <h4 id="ssaa">古老的方法: SSAA 超采样,多采样</h4>
 <p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711483.png" tag="3" /></p>
@@ -3860,7 +3861,7 @@
 <p>比较左右端的长度, 来决定自己影响多一点还是受别人影响多一点</p>
 <p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711487.png" tag="3" /></p>
 <p>每个点找自己的edge, 效果很棒</p>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711488.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711488.png" tag="3" /><br />
 <img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711489.png" tag="3" /></p>
 <h4 id="taa">较主流,TAA</h4>
 <p>不需要在空间上做过多的采样, 而是在时间轴上找数据</p>
@@ -3873,12 +3874,12 @@
 <p>步骤:</p>
 <p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711493.png" tag="3" /></p>
 <h4 id="boom">Boom</h4>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711494.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711494.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711495.png" tag="3" /></p>
 <p>取出高光(超过设定的阈值)</p>
 <p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711496.png" tag="3" /></p>
 <p>高斯卷积, 不够大</p>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711497.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711497.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711498.png" tag="3" /></p>
 <h4 id="tone-mapping">Tone Mapping,调亮度</h4>
 <p>解决暗处过暗|亮处过亮 以及色偏</p>
@@ -3889,12 +3890,12 @@
 <h5 id="aces">“降维打击派系” ——ACES</h5>
 <p>美国电影艺术与科学学会之作</p>
 <p>适应于各种显示设备</p>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711501.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711501.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711502.png" tag="3" /></p>
 <p><a href="https://zhuanlan.zhihu.com/p/21983679">&gt;&gt;&gt;Tone mapping进化论 - 知乎 (zhihu.com)</a></p>
 <h4 id="color-grading">Color Grading,调颜色,简单实用,性价比高</h4>
 <p>原始颜色与变化后的映射</p>
-<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711503.png" tag="3" />
+<p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711503.png" tag="3" /><br />
 <img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711504.png" tag="3" /></p>
 <p>对于美工很友好</p>
 <p><img alt="在这里插入图片描述" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061711505.png" tag="3" /></p>
@@ -3970,6 +3971,9 @@
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

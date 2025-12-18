@@ -3667,6 +3667,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3682,9 +3683,9 @@
 <p>&emsp;&emsp;许多图形专家表示，他们喜欢这个领域将艺术与技术和科学相结合的趋势。在图形学中，很少有一个 "正确 "的答案，而是在正确性、性能和美学之间进行成千上万的权衡。随着该领域的发展--硬件的改进，以及新技术在旧技术之上的建立和取代，这些权衡不断变化。</p>
 <p>&emsp;&emsp;因此，图形是伟大的，但也是困难的。让我们再谈一谈这个问题。</p>
 <h2 id="_2">我是谁，这篇文章是为谁写的</h2>
-<p>&emsp;&emsp;我最近经历了深入研究图形的过程--特别是实时图形--所以我处在一个很好的位置，可以向其他正在这个旅程中的人提供建议。大约六个月前，我发布了一个VR应用（<a href="https://miketuritzin.com/particulate/">PARTICULATE</a>），它是我在几年时间里在一个自定义引擎上建立的。
-&emsp;&emsp;我并不是从零开始的，我已经编程了几十年，在大学里作为学士和硕士生做了大量的图形工作（包括与人合作撰写<a href="https://graphics.stanford.edu/papers/protected/">SIGGRAPH 2004论文</a>）。但我确实花了很多年时间离开图形学去做<a href="https://www.linkedin.com/in/michael-turitzin-b005928/">其他事情</a>，当我回来的时候，我已经错过了大量的进展，所以我有大量的东西需要学习。(当然，这并不是说我早先就知道了一切--哈！）。
-&emsp;&emsp;我写这篇文章主要是为了那些已经开始了他们的图形之旅的人。如果你是一个绝对的初学者--这也很好！--这篇文章可能会是一个有趣的读物，但我建议在花太多时间迷失在更广泛的图形世界之前，先从一两本初学者书籍或教程系列开始。
+<p>&emsp;&emsp;我最近经历了深入研究图形的过程--特别是实时图形--所以我处在一个很好的位置，可以向其他正在这个旅程中的人提供建议。大约六个月前，我发布了一个VR应用（<a href="https://miketuritzin.com/particulate/">PARTICULATE</a>），它是我在几年时间里在一个自定义引擎上建立的。<br />
+&emsp;&emsp;我并不是从零开始的，我已经编程了几十年，在大学里作为学士和硕士生做了大量的图形工作（包括与人合作撰写<a href="https://graphics.stanford.edu/papers/protected/">SIGGRAPH 2004论文</a>）。但我确实花了很多年时间离开图形学去做<a href="https://www.linkedin.com/in/michael-turitzin-b005928/">其他事情</a>，当我回来的时候，我已经错过了大量的进展，所以我有大量的东西需要学习。(当然，这并不是说我早先就知道了一切--哈！）。<br />
+&emsp;&emsp;我写这篇文章主要是为了那些已经开始了他们的图形之旅的人。如果你是一个绝对的初学者--这也很好！--这篇文章可能会是一个有趣的读物，但我建议在花太多时间迷失在更广泛的图形世界之前，先从一两本初学者书籍或教程系列开始。<br />
 &emsp;&emsp;如果你已经在增长你的图形知识的道路上，你可能会觉得你已经咬了超过你能嚼的东西。这很正常。潜心研究一个新的图形子领域，却被一堆冗长而密集的书籍、期刊文章、PPT演示文稿和博士论文所困扰，这是很常见的。(也许你想快速浏览一下这本432页充满公式的<a href="http://graphics.stanford.edu/papers/veach_thesis/">关于路径追踪的开创性著作</a>？或者在下午阅读一些关于<a href="https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf">Frostbite引擎中基于物理的渲染的文章</a>（122页））。</p>
 <p>&emsp;&emsp;我写这篇文章是为了提供我在过去几年中发现的有用的技巧和建议。我专注于一般的原则，而不是具体的资源（书籍、教程等），但我会在最后提到其中一些。(因为如果没有一堆过时或是失效的参考资料和链接，那么这篇关于学习图形的文章将是什么呢？） )</p>
 <p>&emsp;&emsp;让我们开始吧。</p>
@@ -3694,7 +3695,7 @@
 <p>&emsp;&emsp;对我来说，获得动力的最好方法是开始构建一个我计划最终发布的真正的产品（这就是我对<a href="https://miketuritzin.com/particulate/">PARTICULATE</a>的做法）。有些人很乐意在多个小的 "玩具 "项目上工作，或者建立一个个人引擎来学习不同的技术。这些方法并没有错--采取这些方法甚至可能是尽快学习许多技术的最好方法。但是，当我有一个人们可以使用的成品的愿景时，我就会有最执着的动力。这个愿景有助于指导我学习和做下一步的工作（并在我感到灰心的时候激励我）。你的情况可能有所不同--找到有效的方法吧!</p>
 <p>&emsp;&emsp;第二，<strong>重要的是要培养一种对哑巴感觉的宽容</strong>。当你遇到大量的文章、替代方法、不熟悉的数学以及密集的PPT和PDF时，很容易让一个简单的目标（比如说，渲染文本）变得不堪重负。(以文本渲染为例--Eric Lengyel把他的<a href="https://sluglibrary.com/">高质量文本渲染库</a>卖给那些已经雇用了渲染专家的公司是有原因的。文本渲染比它最初看起来要复杂得多）。</p>
 <p>&emsp;&emsp;如果你讨厌哑巴的感觉--我不能说我喜欢这种感觉，但我已经能更好地容忍它了--你就更有可能放弃并回到更熟悉的牧场。极为积极的态度也有助于坚持不懈地克服哑巴的痛苦 :)</p>
-<p>&emsp;&emsp;通常需要多次阅读同一材料才能完全理解它（甚至接近理解）。我喜欢阅读不同的资源，这样我可以吸收对同一概念的不同解释，因为每个作者都有自己的角度。此外，即使经过多次阅读，你可能仍然觉得自己没有完全理解一个新的主题。这是我必须适应的--作为一个经验丰富的程序员，我已经习惯了对计算机科学中的新概念感到相当快的适应。
+<p>&emsp;&emsp;通常需要多次阅读同一材料才能完全理解它（甚至接近理解）。我喜欢阅读不同的资源，这样我可以吸收对同一概念的不同解释，因为每个作者都有自己的角度。此外，即使经过多次阅读，你可能仍然觉得自己没有完全理解一个新的主题。这是我必须适应的--作为一个经验丰富的程序员，我已经习惯了对计算机科学中的新概念感到相当快的适应。<br />
 <img alt="image" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061224569.gif" /></p>
 <blockquote>
 <p><em>阅读多位作者对同一主题的看法，就像从多个图像中重建一个三维模型--额外的角度有助于填补完整的形状。(图片来自<a href="https://vision.in.tum.de/research/image-based_3d_reconstruction/multiviewreconstruction">这篇文章</a>）。</em></p>
@@ -3725,14 +3726,14 @@
 <p>&emsp;&emsp;确保这种情况发生的最好方法是什么？总是在学习。我建议不断扩大你的图形知识，超越你目前正在进行的工作。把你的学习网扩大是很好的，因为你永远不知道你将来会突然需要使用什么--不同领域的概念会以意想不到的方式结合起来。</p>
 <p>&emsp;&emsp;我采取了一种日常学习的做法，以确保我一直在推动我的知识前沿--每个工作日，我都会花第一个小时来阅读关于图形（以及一些非图形但与编程有关的主题）的文章（等等）。通过连续几年这样做，我已经吸收了大量的信息。</p>
 <p>&emsp;&emsp;我还花了一些业余时间阅读较长篇幅的书籍，观看会议演讲的视频等等。但我建议不要在空闲时间里尝试过度，因为这可能会导致倦怠。(由于这个原因，我在过去不得不把事情做得很低调）。</p>
-<p>&emsp;&emsp;当选择如何集中你的学习时间时，我建议花大量的时间在 "基本原理 "上--这些东西是许多技术的基础，往往会反复出现。基本原理的一些例子是:(
+<p>&emsp;&emsp;当选择如何集中你的学习时间时，我建议花大量的时间在 "基本原理 "上--这些东西是许多技术的基础，往往会反复出现。基本原理的一些例子是:(<br />
 渲染API功能和最佳实践。</p>
 <ul>
 <li>GPU硬件架构和硬件光栅化管线。</li>
 <li>线性代数和基本微积分。</li>
 <li>浮点的内部表示和错综复杂的问题。</li>
 <li>抗锯齿，mip地图和纹理过滤。</li>
-<li>面向数据的设计原则和技术。
+<li>面向数据的设计原则和技术。<br />
   (这份清单的重点是实时渲染。)</li>
 </ul>
 <p>&emsp;&emsp;当你开始真正掌握像这样的基础知识时，你会发现你学习新技术的能力开始加快。(注意到这种趋势真的很令人满意）。</p>
@@ -3752,7 +3753,7 @@
 <li><a href="https://www.amazon.com/Physically-Based-Rendering-Theory-Implementation/dp/0128006455/">Physically Based Rendering</a> (Pharr et al) - 实现现代（离线）路径跟踪器；其中许多内容也与实时渲染有关（现在可以在pbr-book.org上免费在线阅读）。</li>
 <li><a href="https://www.amazon.com/Engine-Architecture-Third-Jason-Gregory/dp/1138035459/">Game Engine Architecture</a> (Gregory) - 对游戏引擎内部的高层次调查，并对一些主题进行了深入研究（对图形的讨论相当粗略)</li>
 <li><a href="https://www.amazon.com/Mathematics-Programming-Computer-Graphics-Third/dp/1435458869/">Mathematics for 3D Game Programming and Computer Graphics</a> （Lengyel）--与图形有关的数学速成课程</li>
-<li><a href="https://www.amazon.com/Foundations-Physically-Based-Modeling-Animation/dp/1482234602/">Foundations of Physically-Based Modeling and Animation </a>（House和Keyser）--对物理运动（粒子、弹簧、刚体、流体）的数值模拟的精彩介绍
+<li><a href="https://www.amazon.com/Foundations-Physically-Based-Modeling-Animation/dp/1482234602/">Foundations of Physically-Based Modeling and Animation </a>（House和Keyser）--对物理运动（粒子、弹簧、刚体、流体）的数值模拟的精彩介绍<br />
   &emsp;&emsp;特别是《<em>Real-Time Rendering</em>》和《<em>Physically Based Rendering</em>》是很密集的书，可能很难读懂，但非常值得--把它看成是一次塑造性格的经历，不要指望第一次读就能完全理解所有内容。</li>
 </ul>
 <p>我没有读过这些书（还没有），但它们被强烈推荐。</p>
@@ -3802,9 +3803,9 @@
 </ul>
 <h3 id="_10">问问题的地方</h3>
 <blockquote>
-<p>Subreddits like /r/graphicsprogramming, /r/opengl, and /r/vulkan
-Discords like Graphics Programming, DirectX, Vulkan Community, Shadertoy, and GameDev.net (#graphicsdev in particular)
-Forums like gamedev.net (to the extent they’re still used these days)
+<p>Subreddits like /r/graphicsprogramming, /r/opengl, and /r/vulkan<br />
+Discords like Graphics Programming, DirectX, Vulkan Community, Shadertoy, and GameDev.net (#graphicsdev in particular)<br />
+Forums like gamedev.net (to the extent they’re still used these days)<br />
 Ask people directly on Twitter (or alternatively, spend years building up a following and then ask your legions of followers)</p>
 </blockquote>
 <ul>
@@ -3887,6 +3888,9 @@ Ask people directly on Twitter (or alternatively, spend years building up a foll
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

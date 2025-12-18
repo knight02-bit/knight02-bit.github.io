@@ -3607,6 +3607,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3635,7 +3636,7 @@
 <p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061749965.png" tag="3" /></p>
 <p><strong><em>*3.除了Object.prototype这个对象，其他所有的对象都会有__proto__属性，之后函数才会有prototype属性。*</em></strong></p>
 <p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061749966.png" tag="3" /></p>
-<p>在创建对象的时候会自动创建一个<strong><code>__proto__</code>属性，指向它构造函数的<code>prototype</code></strong>,当访问这个对象的属性的时候会<strong>顺带访问</strong><code>__proto__</code>中对应的属性，也就是构造函数<code>prototype</code>这样实现了继承。
+<p>在创建对象的时候会自动创建一个<strong><code>__proto__</code>属性，指向它构造函数的<code>prototype</code></strong>,当访问这个对象的属性的时候会<strong>顺带访问</strong><code>__proto__</code>中对应的属性，也就是构造函数<code>prototype</code>这样实现了继承。<br />
  只有创建函数的时候才会创建一个<code>prototype</code>属性，目的就是为了完成上面的继承方式。</p>
 <h2 id="_3"><strong>总结</strong>:</h2>
 <p><strong>每个构造函数[</strong>自动带有一个prototype属性,该属性是一个指针，指向一个对象(即原型对象)]<strong>都有一个原型对象，原型对象上包含着一个指向构造函数的指针(constructor)，而实例都包含着一个指向原型对象的内部指针(<em>proto</em>)。通俗的说，实例可以通过内部指针访问到原型对象，原型对象可以通过constructor找到构造函数。</strong></p>
@@ -3758,6 +3759,9 @@
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

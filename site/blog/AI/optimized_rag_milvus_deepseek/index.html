@@ -3611,12 +3611,13 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
 
 <h1 id="milvusdeepseekrag">（优化）使用Milvus和DeepSeek构建RAG</h1>
-<p>构建一个高质量的 RAG 系统：
+<p>构建一个高质量的 RAG 系统：<br />
 包括数据加载、智能分块、混合召回、嵌入生成、Milvus 建库、重排序、和DeepSeek LLM 生成回答</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 安装依赖</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># !pip install pymilvus[model]==2.5.10 rank_bm25 sentence-transformers openai tqdm</span>
@@ -3718,7 +3719,7 @@ milvus_docs_2.4.x_e 100%[===================&gt;] 598.72K  --.-KB/s    in 0.04s
 <div class="language-text highlight"><pre><span></span><code>✅ 数据插入完成
 </code></pre></div>
 <h2 id="step-4">Step 4: 构建混合检索</h2>
-<p>同时利用BM25（基于关键词的传统检索）与向量检索（基于语义相似度）
+<p>同时利用BM25（基于关键词的传统检索）与向量检索（基于语义相似度）<br />
 进行混合召回，以获得更稳定的召回效果</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rank_bm25</span><span class="w"> </span><span class="kn">import</span> <span class="n">BM25Okapi</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -3896,6 +3897,9 @@ Answer:
   </script>
 
                 
+
+  
+
               </article>
             </div>
           

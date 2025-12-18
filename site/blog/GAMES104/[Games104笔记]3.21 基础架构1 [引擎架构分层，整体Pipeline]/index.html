@@ -3607,6 +3607,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -3660,9 +3661,9 @@
 <p><strong>DCC</strong></p>
 <blockquote>
 <p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061713970.png" tag="3" /></p>
-<p><strong>"DCC应用软件所使用的数据格式,鲜有适合直接用于游戏中的,原因有二。
+<p><strong>"DCC应用软件所使用的数据格式,鲜有适合直接用于游戏中的,原因有二。<br />
 \1. DCC 软件在内存中的数据模型,通常比游戏所需的复杂得多。例如，Maya的场景节点,以有向无环图(directed acyclic graph, DAG)存储,包含复杂的互相连接的网络。Maya还存储了该文件的所有编辑历史记录。Maya场景中每个物体的位置、方向、比例,都以完整的三维变换表示,此变换又由平移(translation)、旋转(rotation)、缩放(scale)、切变(shear)所组成。游戏引擎通常只需这些信息的一小部分就能在游戏中渲染模型。</strong></p>
-<p><strong>2.在游戏中读取DCC 软件格式的文件,其速度通常过慢。而有些格式更是不公开的专有格式。
+<p><strong>2.在游戏中读取DCC 软件格式的文件,其速度通常过慢。而有些格式更是不公开的专有格式。<br />
 因此,用DCC 软件制作的数据,通常要导出为容易读取的标准格式或自定义格式,以便在游戏中使用。</strong></p>
 <div class="language-text highlight"><pre><span></span><code>**当数据自DCC 软件导出后,有时必须经过再处理,才能放在游戏引擎里使用。若工作室要为游戏开发多个平台,这些中间文件必须按平台做不同处理。例如,三维网格(3D mesh)数据可能导出为某中间文件格式,如XML 或简单的二进制格式;之后,可能会合并相同材质的网格,或把太大的网格分割成引擎允许的大小;最后,为方便每个平台读取,用最适合的方式组织网格数据,并包装成内存影像。
 从 DCC 到游戏引擎的管道,有时候被称为资产调节管道(asset conditioning pipeline)。每个引擎都有某种形式的资产调节管道。&quot;**
@@ -3738,6 +3739,9 @@
   </script>
 
                 
+
+  
+
               </article>
             </div>
           
