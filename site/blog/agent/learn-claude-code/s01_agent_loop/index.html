@@ -4119,7 +4119,7 @@
 
 <p><code>2026年3月4日</code></p>
 <h2 id="s01-agent-loop">s01 agent loop</h2>
-<p><img alt="img" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305173200666.jpg" /></p>
+<p><img alt="img" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305173200666.jpg" tag="3" /></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">anthropic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Anthropic</span>
@@ -4457,9 +4457,9 @@
 </span><span id="__span-1-207"><a id="__codelineno-1-207" name="__codelineno-1-207" href="#__codelineno-1-207"></a>&gt; A **function call** is **how** the agent acts on the world; a **skill** is **what the agent learns** — and a skill is loaded into the agent *through* a function call.
 </span><span id="__span-1-208"><a id="__codelineno-1-208" name="__codelineno-1-208" href="#__codelineno-1-208"></a>````
 </span></code></pre></div>
-<p><img alt="image-20260303155851348" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260303155853208.png" /></p>
+<p><img alt="image-20260303155851348" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260303155853208.png" tag="3" /></p>
 <h2 id="skill-function-call">"&gt;&gt; skill 和 function call有什么区别和联系？"</h2>
-<p><img alt="image-20260303164520279" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305161223408.png" /></p>
+<p><img alt="image-20260303164520279" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305161223408.png" tag="3" /></p>
 <p>日志中出现了两个核心报错，它们是因果关系：</p>
 <ol>
 <li>核心诱因：<code>UnicodeDecodeError: 'gbk' codec can't decode...</code></li>
@@ -4477,7 +4477,7 @@
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>++                         encoding=&#39;utf-8&#39;, errors=&#39;replace&#39;) # 显式指定 utf-8 并替换乱码
 </span></code></pre></div>
 <p>继续提问相同的问题</p>
-<p><img alt="image-20260303164236839" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305161233498.png" /></p>
+<p><img alt="image-20260303164236839" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305161233498.png" tag="3" /></p>
 <p>感觉是网络通信问题方面：</p>
 <ol>
 <li><strong>上下文体积庞大 (Context Bloat)：</strong> 到后面几轮时，Agent 的 <code>messages</code> 历史中塞满了项目目录树、2 个 Python 脚本源码、2 个 Skill 配置文件、2 个长篇中文文档。这种请求的输入 Token 高达 <code>14,000+</code> 到 <code>16,000+</code>。</li>
@@ -4507,7 +4507,7 @@
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">})</span>
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        <span class="o">...</span>
 </span></code></pre></div>
-<p><img alt="image-20260303184444330" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305161243334.png" /></p>
+<p><img alt="image-20260303184444330" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260305161243334.png" tag="3" /></p>
 <p>输出</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>(llm) D:\code\Agent\learn-claude-code&gt;python agents\s01_agent_loop.py
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>s01 &gt;&gt; skill 和 function call有什么区别和联系？
@@ -4962,7 +4962,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
