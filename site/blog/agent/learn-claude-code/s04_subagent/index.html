@@ -4336,7 +4336,7 @@
 
 <p><code>2026年4月1日</code></p>
 <h2 id="s04-subagent">s04 subagent</h2>
-<p><img alt="s04 subagent" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260401193307778.png" /></p>
+<p><img alt="s04 subagent" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260401193307778.png" tag="3" /></p>
 <h2 id="_1">改动</h2>
 <p>通过引入子代理（subagent）架构，优化长任务中“上下文污染”</p>
 <table>
@@ -4407,7 +4407,7 @@
 <li>子代理：使用 <code>client.messages.create(...)</code>，非流式，无需把试错过程也流式打印在屏幕上。</li>
 </ul>
 <p>子代理解放了上下文，非流式解放了屏幕。用户只需要知道‘下属去干活了’以及‘下属干完汇报的结果’。</p>
-<p><img alt="子代理" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260401195627554.png" /></p>
+<p><img alt="子代理" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260401195627554.png" tag="3" /></p>
 <h2 id="langfuse">Langfuse 层级追踪</h2>
 <h3 id="trace-generation-span">➡️Trace, Generation 与 Span</h3>
 <p>Langfuse 的三个核心概念在 <code>s04</code> 中的映射关系：</p>
@@ -4427,7 +4427,7 @@
 <blockquote>
 <p>由于它包裹在 <code>run_subagent</code> 执行期间，Langfuse 会自动将子 Agent 内部的每一次 LLM 调用（Generation）和具体的工具执行（Span）都挂载到 <code>run_subagent</code> 这个父节点之下。</p>
 </blockquote>
-<p><img alt="langfuse 后台" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260401193304180.png" /></p>
+<p><img alt="langfuse 后台" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260401193304180.png" tag="3" /></p>
 <p>类似：</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>▼ Trace: 用户要求写一个贪吃蛇游戏
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  ▼ Generation: 主 Agent 思考 (决定派发任务)
