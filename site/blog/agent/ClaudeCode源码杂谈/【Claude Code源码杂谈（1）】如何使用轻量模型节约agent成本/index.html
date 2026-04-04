@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../../agent/learn-claude-code/s04_subagent/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/">
+        <link rel="next" href="../../agent-articles/%28reddit%29engineering%20roadmap/">
       
       
-      <link rel="icon" href="../../../niyan.png">
+      <link rel="icon" href="../../../../niyan.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Wsl2 参考的对象类型不支持尝试的操作 - 泥烟的客栈</title>
+        <title>【Claude Code源码杂谈（1）】如何使用轻量模型节约agent成本 - 泥烟的客栈</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,11 +46,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/css/custom.css">
+      <link rel="stylesheet" href="../../../../assets/css/custom.css">
     
-      <link rel="stylesheet" href="../../../assets/css/simpleLightbox.min.css">
+      <link rel="stylesheet" href="../../../../assets/css/simpleLightbox.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#claude-code1agent" class="md-skip">
           跳转至
         </a>
       
@@ -92,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="泥烟的客栈" class="md-header__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
+    <a href="../../../.." title="泥烟的客栈" class="md-header__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
       
-  <img src="../../../battery-half.svg" alt="logo">
+  <img src="../../../../battery-half.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Wsl2 参考的对象类型不支持尝试的操作
+              【Claude Code源码杂谈（1）】如何使用轻量模型节约agent成本
             
           </span>
         </div>
@@ -206,7 +206,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -227,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Friends/" class="md-tabs__link">
+        <a href="../../../../Friends/" class="md-tabs__link">
           
   
   
@@ -249,7 +249,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Logs/" class="md-tabs__link">
+        <a href="../../../../Logs/" class="md-tabs__link">
           
   
   
@@ -271,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Reading/" class="md-tabs__link">
+        <a href="../../../../Reading/" class="md-tabs__link">
           
   
   
@@ -293,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../See%26Think/" class="md-tabs__link">
+        <a href="../../../../See%26Think/" class="md-tabs__link">
           
   
   
@@ -315,7 +315,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ToRead/" class="md-tabs__link">
+        <a href="../../../../ToRead/" class="md-tabs__link">
           
   
   
@@ -339,7 +339,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -381,9 +381,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="泥烟的客栈" class="md-nav__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
+    <a href="../../../.." title="泥烟的客栈" class="md-nav__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
       
-  <img src="../../../battery-half.svg" alt="logo">
+  <img src="../../../../battery-half.svg" alt="logo">
 
     </a>
     泥烟的客栈
@@ -398,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -441,7 +441,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Friends/" class="md-nav__link ">
+            <a href="../../../../Friends/" class="md-nav__link ">
               
   
   
@@ -501,7 +501,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Logs/" class="md-nav__link ">
+            <a href="../../../../Logs/" class="md-nav__link ">
               
   
   
@@ -581,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Logs/%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD/mkdocs%E5%B7%A5%E4%BD%9C%E5%8F%8A%E5%A4%87%E4%BB%BD%E6%B5%81/" class="md-nav__link">
+      <a href="../../../../Logs/%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD/mkdocs%E5%B7%A5%E4%BD%9C%E5%8F%8A%E5%A4%87%E4%BB%BD%E6%B5%81/" class="md-nav__link">
         
   
   
@@ -648,7 +648,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Reading/" class="md-nav__link ">
+            <a href="../../../../Reading/" class="md-nav__link ">
               
   
   
@@ -728,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Reading/%E3%80%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%28%E9%AB%98%E4%B8%AD%E7%89%88%29%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      <a href="../../../../Reading/%E3%80%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%28%E9%AB%98%E4%B8%AD%E7%89%88%29%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
   
@@ -782,7 +782,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
+            <a href="../../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
               
   
   
@@ -817,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      <a href="../../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
   
@@ -871,7 +871,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/" class="md-nav__link ">
+            <a href="../../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/" class="md-nav__link ">
               
   
   
@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -960,7 +960,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
+            <a href="../../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
               
   
   
@@ -995,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+      <a href="../../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
         
   
   
@@ -1060,7 +1060,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../See%26Think/" class="md-nav__link ">
+            <a href="../../../../See%26Think/" class="md-nav__link ">
               
   
   
@@ -1118,7 +1118,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../See%26Think/AI-answer/" class="md-nav__link ">
+            <a href="../../../../See%26Think/AI-answer/" class="md-nav__link ">
               
   
   
@@ -1198,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../See%26Think/AI-answer/tips/%E6%9C%89%E5%85%B3%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E8%A7%84%E8%8C%83%E5%81%9A%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../See%26Think/AI-answer/tips/%E6%9C%89%E5%85%B3%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E8%A7%84%E8%8C%83%E5%81%9A%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -1262,7 +1262,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../See%26Think/TALK/" class="md-nav__link ">
+            <a href="../../../../See%26Think/TALK/" class="md-nav__link ">
               
   
   
@@ -1297,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../See%26Think/TALK/%E7%BF%81%E5%AE%B6%E7%BF%8C/" class="md-nav__link">
+      <a href="../../../../See%26Think/TALK/%E7%BF%81%E5%AE%B6%E7%BF%8C/" class="md-nav__link">
         
   
   
@@ -1320,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../See%26Think/TALK/%E8%83%A1%E6%B8%8A%E9%B8%A3/" class="md-nav__link">
+      <a href="../../../../See%26Think/TALK/%E8%83%A1%E6%B8%8A%E9%B8%A3/" class="md-nav__link">
         
   
   
@@ -1372,7 +1372,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../See%26Think/TECH/" class="md-nav__link ">
+            <a href="../../../../See%26Think/TECH/" class="md-nav__link ">
               
   
   
@@ -1444,7 +1444,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ToRead/" class="md-nav__link ">
+            <a href="../../../../ToRead/" class="md-nav__link ">
               
   
   
@@ -1526,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%5B%E5%8E%9F%E6%96%87%5D%20FIFO%20%E4%BC%98%E4%BA%8E%20LRU%20%20-%20%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/" class="md-nav__link">
+      <a href="../../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%5B%E5%8E%9F%E6%96%87%5D%20FIFO%20%E4%BC%98%E4%BA%8E%20LRU%20%20-%20%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/" class="md-nav__link">
         
   
   
@@ -1549,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%E5%AF%B9QD-LP-FIFO%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E7%AE%80%E6%98%93%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      <a href="../../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%E5%AF%B9QD-LP-FIFO%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E7%AE%80%E6%98%93%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
         
   
   
@@ -1603,7 +1603,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ToRead/Learning/" class="md-nav__link ">
+            <a href="../../../../ToRead/Learning/" class="md-nav__link ">
               
   
   
@@ -1638,7 +1638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ToRead/Learning/why%20LLM%20tokens%20cheaper/" class="md-nav__link">
+      <a href="../../../../ToRead/Learning/why%20LLM%20tokens%20cheaper/" class="md-nav__link">
         
   
   
@@ -1718,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/reddit-readlist/" class="md-nav__link">
+      <a href="../../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/reddit-readlist/" class="md-nav__link">
         
   
   
@@ -1741,7 +1741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/zhihu-readlist/" class="md-nav__link">
+      <a href="../../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/zhihu-readlist/" class="md-nav__link">
         
   
   
@@ -1764,7 +1764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/%E5%85%AC%E4%BC%97%E5%8F%B7-readlist/" class="md-nav__link">
+      <a href="../../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/%E5%85%AC%E4%BC%97%E5%8F%B7-readlist/" class="md-nav__link">
         
   
   
@@ -1858,7 +1858,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   
@@ -1944,7 +1944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AI/optimized_rag_milvus_deepseek/" class="md-nav__link">
+      <a href="../../../AI/optimized_rag_milvus_deepseek/" class="md-nav__link">
         
   
   
@@ -1967,7 +1967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AI/rag_milvus_deepseek/" class="md-nav__link">
+      <a href="../../../AI/rag_milvus_deepseek/" class="md-nav__link">
         
   
   
@@ -2035,7 +2035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AI/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/deepseek%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../../AI/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/deepseek%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   
@@ -2115,7 +2115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%9E%84%E5%BB%BA%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      <a href="../../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%9E%84%E5%BB%BA%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
         
   
   
@@ -2138,7 +2138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%80%9F%E5%8A%A9%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E7%AE%80%E8%A6%81%E4%BA%86%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+      <a href="../../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%80%9F%E5%8A%A9%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E7%AE%80%E8%A6%81%E4%BA%86%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
         
   
   
@@ -2161,7 +2161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%86%B3%E7%AD%96%E6%A0%91/" class="md-nav__link">
+      <a href="../../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%86%B3%E7%AD%96%E6%A0%91/" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../GAMES101/" class="md-nav__link ">
+            <a href="../../../GAMES101/" class="md-nav__link ">
               
   
   
@@ -2266,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+      <a href="../../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
         
   
   
@@ -2289,7 +2289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+      <a href="../../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
         
   
   
@@ -2312,7 +2312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+      <a href="../../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
         
   
   
@@ -2335,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+      <a href="../../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
         
   
   
@@ -2358,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+      <a href="../../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
         
   
   
@@ -2440,7 +2440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+      <a href="../../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
         
   
   
@@ -2463,7 +2463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+      <a href="../../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
         
   
   
@@ -2486,7 +2486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+      <a href="../../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
         
   
   
@@ -2509,7 +2509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+      <a href="../../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
         
   
   
@@ -2591,7 +2591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   
@@ -2614,7 +2614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
+      <a href="../../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -2637,7 +2637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -2660,7 +2660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
+      <a href="../../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
         
   
   
@@ -2688,6 +2688,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2710,15 +2712,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../agent/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -2737,7 +2739,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_6">
             <span class="md-nav__icon md-icon"></span>
             Agent
@@ -2750,6 +2752,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2768,15 +2772,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../agent/ClaudeCode%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -2795,7 +2799,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_6_2">
             <span class="md-nav__icon md-icon"></span>
             ClaudeCode源码杂谈
@@ -2808,10 +2812,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../agent/ClaudeCode%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88/%E3%80%90Claude%20Code%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88%EF%BC%881%EF%BC%89%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BD%BB%E9%87%8F%E6%A8%A1%E5%9E%8B%E8%8A%82%E7%BA%A6agent%E6%88%90%E6%9C%AC/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    【Claude Code源码杂谈（1）】如何使用轻量模型节约agent成本
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2822,6 +2848,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#claude-codehaiku-45" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Code中Haiku 4.5 的核心使用场景
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Code中Haiku 4.5 的核心使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1web-search-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣：Web Search Tool 的快速执行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2token-counting-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣：Token Counting Fallback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣：离线会话摘要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣：会话历史搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5rate-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣：Rate Limit 降级处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣：权限决策中的安全分类（Bash 权限检查）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      附录：模型定价对比
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关资料：
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2887,7 +3020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/agent-articles/%28reddit%29engineering%20roadmap/" class="md-nav__link">
+      <a href="../../agent-articles/%28reddit%29engineering%20roadmap/" class="md-nav__link">
         
   
   
@@ -2947,7 +3080,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../agent/learn-claude-code/" class="md-nav__link ">
+            <a href="../../learn-claude-code/" class="md-nav__link ">
               
   
   
@@ -2982,7 +3115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/learn-claude-code/s01_agent_loop/" class="md-nav__link">
+      <a href="../../learn-claude-code/s01_agent_loop/" class="md-nav__link">
         
   
   
@@ -3005,7 +3138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/learn-claude-code/s02_tool_use/" class="md-nav__link">
+      <a href="../../learn-claude-code/s02_tool_use/" class="md-nav__link">
         
   
   
@@ -3028,7 +3161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/learn-claude-code/s03_todo_write/" class="md-nav__link">
+      <a href="../../learn-claude-code/s03_todo_write/" class="md-nav__link">
         
   
   
@@ -3051,7 +3184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/learn-claude-code/s04_subagent/" class="md-nav__link">
+      <a href="../../learn-claude-code/s04_subagent/" class="md-nav__link">
         
   
   
@@ -3087,10 +3220,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -3105,11 +3236,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
         
           
           <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
@@ -3125,7 +3256,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             Debug
@@ -3136,30 +3267,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Wsl2 参考的对象类型不支持尝试的操作
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   
@@ -3170,42 +3281,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      新增注册表信息
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3267,7 +3342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
+      <a href="../../../debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
         
   
   
@@ -3290,7 +3365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
+      <a href="../../../debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
         
   
   
@@ -3313,7 +3388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux/%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91%2Cubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="md-nav__link">
+      <a href="../../../debug/linux/%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91%2Cubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="md-nav__link">
         
   
   
@@ -3401,7 +3476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   
@@ -3424,7 +3499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   
@@ -3447,7 +3522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   
@@ -3523,7 +3598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
+      <a href="../../../maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
         
   
   
@@ -3599,7 +3674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
+      <a href="../../../python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
         
   
   
@@ -3679,7 +3754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B7%A5%E5%85%B7/cmake/" class="md-nav__link">
+      <a href="../../../%E5%B7%A5%E5%85%B7/cmake/" class="md-nav__link">
         
   
   
@@ -3702,7 +3777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
+      <a href="../../../%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
         
   
   
@@ -3725,7 +3800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B7%A5%E5%85%B7/pelican/" class="md-nav__link">
+      <a href="../../../%E5%B7%A5%E5%85%B7/pelican/" class="md-nav__link">
         
   
   
@@ -3777,7 +3852,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link ">
+            <a href="../../../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link ">
               
   
   
@@ -3866,7 +3941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
         
   
   
@@ -3889,7 +3964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
         
   
   
@@ -3912,7 +3987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   
@@ -3935,7 +4010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
         
   
   
@@ -4011,7 +4086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E7%BF%BB%E8%AF%91/%E9%A5%AE%E6%B0%B4%E6%80%9D%E6%BA%90%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+      <a href="../../../%E7%BF%BB%E8%AF%91/%E9%A5%AE%E6%B0%B4%E6%80%9D%E6%BA%90%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
         
   
   
@@ -4087,7 +4162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+      <a href="../../../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
         
   
   
@@ -4163,7 +4238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/trender_note/" class="md-nav__link">
+      <a href="../../../%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/trender_note/" class="md-nav__link">
         
   
   
@@ -4211,6 +4286,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -4219,9 +4296,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#claude-codehaiku-45" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Code中Haiku 4.5 的核心使用场景
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Code中Haiku 4.5 的核心使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1web-search-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣：Web Search Tool 的快速执行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2token-counting-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣：Token Counting Fallback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣：离线会话摘要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣：会话历史搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5rate-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣：Rate Limit 降级处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣：权限决策中的安全分类（Bash 权限检查）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      原因
+      附录：模型定价对比
     </span>
   </a>
   
@@ -4230,7 +4376,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      新增注册表信息
+      相关资料：
     </span>
   </a>
   
@@ -4253,24 +4399,383 @@
 
 
 
-  <h1>Wsl2 参考的对象类型不支持尝试的操作</h1>
-
-<p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061755879.png" tag="3" /></p>
-<h2 id="_1">原因</h2>
+<p><code>- 2026年4月4日</code></p>
+<h1 id="claude-code1agent">【Claude Code源码杂谈（1）】如何使用轻量模型节约agent成本</h1>
 <blockquote>
-<p>使用代理软件，或游戏加速服务，winsock出现问题。<br />
-可以通过注册表的方式，从winsock中排除wsl即可</p>
+<p>📌 <strong>注</strong>：本文所有成本数据基于代码中硬编码的标准定价（来自 <code>src/utils/modelCost.ts</code>），源自官方定价文档。实际定价可能会随时间变化，最新定价请参考</p>
+<p>platform.claude.com/docs/en/about-claude/pricing</p>
 </blockquote>
-<h2 id="_2">新增注册表信息</h2>
-<p>新建.reg后缀的文本文件, 内容为<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Windows Registry Editor Version 5.00
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\AppId_Catalog\0408F7A3]
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&quot;AppFullPath&quot;=&quot;C:\\Windows\\System32\\wsl.exe&quot;
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>&quot;PermittedLspCategories&quot;=dword:80000000
-</span></code></pre></div><br />
-执行后<br />
-<img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/202405061755946.png" tag="3" /></p>
+<p>Claude Code 采用 <strong>多层级模型架构</strong>，根据不同的计算场景使用不同性能的模型。</p>
+<p>Haiku 4.5 作为轻量级模型，在以下关键场景中被系统性地使用：</p>
+<ul>
+<li><strong>成本驱动</strong> 的边缘任务</li>
+</ul>
+<p>Web Search、Token Counting</p>
+<ul>
+<li><strong>低延迟</strong> 的实时反馈任务</li>
+</ul>
+<p>Away Summary、Session Search</p>
+<ul>
+<li><strong>高吞吐</strong> 的后台工作</li>
+</ul>
+<p>Rate Limit Processing</p>
+<p><img alt="Haiku适配情况" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260404173512792.png" /></p>
+<h2 id="claude-codehaiku-45">Claude Code中Haiku 4.5 的核心使用场景</h2>
+<h3 id="1web-search-tool">1️⃣：Web Search Tool 的快速执行</h3>
+<p><strong>触发条件</strong>：Feature Flag <code>tengu_plum_vx3</code> 启用时</p>
+<blockquote>
+<p><code>tengu_plum_vx3</code> 是一个功能开关，用于控制 WebSearchTool 是否使用 Haiku。</p>
+</blockquote>
+<p><img alt="tengu_plum_vx3开关" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260404173525643.png" /></p>
+<ul>
+<li><code>useHaiku = true</code> 时：使用 <code>getSmallFastModel()</code> 进行网络搜索，禁用思考配置 (<code>thinkingConfig: disabled</code>)</li>
+<li><code>useHaiku = false</code> 时：使用常规主模型 (<code>context.options.mainLoopModel</code>)</li>
+</ul>
+<p>Web 搜索不需要复杂推理，这个标志可让网络搜索操作更轻量、更快速/低成本 。</p>
+<h3 id="2token-counting-fallback">2️⃣：Token Counting Fallback</h3>
+<p><img alt="api provider" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260404173531994.png" /></p>
+<p>目前支持的api provider:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>启用方式</th>
+<th>认证方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firstParty</code></td>
+<td>默认</td>
+<td>ANTHROPIC_API_KEY/ OAuth</td>
+</tr>
+<tr>
+<td><code>bedrock</code></td>
+<td>CLAUDE_CODE_USE_BEDROCK=1</td>
+<td>AWS 凭证 / Bearer Token</td>
+</tr>
+<tr>
+<td><code>vertex</code></td>
+<td>CLAUDE_CODE_USE_VERTEX=1</td>
+<td>GCP 凭证</td>
+</tr>
+<tr>
+<td><code>foundry</code></td>
+<td>CLAUDE_CODE_USE_FOUNDRY=1</td>
+<td>Azure AD / API Key</td>
+</tr>
+</tbody>
+</table>
+<p>而较为准确的token使用情况有以下作用：</p>
+<ol>
+<li>当<strong>上下文使用量 &gt; 阈值</strong> → <strong>自动压缩对话历史</strong></li>
+</ol>
+<p><img alt="自动压缩" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260404173538057.png" /></p>
+<ol>
+<li>
+<p>用户可以在UI上直观查看上下文使用状态</p>
+</li>
+<li>
+<p>防止超过 Context Window</p>
+</li>
+</ol>
+<p>如果 token 计数不准确，可能：</p>
+<ul>
+<li>发送超过 200k tokens 的请求 → API 报错</li>
+<li>或者压缩时机不对 →不知道用了多少，就没法决定什么时候该压缩。导致 上下文被意外截断</li>
+</ul>
+<p>为什么此处需要haiku：</p>
+<ul>
+<li>
+<p>Anthropic 直连 API 有 <code>countTokens()</code> 支持 </p>
+</li>
+<li>
+<p>AWS Bedrock 的 <code>CountTokensCommand</code> 支持 </p>
+</li>
+<li>
+<p>Google Vertex 有 beta 支持</p>
+</li>
+</ul>
+<p>但 Bedrock 有些情况下 countTokens 不可用，可能返回 null</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>countTokensWithFallback (analyzeContext.ts:77)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  ├─ countMessagesTokensWithAPI (tokenEstimation.ts:140)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  │    ├─ Bedrock → countTokensWithBedrock (可能返回 null)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  │    └─ 其他 → anthropic.beta.messages.countTokens
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  └─ (如果上面返回 null) → countTokensViaHaikuFallback (tokenEstimation.ts:251)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>       └─ 实际调用 Haiku 模型 + 统计 usage.input_tokens
+</span></code></pre></div>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">countTokensWithFallback</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">Anthropic.Beta.Messages.BetaMessageParam</span><span class="p">[],</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">tools</span><span class="o">:</span><span class="w"> </span><span class="kt">Anthropic.Beta.Messages.BetaToolUnion</span><span class="p">[],</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="c1">// 第一优先级：用 native API 计数</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">countMessagesTokensWithAPI</span><span class="p">(</span><span class="nx">messages</span><span class="p">,</span><span class="w"> </span><span class="nx">tools</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">// 第二优先级：Haiku fallback（成本最低）</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fallbackResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">countTokensViaHaikuFallback</span><span class="p">(</span><span class="nx">messages</span><span class="p">,</span><span class="w"> </span><span class="nx">tools</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fallbackResult</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="c1">// 最后手段：粗略估算（不调用 API）</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">roughTokenCountEstimation</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Haiku Fallback <strong>通过发送 max_tokens=1 的虚假请求，最小化成本</strong>，来从response.usage.input_tokens 读取实际 token 数</p>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">countTokensViaHaikuFallback</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">Anthropic.Beta.Messages.BetaMessageParam</span><span class="p">[],</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">tools</span><span class="o">:</span><span class="w"> </span><span class="kt">Anthropic.Beta.Messages.BetaToolUnion</span><span class="p">[],</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">getVertexRegionForModel</span><span class="p">(</span><span class="nx">getSmallFastModel</span><span class="p">())</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;global&#39;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="o">?</span><span class="w"> </span><span class="nx">getDefaultSonnetModel</span><span class="p">()</span><span class="w">  </span><span class="c1">// Vertex global 不支持 Haiku</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="nx">hasThinkingBlocks</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">getAPIProvider</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;bedrock&#39;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="o">?</span><span class="w"> </span><span class="nx">getDefaultSonnetModel</span><span class="p">()</span><span class="w">  </span><span class="c1">// Bedrock 的 Haiku 3.5 不支持 thinking</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="nx">getSmallFastModel</span><span class="p">()</span><span class="w">      </span><span class="c1">// 其他情况用 Haiku 4.5</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="c1">// 关键技巧：发送 max_tokens=1 的虚假请求</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryModel</span><span class="p">({</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nx">model</span><span class="p">,</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">messages</span><span class="p">,</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nx">tools</span><span class="p">,</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nx">max_tokens</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 最小化成本：不会实际输出任何 tokens</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="p">})</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="c1">// 从 response.usage.input_tokens 读取实际 token 数</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">usage</span><span class="p">.</span><span class="nx">input_tokens</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">}</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>成本</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主循环 Token Count</td>
+<td>✅ 免费（原生 API）</td>
+<td>上下文管理</td>
+</tr>
+<tr>
+<td>Haiku Fallback</td>
+<td>$0.000001-0.00001</td>
+<td>Bedrock 与第三方服务</td>
+</tr>
+<tr>
+<td>粗略估算</td>
+<td>$0</td>
+<td>热路径快速检查</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3">3️⃣：离线会话摘要</h3>
+<p>用户长时间离开后，生成"用户回来时"的快速摘要卡片</p>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">generateAwaySummary</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">readonly</span><span class="w"> </span><span class="nx">Message</span><span class="p">[],</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="kt">AbortSignal</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getSessionMemoryContent</span><span class="p">()</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="c1">// 只取最近 30 条消息（≈15 轮对话）</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">recent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">messages</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">30</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryModelWithoutStreaming</span><span class="p">({</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="kt">getSmallFastModel</span><span class="p">(),</span><span class="w">  </span><span class="c1">// ← Haiku 4.5</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nx">thinkingConfig</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;disabled&#39;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nx">systemPrompt</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="p">...</span><span class="nx">recent</span><span class="p">,</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="nx">createUserMessage</span><span class="p">({</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="sb">`用户离开了。写 1-3 句话总结：</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="sb">          1) 高层任务（他们在构建/调试什么）</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="sb">          2) 下一个具体步骤</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="sb">          忽略实现细节和 commit 摘要。`</span><span class="p">,</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">      </span><span class="p">}),</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="p">})</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">extractMessageText</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="p">}</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>需要考虑的方面</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>延迟</td>
+<td>用户打开应用后立即显示，不能等待</td>
+</tr>
+<tr>
+<td>质量需求</td>
+<td>只需 "<strong>足够好</strong>" 的摘要，不需最高质量</td>
+</tr>
+<tr>
+<td>成本压力</td>
+<td>每个用户回话可能触发 →  需<strong>降低单次成本</strong></td>
+</tr>
+</tbody>
+</table>
+<p>而Haiku 推理快速，成本低，足以生成短文本摘要</p>
+<h3 id="4">4️⃣：会话历史搜索</h3>
+<p>帮助用户快速找到相关的历史对话</p>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">agenticSessionSearch</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nx">logs</span><span class="o">:</span><span class="w"> </span><span class="kt">LogOption</span><span class="p">[],</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nx">signal?</span><span class="o">:</span><span class="w"> </span><span class="kt">AbortSignal</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">LogOption</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="c1">// 第一轮：快速 grep 过滤</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">matchingLogs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">logs</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">log</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nx">logContainsQuery</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span><span class="w"> </span><span class="nx">query</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="p">)</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="c1">// 第二轮：用 AI 进行语义重排序</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Sessions:</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="si">${</span><span class="nx">sessionList</span><span class="si">}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="sb">Search query: &quot;</span><span class="si">${</span><span class="nx">query</span><span class="si">}</span><span class="sb">&quot;</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="sb">Find the sessions most relevant to this query.`</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryModel</span><span class="p">({</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="kt">getSmallFastModel</span><span class="p">(),</span><span class="w">  </span><span class="c1">// ← Haiku 4.5</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="kt">userMessage</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="nx">max_tokens</span><span class="o">:</span><span class="w"> </span><span class="kt">256</span><span class="p">,</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="p">})</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="c1">// 解析 AI 返回的排序结果</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">parseRelevantSessions</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="5rate-limit">5️⃣：Rate Limit 降级处理</h3>
+<p>Claude.ai 用户有强制 rate limits（5 hour / 7 day）</p>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">checkClaudeAIRateLimits</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ClaudeAILimits</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// 发送最小化请求以获取 rate limit 头信息</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getSmallFastModel</span><span class="p">()</span><span class="w">  </span><span class="c1">// Haiku 4.5</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryModel</span><span class="p">({</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="nx">model</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="nx">max_tokens</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">})</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="c1">// 从响应头读取 rate limit 信息</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">utilization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parseHeaders</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">utilization</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;limited&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;allowed&#39;</span><span class="p">,</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">      </span><span class="nx">utilization</span><span class="p">,</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="c1">// ...处理错误</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="6bash">6️⃣：权限决策中的安全分类（Bash 权限检查）</h3>
+<p><strong>文件位置</strong>：<a href="docs/safety/why-safety-matters.mdx#L70">docs/safety/why-safety-matters.mdx</a></p>
+<p>Bash 命令执行前需通过 5 层权限检查</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Layer 1: AST 解析（tree-sitter） ← 不用 AI
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Layer 2: 精确规则匹配 ← 不用 AI
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Layer 3: 分类器检查
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        ↓
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        用 Haiku 对 deny/ask 规则进行语义匹配
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Layer 4: 沙箱虚拟化 ← 不用 AI
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Layer 5: Hooks &amp; 预算 ← 不用 AI
+</span></code></pre></div>
+<p><strong>Haiku 在权限中的角色：</strong></p>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// 用户定义规则（来自配置）：</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">denyRules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="s2">&quot;避免访问 /etc/passwd&quot;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="s2">&quot;阻止向 AWS 发送 sensitive 数据&quot;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">]</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1">// Bash 命令：bash(&quot;grep admin /var/log/auth.log&quot;)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// 步骤 1-2 失败（不是字面上的 /etc/passwd，有文件读权限）</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1">//</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1">// 步骤 3：用 Haiku 做语义检查</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">semanticMatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryModel</span><span class="p">({</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="kt">getSmallFastModel</span><span class="p">(),</span><span class="w">  </span><span class="c1">// Haiku 4.5</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="sb">`规则：&quot;</span><span class="si">${</span><span class="nx">denyRules</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="si">}</span><span class="sb">&quot;</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="sb">              命令：&quot;grep admin /var/log/auth.log&quot;</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="sb">              命令是否违反规则？(yes/no)`</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">  </span><span class="p">}],</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">  </span><span class="nx">max_tokens</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="p">,</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">})</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="c1">// 返回：&quot;no&quot; - 因为 /var/log/auth.log ≠ /etc/passwd</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="c1">// 命令被允许</span>
+</span></code></pre></div>
+<p>为什么这里用 Haiku：</p>
+<ul>
+<li><strong>关键时刻</strong>：安全决策，必须准确</li>
+<li><strong>Haiku 能力足够</strong>：规则匹配是 LLM 的强项</li>
+<li><strong>成本极低</strong>：每次检查 &lt; $0.000001</li>
+<li><strong>延迟包容</strong>：安全检查可接受 100-200ms 延迟</li>
+</ul>
+<h2 id="_1">附录：模型定价对比</h2>
+<p><strong>定价来源</strong>：<code>src/utils/modelCost.ts</code> 中的硬编码标准定价配置</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Input（输入）</th>
+<th>Output（输出）</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Haiku 4.5</td>
+<td>$1/1M</td>
+<td>$5/1M</td>
+<td>边缘计算、轻量级任务</td>
+</tr>
+<tr>
+<td>Sonnet 4.6</td>
+<td>$3/1M</td>
+<td>$15/1M</td>
+<td>记忆筛选、一般任务</td>
+</tr>
+<tr>
+<td>Opus 4.6</td>
+<td>$15/1M（fast）</td>
+<td>$75/1M（fast）</td>
+<td>复杂推理、最高质量</td>
+</tr>
+</tbody>
+</table>
+<p>成本对比（1M input + 100K output）：</p>
+<p>Haiku 4.5:     $1 + $0.5 = $1.5</p>
+<p>Sonnet 4.6:    $3 + $1.5 = $4.5</p>
+<p>Opus 4.6:      $15 + $7.5 = $22.5</p>
+<h2 id="_2">相关资料：</h2>
+<ul>
+<li>
+<p>基于 Claude Code  npm 发布包 source map 还原版本</p>
+</li>
+<li>
+<p>Caylent --- Claude Haiku 4.5 Deep Dive: Cost, Capabilities, and the Multi-Agent Opportunity</p>
+</li>
+</ul>
+<blockquote>
+<p>https://caylent.com/blog/claude-haiku-4-5-deep-dive-cost-capabilities-and-the-multi-agent-opportunity</p>
+</blockquote>
 
 
 
@@ -4426,16 +4931,16 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+        <script src="../../../../assets/js/jquery-3.2.1.min.js"></script>
       
-        <script src="../../../assets/js/simpleLightbox.min.js"></script>
+        <script src="../../../../assets/js/simpleLightbox.min.js"></script>
       
-        <script src="../../../assets/js/custom.js"></script>
+        <script src="../../../../assets/js/custom.js"></script>
       
     
   </body>
