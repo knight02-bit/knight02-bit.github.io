@@ -1,0 +1,5653 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../20260421%20%E6%B0%B4%E5%A2%A8%E7%94%BB%E7%AC%94%E8%A7%A62D%E3%80%813D%E5%AE%9E%E7%8E%B0%E8%B0%83%E7%A0%94/">
+      
+      
+        <link rel="next" href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/">
+      
+      
+      <link rel="icon" href="../../../niyan.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>20260422 RAG文本分块可视化与评估 - 泥烟的客栈</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="../../../assets/css/simpleLightbox.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#visual-debugging" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="泥烟的客栈" class="md-header__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
+      
+  <img src="../../../battery-half.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            泥烟的客栈
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              20260422 RAG文本分块可视化与评估
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  &gt;&gt;&gt;泥烟の导航站
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Friends/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Friends
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Logs/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Logs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Reading/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reading
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../See%26Think/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  See&Think
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ToRead/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ToRead
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="泥烟的客栈" class="md-nav__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
+      
+  <img src="../../../battery-half.svg" alt="logo">
+
+    </a>
+    泥烟的客栈
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    &gt;&gt;&gt;泥烟の导航站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Friends/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Friends
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Friends
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Logs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Logs
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    脚本备份
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            脚本备份
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Logs/%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD/mkdocs%E5%B7%A5%E4%BD%9C%E5%8F%8A%E5%A4%87%E4%BB%BD%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mkdocs 工作及备份流
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Reading
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    《人工智能(高中版)》
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            《人工智能(高中版)》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%28%E9%AB%98%E4%B8%AD%E7%89%88%29%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    《垃圾回收的算法与实现》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            《垃圾回收的算法与实现》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    《程序性能优化理论与方法》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            《程序性能优化理论与方法》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    程序性能优化理论与方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    《算法精粹》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            《算法精粹》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    斐波那契数列的多种实现和性能
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    See&Think
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            See&Think
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/AI-answer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    AI answer
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI answer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tips
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tips
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../See%26Think/AI-answer/tips/%E6%9C%89%E5%85%B3%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E8%A7%84%E8%8C%83%E5%81%9A%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    项目的进度可能因为上下文不足而中断，应该怎么做
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/TALK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    TALK
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            TALK
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../See%26Think/TALK/%E7%BF%81%E5%AE%B6%E7%BF%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    翁家翌
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../See%26Think/TALK/%E8%83%A1%E6%B8%8A%E9%B8%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    胡渊鸣
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/TECH/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    TECH
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            TECH
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ToRead/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ToRead
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ToRead
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    FIFO 优于 LRU：惰性提升和快速降级的威力
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            FIFO 优于 LRU：惰性提升和快速降级的威力
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%5B%E5%8E%9F%E6%96%87%5D%20FIFO%20%E4%BC%98%E4%BA%8E%20LRU%20%20-%20%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [原文] FIFO 优于 LRU    惰性提升和快速降级的威力
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%E5%AF%B9QD-LP-FIFO%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E7%AE%80%E6%98%93%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    对QD-LP-FIFO的理解和简易代码实现
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ToRead/Learning/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Learning
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/Learning/why%20LLM%20tokens%20cheaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    why LLM tokens cheaper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    论坛摘抄
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            论坛摘抄
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/reddit-readlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reddit readlist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/zhihu-readlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    科技
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/%E5%85%AC%E4%BC%97%E5%8F%B7-readlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    公众号 readlist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/optimized_rag_milvus_deepseek/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    （优化）使用Milvus和DeepSeek构建RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/rag_milvus_deepseek/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用Milvus和DeepSeek构建RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    技术探究
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            技术探究
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/deepseek%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deepseek原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_4" id="__nav_7_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    机器学习
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%9E%84%E5%BB%BA%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用监督学习构建经典机器学习模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%80%9F%E5%8A%A9%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E7%AE%80%E8%A6%81%E4%BA%86%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    借助一个例子简要了解机器学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%86%B3%E7%AD%96%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    决策树
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../GAMES101/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    GAMES101
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GAMES101环境配置记录 wsl+ubuntu22.04+vscode+VcXsrv
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture1 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture3 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture6抗锯齿与一点点深度缓存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture7~9 初学shading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    GAMES104
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES104
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记] 游戏中的渲染管线,后处理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.21 基础架构1 [引擎架构分层，整体Pipeline]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.28 基础架构2 『数据组织和管理』
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记]4.4 渲染系统1 『渲染数据组织』
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Unity
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Unity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔3.15]quard的trigger属性,SmoothDamp函数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔3.18] Vector3.Slerp 球形插值, 椭圆映射法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔4.28] 解决trigger触发累积的方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔4.29] 在跳跃前后水平方向参数的状态锁
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../agent/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Agent
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../agent/ClaudeCode%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ClaudeCode源码杂谈
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_2" id="__nav_7_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ClaudeCode源码杂谈
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/ClaudeCode%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88/%E3%80%90Claude%20Code%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88%EF%BC%881%EF%BC%89%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BD%BB%E9%87%8F%E6%A8%A1%E5%9E%8B%E8%8A%82%E7%BA%A6agent%E6%88%90%E6%9C%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    【Claude Code源码杂谈（1）】如何使用轻量模型节约agent成本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6_3" id="__nav_7_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Agent articles
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Agent articles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/agent-articles/%28reddit%29engineering%20roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    I built AI agents for 20+ startups this year. Here is the engineering roadmap to actually getting started.
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../agent/learn-claude-code/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Learn claude code
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_4" id="__nav_7_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Learn claude code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s01_agent_loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S01 agent loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s02_tool_use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S02 tool use
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s03_todo_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S03 todo write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s04_subagent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S04 subagent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Debug
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wsl2 参考的对象类型不支持尝试的操作
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7_2" id="__nav_7_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [linux] 即使有root权限, 仍然无法修改文件 [E212 cant open file for writing]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [linux虚拟机] 使用yum命令时，解析不了yum源，Cannot find a valid baseurl for repo base 7 x86 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/linux/%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91%2Cubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    由于使用校园网,ubuntu虚拟机时而不能连接网络的解决方案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Javascript
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [JavaScript学习记录] 异步操作
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [JavaStript学习记录] 对原型链的一些理解
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [转载]JavaScript 的 this 原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maze
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_9">
+            <span class="md-nav__icon md-icon"></span>
+            Maze
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [python实现] 递归回溯(深度优先)构造随机迷宫
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_10" id="__nav_7_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_10">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [python笔记] 深入分析iterable, iterator, generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    工具
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_11">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/cmake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cmake
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/pelican/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pelican
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    常用命令
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12">
+            <span class="md-nav__icon md-icon"></span>
+            常用命令
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_13" id="__nav_7_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    技术报告
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_13">
+            <span class="md-nav__icon md-icon"></span>
+            技术报告
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20260421%20%E6%B0%B4%E5%A2%A8%E7%94%BB%E7%AC%94%E8%A7%A62D%E3%80%813D%E5%AE%9E%E7%8E%B0%E8%B0%83%E7%A0%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20260421 水墨画笔触2D、3D实现调研
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    20260422 RAG文本分块可视化与评估
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    20260422 RAG文本分块可视化与评估
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visual-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、切分过程的深度可视化（Visual Debugging）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、切分过程的深度可视化（Visual Debugging）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 专门面向 Chunking 的可视化工具
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 专门面向 Chunking 的可视化工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1chunkviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）ChunkViz 系列（经典的文本分块可视化）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2rag-chunking-playground-rag-chunk-labweb-playground" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）RAG Chunking Playground / RAG Chunk Lab（Web Playground 型）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3docling-studiopdfoffice-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3）Docling Studio：面向复杂文档（PDF/Office）的结构级可视化与 Chunking 调试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      4）终端/Embedding 空间类可视化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantitative-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、分块质量的量化评估模型（Quantitative Metrics）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、分块质量的量化评估模型（Quantitative Metrics）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-chunk-intrinsic-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 内在 Chunk 质量指标（Intrinsic Metrics）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 内在 Chunk 质量指标（Intrinsic Metrics）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1boundary-clarity-chunk-stickiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）Boundary Clarity（边界清晰度）&amp; Chunk Stickiness（块粘性）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2adaptive-chunking-ekimetrics-adaptive-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）Adaptive Chunking 的五个内在指标（Ekimetrics Adaptive Chunking）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3）语义连贯性 / 冗余度 / 覆盖率一类指标
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-llm-as-a-judge-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 基于 LLM-as-a-judge 的 Chunk 质量评估
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 基于 LLM-as-a-judge 的 Chunk 质量评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ragas-general-purpose-metricssimple-criteria-rubrics-based-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）RAGAS 的 General Purpose Metrics（Simple Criteria / Rubrics-Based Scoring）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2llm-as-a-judge-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）LLM-as-a-judge + 下游 QA 结合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-rag-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 RAG 层面的端到端评估（间接反映 chunking 优劣）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、RAG 评估框架在 Chunking 质量评估上的能力对比
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、RAG 评估框架在 Chunking 质量评估上的能力对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 能力维度概览
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 针对 Chunking 质量的具体用法对比
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 针对 Chunking 质量的具体用法对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ragas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）RAGAS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2trulens" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）TruLens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3deepeval" class="md-nav__link">
+    <span class="md-ellipsis">
+      3）DeepEval
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、从解析到调优的完整落地 Workflow（可操作）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、从解析到调优的完整落地 Workflow（可操作）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 0：准备基准数据与目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 1：复杂文档解析（Parsing）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2chunking-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 2：策略切分（Chunking Strategy）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3visual-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 3：可视化调试（Visual Debugging）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 4：质量量化评估（Metrics &amp; 自动化对比）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段 4：质量量化评估（Metrics &amp; 自动化对比）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 内在指标评估（无 query）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-llm-as-a-judge-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 LLM-as-a-judge Chunk 评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-rag-ragas-trulens-deepeval" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 RAG 端到端评估（RAGAS / TruLens / DeepEval）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 5：参数/策略调优（Optimization &amp; 迭代）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结：如何把这些拼成一套工程化体系？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_14" id="__nav_7_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据结构与算法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_14">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构与算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C++实现Trie 树
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [AcWing算法提高] 搜索专题练习(进行中......)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [KMP] 对最长前后缀匹配表生成步骤的理解
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    对筛质数三种方法的理解[普通筛,诶氏筛,线性筛]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_15" id="__nav_7_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    翻译
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_15">
+            <span class="md-nav__icon md-icon"></span>
+            翻译
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BF%BB%E8%AF%91/%E9%A5%AE%E6%B0%B4%E6%80%9D%E6%BA%90%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    饮水思源学习计算机图形技术和编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    设计模式
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            设计模式
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    游戏设计模式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_17" id="__nav_7_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    项目记录
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_17">
+            <span class="md-nav__icon md-icon"></span>
+            项目记录
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/trender_note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TRenderer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visual-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、切分过程的深度可视化（Visual Debugging）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、切分过程的深度可视化（Visual Debugging）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 专门面向 Chunking 的可视化工具
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 专门面向 Chunking 的可视化工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1chunkviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）ChunkViz 系列（经典的文本分块可视化）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2rag-chunking-playground-rag-chunk-labweb-playground" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）RAG Chunking Playground / RAG Chunk Lab（Web Playground 型）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3docling-studiopdfoffice-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3）Docling Studio：面向复杂文档（PDF/Office）的结构级可视化与 Chunking 调试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      4）终端/Embedding 空间类可视化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantitative-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、分块质量的量化评估模型（Quantitative Metrics）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、分块质量的量化评估模型（Quantitative Metrics）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-chunk-intrinsic-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 内在 Chunk 质量指标（Intrinsic Metrics）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 内在 Chunk 质量指标（Intrinsic Metrics）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1boundary-clarity-chunk-stickiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）Boundary Clarity（边界清晰度）&amp; Chunk Stickiness（块粘性）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2adaptive-chunking-ekimetrics-adaptive-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）Adaptive Chunking 的五个内在指标（Ekimetrics Adaptive Chunking）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3）语义连贯性 / 冗余度 / 覆盖率一类指标
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-llm-as-a-judge-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 基于 LLM-as-a-judge 的 Chunk 质量评估
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 基于 LLM-as-a-judge 的 Chunk 质量评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ragas-general-purpose-metricssimple-criteria-rubrics-based-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）RAGAS 的 General Purpose Metrics（Simple Criteria / Rubrics-Based Scoring）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2llm-as-a-judge-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）LLM-as-a-judge + 下游 QA 结合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-rag-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 RAG 层面的端到端评估（间接反映 chunking 优劣）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、RAG 评估框架在 Chunking 质量评估上的能力对比
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、RAG 评估框架在 Chunking 质量评估上的能力对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 能力维度概览
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 针对 Chunking 质量的具体用法对比
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 针对 Chunking 质量的具体用法对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ragas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1）RAGAS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2trulens" class="md-nav__link">
+    <span class="md-ellipsis">
+      2）TruLens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3deepeval" class="md-nav__link">
+    <span class="md-ellipsis">
+      3）DeepEval
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、从解析到调优的完整落地 Workflow（可操作）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、从解析到调优的完整落地 Workflow（可操作）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 0：准备基准数据与目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 1：复杂文档解析（Parsing）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2chunking-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 2：策略切分（Chunking Strategy）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3visual-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 3：可视化调试（Visual Debugging）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 4：质量量化评估（Metrics &amp; 自动化对比）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段 4：质量量化评估（Metrics &amp; 自动化对比）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 内在指标评估（无 query）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-llm-as-a-judge-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 LLM-as-a-judge Chunk 评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-rag-ragas-trulens-deepeval" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 RAG 端到端评估（RAGAS / TruLens / DeepEval）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段 5：参数/策略调优（Optimization &amp; 迭代）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结：如何把这些拼成一套工程化体系？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+
+  <h1>20260422 RAG文本分块可视化与评估</h1>
+
+<blockquote>
+<p>在构建RAG（检索增强生成）系统时，文本的 Chunking 策略直接决定了后续 Retrieval 的召回率和准确性。目前基于固定长度或标点的粗暴切分往往会导致语义截断。我想建立一套科学的 Chunking 可视化与质量评估体系，请针对以下三个核心维度进行深度解答：</p>
+<p>1.切分过程的深度可视化（Visual Debugging）：目前有哪些前沿的开源技术、UI工具或项目（例如 Chunkviz 或更底层的解析器），能够提供直观的界面，让我‘所见即所得’地看到复杂文档（如包含多级标题、表格、代码块的PDF/Markdown）在不同策略（如 Recursive、Semantic Chunking）下的具体物理边界、上下文重叠（Overlap）以及信息保留状态？请说明它们的技术实现原理。</p>
+<p>2.分块质量的量化评估模型（Quantitative Metrics）：除了人工肉眼观察可视化结果，业界有没有成熟的自动化衡量体系？例如，如何通过量化指标（如语义连贯性得分、信息丢失率、或基于 LLM-as-a-judge 的方法）来反向推导和证明某一种 Chunking 方式比另一种更优秀？</p>
+<p>3.最佳实践与框架对比：请对比目前主流的 RAG 评估框架（如 Ragas, TruLens, DeepEval 等）在评估 Chunking 质量这一细分环节的能力差异。结合上述的可视化与量化指标，能否为我总结一套从‘复杂文档解析 -&gt; 策略切分 -&gt; 可视化调试 -&gt; 质量量化评估 -&gt; 参数调优’的完整落地 Workflow？</p>
+</blockquote>
+<p>在构建RAG系统时，Chunking 策略直接决定了后续 Retrieval 的召回率和准确性。基于固定长度或标点的粗暴切分往往会导致语义截断。</p>
+<p>这是一篇针对现有Chunking可视化与质量评估体系的报告，我借助MiroThinker强大的检索能力实现，对于部分内容做了订正，得以分析市面上有关切分过程的深度可视化、分块质量的量化评估模型以及相关实践与框架对比。</p>
+<h2 id="visual-debugging">一、切分过程的深度可视化（Visual Debugging）</h2>
+<h3 id="11-chunking">1.1 专门面向 Chunking 的可视化工具</h3>
+<h4 id="1chunkviz">1）ChunkViz 系列（经典的文本分块可视化）</h4>
+<ul>
+<li>代表项目：</li>
+<li>
+<p><code>gkamradt/ChunkViz</code> GitHub 项目和在线站点 chunkviz.up.railway.app 等 [1]</p>
+<p><img alt="image-20260422195324587" src="https://cdn.jsdelivr.net/gh/knight02-bit/BlogPicture/typoraPic/20260422195345590.png" /></p>
+</li>
+<li>
+<p>其他仿真/分支实现，如基于 Streamlit 的 <code>Chunking-Vis</code> [2]</p>
+</li>
+<li>
+<p>能力：</p>
+</li>
+<li>支持把任意一段文本（多段落）粘贴进去，选择不同分割算法：固定长度、按句、按段、递归分割（Recursive Character / RecursiveTextSplitter）等。</li>
+<li>UI 上以高亮或分块边框的形式展示：<ul>
+<li>每个 chunk 的起止字符/Token 位置</li>
+<li>重叠（overlap）部分通常以不同颜色标记，例如“尾端 o ch 与下一块首端 o ch 重合”的视觉演示 [3]</li>
+</ul>
+</li>
+<li>
+<p>部分版本支持同时展示“原始文本 + 按策略分块后的列表”，方便对比。</p>
+</li>
+<li>
+<p>技术原理（概念层面）：</p>
+</li>
+<li>前端：React / Streamlit，将文本分块结果映射成一维“字符条带”或多行文本，每个 chunk 一个 <code>&lt;span&gt;</code>，根据 chunk id 赋不同颜色。</li>
+<li>后端：<ul>
+<li>直接调用 LangChain / LlamaIndex 等框架内置 splitter（RecursiveCharacterTextSplitter、SentenceSplitter 等），或者实现等价逻辑。</li>
+<li>对文本做一次线性扫描，记录每块的 <code>[start, end)</code> 索引，再传给前端进行可视化。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>这类工具非常适合做“策略 + 参数”级别的快速对比：例如 512 vs 1024 token chunk size、不同比例 overlap 等。</p>
+</blockquote>
+<h4 id="2rag-chunking-playground-rag-chunk-labweb-playground">2）RAG Chunking Playground / RAG Chunk Lab（Web Playground 型）</h4>
+<ul>
+<li>代表项目：</li>
+<li>RAG Chunking Playground（aiagentsbuzz.com/tools/rag-chunking-playground）和配套文章 “RAG Chunking Strategies: The Visual Guide (2026 Benchmarks)” [4]</li>
+<li>LangCopilot 的 “RAG Chunking &amp; Retrieval Visualization Lab” [5]</li>
+<li>能力：</li>
+<li>支持上传真实文档（Markdown / HTML / PDF 已预解析为 Markdown），然后：<ul>
+<li>在同一 UI 中对比多种策略：Fixed-size、Recursive、Sentence-based、Semantic、Agentic 等。</li>
+<li>以可交互的方式调整 chunk_size、overlap、最小/最大句子数等参数，实时刷新分块情况。</li>
+</ul>
+</li>
+<li>通常会附带“简单检索模拟”：<ul>
+<li>选定一段 query，UI 用 embeddings 搜索 top-k chunk，并高亮被召回的块，让你直观感受不同 chunking 策略对检索 Top-k 命中的影响。</li>
+</ul>
+</li>
+<li>技术原理：</li>
+<li>文档处理：<ul>
+<li>先用一个统一 loader 把 PDF/HTML 转成结构化 Markdown（可直接对接 Docling，见下）；</li>
+<li>再跑不同 chunker：比如 size-based（按 token 长度）、recursive（多级分隔符）、semantic（基于相邻句子 embedding 相似度找到“断点”）。</li>
+</ul>
+</li>
+<li>前端可视化：<ul>
+<li>每一种策略对应一个“时间轴”或者纵向列表，把 chunk 以 card 的形式展示，提供 hover/点击查看原始文本子区间。</li>
+<li>如果集成检索模拟，则还会显示“被当前 query 召回的块”并做颜色标记。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>这是“策略层”的可视化：帮你理解固定长度 vs 语义 chunking 在真实文档上的宏观行为。</p>
+</blockquote>
+<h4 id="3docling-studiopdfoffice-chunking">3）Docling Studio：面向复杂文档（PDF/Office）的结构级可视化与 Chunking 调试</h4>
+<ul>
+<li>代表项目：Docling + Docling Studio（IBM 开源文档解析栈） [6][7]</li>
+<li>能力：</li>
+<li>面向 PDF / Office / 图片扫描件：<ul>
+<li>显示页面级的 bounding boxes：段落、表格、图片、公式等区域，用矩形框覆盖原始 PDF。</li>
+<li>标出阅读顺序（reading order）、段落层级、标题树，适用于报告、论文、规范等复杂文档。</li>
+</ul>
+</li>
+<li>RAG 相关：<ul>
+<li>新版本 Docling Studio 已加上 “interactive chunking for RAG pipeline inspection” 功能 [8]：</li>
+<li>你可以选择某一套 chunking 方案（如“按段落 + 维持表格整体”），在 UI 里直接看到每个 chunk 在 PDF 上的空间范围。</li>
+<li>可以内联编辑 chunk 文本，软删除“不应入库的块”（如页眉/页脚、版权信息）。</li>
+<li>提供“可视化你的向量库里到底有什么”的功能：从向量存储中回读 chunk，绑定到 DoclingDocument 的结构，再投射到 PDF 视图中 [8]。</li>
+</ul>
+</li>
+<li>技术原理：</li>
+<li>文档解析：<ul>
+<li>Docling 使用 layout analysis + OCR（必要时）抽取：文本块、表格、图像区域以及阅读顺序 [9]。</li>
+<li>形成统一的 DoclingDocument（一个结构化 JSON / Pydantic 对象）[10]。</li>
+</ul>
+</li>
+<li>Chunking：<ul>
+<li>在 Docling Core 中内置了 structure-aware chunking：可根据 heading 层级、段落、表格单元等节点来拼装 chunk [10]。</li>
+<li>UI 则是用文档视图和 JSON 视图双向绑定，任何一块 chunk 实际上是一个 DoclingDocument 子树的投影。</li>
+</ul>
+</li>
+<li>可视化渲染：<ul>
+<li>前端把 PDF 作为底图，再叠加用于 debug 的矢量 overlay（SVG 或 Canvas），每类对象（文本、表格、chunk 边界）使用不同颜色和层级展示。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Docling Studio 是你要处理“复杂 PDF/多模态富文档”时，当下最接近“所见即所得 chunking 调试器”的开源方案。</p>
+</blockquote>
+<h4 id="4embedding">4）终端/Embedding 空间类可视化</h4>
+<ul>
+<li>RAG-TUI（rag-tui）[11]：</li>
+<li>一个基于 Textual 的 TUI（终端 UI），可以在命令行里拖动 <code>chunk_size</code> 滑条、切换策略，然后实时看到文本如何被切块。</li>
+<li>重点在于“开发者工作流内嵌调试”：不用打开浏览器即可看到不同 chunk 边界。</li>
+<li>RAGmap、Renumics RAG 等 embedding 可视化工具 [12][13]：</li>
+<li>把 chunk 嵌入到二维空间（UMAP / t-SNE），提供交互式 scatter plot：<ul>
+<li>检查是否有大量 semantic 重叠的块（冗余）；</li>
+<li>查看查询点附近有哪些 chunk 聚集，是否出现“跨文档黏连”的现象。</li>
+</ul>
+</li>
+<li>更偏向后验的“语义结构可视化”，对 semantic chunking 调参非常有帮助。</li>
+</ul>
+<hr />
+<h2 id="quantitative-metrics">二、分块质量的量化评估模型（Quantitative Metrics）</h2>
+<p>这里要区分两类指标：</p>
+<ol>
+<li><strong>内在的 Chunk 质量指标（与具体 query 无关）</strong></li>
+<li><strong>下游 RAG 性能指标（检索/问答层）</strong></li>
+</ol>
+<p>一个推荐做法是：用内在指标筛选/优选候选策略，再用 RAG 评估框架（RAGAS/TruLens/DeepEval）做 end-to-end 验证。</p>
+<h3 id="21-chunk-intrinsic-metrics">2.1 内在 Chunk 质量指标（Intrinsic Metrics）</h3>
+<h4 id="1boundary-clarity-chunk-stickiness">1）Boundary Clarity（边界清晰度）&amp; Chunk Stickiness（块粘性）</h4>
+<p>来源：MoC（Mixtures of Text Chunking Learners）论文 [14] 及后续工作 FreeChunker、M-RAG 等 [15][16]。这些被认为是目前最系统的一套 chunk 质量指标。</p>
+<ul>
+<li>直观含义：</li>
+<li>Boundary Clarity（BC）：衡量 chunk 边界处语义是否自然分割。<ul>
+<li>若在边界两侧的语义相似度明显低，则说明在“话题切换处”切断 → 边界清晰；</li>
+<li>若边界附近句子/段落的语义高度相近，则说明切在了话题内部 → 边界模糊（BC 低）。</li>
+</ul>
+</li>
+<li>Chunk Stickiness（CS）：衡量 chunk 间“语义互相黏连”的程度。<ul>
+<li>典型做法：构建 chunk 间语义图，以 embedding 相似度为边，计算图的熵或聚类系数。</li>
+<li>若同一语义主题被分散到多个 chunk，相互连接很多 → “高粘性”（不好；说明一个概念被拆散）；</li>
+<li>若大部分边集中在 chunk 内部或在统一 cluster 内，则“粘性低” → 语义单元被很好地封装在块里 [17]。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>MoC 的实验显示，这两个指标与下游 QA F1/Recall 有较强相关性，因此可以作为 chunk 策略的“先验质量评分”[14][17]。</p>
+</blockquote>
+<p>你在工程里可以实现一个简化版：</p>
+<ul>
+<li>把文档先按句切分，编码为句子向量。</li>
+<li>每个候选 chunking 策略都能生成一个边界列表 <code>B = {b1, b2, ...}</code>（句子序号）。</li>
+<li>BC 计算思路：</li>
+<li>对每个边界 <code>b</code>，取其左右各 <code>w</code> 个句子窗口，计算左集合与右集合 embedding 平均向量的余弦相似度。</li>
+<li><code>BC = 1 - mean(sim(left_avg, right_avg))</code>（越高越好）。</li>
+<li>CS 计算思路（图熵近似）：</li>
+<li>建立 chunk 间 Graph：节点是 chunk，边权是两个 chunk embedding 的相似度（比如用 [CLS] 或加权平均）。</li>
+<li>计算每个节点的 degree 分布熵或整图的聚类系数；</li>
+<li>CS 越低代表 chunk 间“粘连”越少（更独立）。</li>
+</ul>
+<h4 id="2adaptive-chunking-ekimetrics-adaptive-chunking">2）Adaptive Chunking 的五个内在指标（Ekimetrics Adaptive Chunking）</h4>
+<p>Adaptive Chunking 框架提出了 5 个内在 chunk 质量指标，并在 GitHub 上开源实现 [18][19]：</p>
+<ul>
+<li>官方文档列出的维度（概念上）包括：</li>
+<li>Size Compliance（SC）：块的长度是否在合理区间（避免过长/过短）。</li>
+<li>Coverage / Redundancy：是否有过多重复/重叠文本。</li>
+<li>Coherence：块内部语义是否一致，可用平均相邻句 embedding 相似度等衡量。</li>
+<li>Boundary-related metrics：类似于 Boundary Clarity，关注话题切换位置是否被检测到。</li>
+<li>Uniformity：整个文档分块后，粒度是否过于不均一（有些地方极细、有些极粗）。</li>
+</ul>
+<blockquote>
+<p>这些指标都在<strong>文档级、无 query、无标签</strong>的条件下可计算，非常适合作为自动化 grid search 的目标函数。</p>
+</blockquote>
+<p>你可以参考其思路，把它们实现为 Python 函数，对不同 chunking 参数组合做一次 batch 扫描，直接得到每种策略的 5 维评分向量。</p>
+<h4 id="3">3）语义连贯性 / 冗余度 / 覆盖率一类指标</h4>
+<p>很多工程实践和博客也提出了类似但更“粗粒度”的无监督指标 [20][21]：</p>
+<ul>
+<li>Chunk 内部语义连贯性（Coherence）</li>
+</ul>
+<p>：</p>
+<ul>
+<li>
+<p>计算 chunk 内所有句子向量的平均 pairwise 相似度；平均值越高说明内部话题越集中。</p>
+</li>
+<li>
+<p>Chunk 间冗余度（Redundancy）</p>
+</li>
+</ul>
+<p>：</p>
+<ul>
+<li>
+<p>统计相邻两个 chunk 的相似度；过高说明 overlap 或重复内容太多，会增加存储和检索噪声。</p>
+</li>
+<li>
+<p>文档覆盖率 vs 丢失率</p>
+</li>
+</ul>
+<p>：</p>
+<ul>
+<li>若你在解析阶段跳过了某些区域（页眉/footer、目录等），可以打标签；</li>
+<li>统计“有结构标签的内容被包含到至少一个 chunk 的比例”作为 coverage。</li>
+</ul>
+<p>这些可以跟上面的 BC/CS 结合起来构成一个多目标优化问题。</p>
+<h3 id="22-llm-as-a-judge-chunk">2.2 基于 LLM-as-a-judge 的 Chunk 质量评估</h3>
+<h4 id="1ragas-general-purpose-metricssimple-criteria-rubrics-based-scoring">1）RAGAS 的 General Purpose Metrics（Simple Criteria / Rubrics-Based Scoring）</h4>
+<p>RAGAS 提供了通用的 LLm-as-a-judge 指标，如 Simple Criteria Scoring 和 Rubrics-based Criteria Scoring [22][23]：</p>
+<ul>
+<li>用法思路：</li>
+<li>构造一个“chunk -&gt; 评分”数据集：<ul>
+<li>对每个 chunk，让 LLM 按预设 rubric 打分：</li>
+<li>“该 chunk 是否是语义自洽的一个信息单元（1–5）？”</li>
+<li>“是否包含被截断的句子或表格？（是/否）”</li>
+<li>“这个 chunk 对于回答某类问题是否信息足够？”等。</li>
+</ul>
+</li>
+<li>使用 Simple Criteria 或 Rubrics-based Scoring 封装这些 rubric，并自动生成评分。</li>
+<li>工程实现：</li>
+<li>把 chunk 文本、可选的上下文（如整篇标题、上一级目录）喂给 judge-LLM。</li>
+<li>用 RAGAS 的 CLI 或 Python API 批量评估，得到 per-chunk 或 per-document 的评分分布。</li>
+</ul>
+<p>这样，你就可以：</p>
+<ul>
+<li>用 LLM-as-a-judge 的结果作为“软标签”，在 chunking 策略/参数之间比较谁的“平均 rubrics 分”更高。</li>
+<li>与 BC/CS 等无监督指标进行相关性分析，从而确认哪些内在指标更贴近“人眼/LLM 直觉”。</li>
+</ul>
+<h4 id="2llm-as-a-judge-qa">2）LLM-as-a-judge + 下游 QA 结合</h4>
+<p>另一条更直接的方式是：<strong>围绕 chunk 构造问题，再评估其可回答性</strong>：</p>
+<ul>
+<li>流程：</li>
+<li>对每个 chunk 生成 1～2 个“可由该 chunk 独立回答”的问题（可以用 LLM 自动生成）。</li>
+<li>只把这一块 chunk 作为 context，让同一个或另一个 LLM 去回答。</li>
+<li>用 LLM-as-a-judge 或 RAGAS/DeepEval 中的 faithfulness、answer relevance 等指标评分 [24][25]。</li>
+<li>含义：</li>
+<li>如果某个 chunking 策略经常出现“chunk 自己无法完整回答从自身提取的问题”（例如句子被截断、上下文不全），那么它的可回答性分数就会明显低。</li>
+</ul>
+<p>这等价于从“可用性”角度评估 chunk：<strong>一个好的块，不仅内部连贯，而且足以做一个最小回答单元。</strong></p>
+<h3 id="23-rag-chunking">2.3 RAG 层面的端到端评估（间接反映 chunking 优劣）</h3>
+<p>在已有框架中，RAGAS、DeepEval、TruLens 主要提供的是 RAG 级指标：faithfulness、context relevance / precision / recall、answer relevance 等 [26][27][28]。你可以通过<strong>对比同一数据集在不同 chunking 策略下的这些指标</strong>，间接判断 chunking 方案优劣：</p>
+<ul>
+<li>固定其它组件（embedding 模型、vector DB、reranker、LLM），只变 chunking：</li>
+<li>例如用 Firecrawl/NVIDIA/Chroma 的公开 chunking benchmark 思路 [1][29]：<ul>
+<li>同一问答数据集上，比较不同策略的：</li>
+<li>Context Recall@k（相关块是否被召回？）</li>
+<li>Answer F1 / Exact Match（若有标准答案）</li>
+<li>RAGAS 的 context_precision、answer_relevance 等。</li>
+</ul>
+</li>
+<li>将内在 chunk 指标（BC/CS/SC 等）和 end-to-end 指标一并记录，做相关性与回归分析，从而建立一个“内在指标 -&gt; 预估 RAG 性能”的模型，方便后续无需每次都跑完整评估。</li>
+</ul>
+<hr />
+<h2 id="rag-chunking">三、RAG 评估框架在 Chunking 质量评估上的能力对比</h2>
+<p>这里只针对你关注的三家：RAGAS、TruLens、DeepEval，侧重于它们在“Chunking 这一环”的适配程度。</p>
+<h3 id="31">3.1 能力维度概览</h3>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>定位与优势</th>
+<th>Chunk 级支持现状（2026）</th>
+<th>适合用来做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RAGAS</strong></td>
+<td>专注 RAG 指标（faithfulness, context_precision 等）；支持无标签评估 [26]</td>
+<td>默认是“query-context-answer 三元组”级；无专门 chunk-intrinsic metric，但可以用 General Purpose Metrics 自定义</td>
+<td>做 end-to-end RAG 评估；配合自定义指标可以做 chunk 可回答性/质量打分</td>
+</tr>
+<tr>
+<td><strong>TruLens</strong></td>
+<td>强调“Feedback Functions” + tracing，可挂接在任何 LangChain / LlamaIndex pipeline 上 [30]</td>
+<td>有 API 可以对“检索到的每个 chunk”做 LLM-as-a-judge 评分（context_relevance、MRR 等），但不自带 BC/CS 类指标</td>
+<td>在运行日志中对每轮调用的 chunk 做细粒度评估；分析“哪种 chunking 导致某次回答失败”</td>
+</tr>
+<tr>
+<td><strong>DeepEval</strong></td>
+<td>更像“LLM 单元测试框架”，支持 50+ 指标（RAG Triad 等），集成 CI/CD、组件级评估 [27][31]</td>
+<td>支持“component-level evals”：可对“retriever 输出的 chunk 列表”运行自定义指标；默认不含 chunk intrinsic metrics</td>
+<td>把 chunk 质量检查包装成 pytest 式的测试，用在 CI / 回归测试中，保障策略变更不退化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-chunking">3.2 针对 Chunking 质量的具体用法对比</h3>
+<h4 id="1ragas">1）RAGAS</h4>
+<ul>
+<li>原生指标：</li>
+<li>faithfulness：回答是否被 context 支持。</li>
+<li>context_precision / context_recall：根据 query 和回答判断 context 相关性 [26]。</li>
+<li>用于 chunking 的方式：</li>
+<li><strong>间接</strong>：同一问答基准集，对比不同 chunking 下的这些指标得分。</li>
+<li><strong>直接</strong>：利用 General Purpose Metrics（Simple Criteria、Rubrics-based）编写 chunk-level rubric，让 RAGAS 驱动 LLM-as-a-judge，对每个 chunk 打“语义完整性/可回答性”等分数。</li>
+</ul>
+<blockquote>
+<p>优点：高层 API 友好，容易上手做大规模自动评估。<br />
+缺点：缺少像 BC/CS 这种内在结构指标，需要你自己实现。</p>
+</blockquote>
+<h4 id="2trulens">2）TruLens</h4>
+<ul>
+<li>关键概念是“Feedback Functions”[30]：</li>
+<li>你可以对任意 trace 中的某个字段（如 retrieved_chunks）编写反馈函数：<ul>
+<li>例如对每个 chunk 文本调用 LLM 判断“是否与当前 query 相关”“是否包含明显截断”等。</li>
+<li>或用 retriever 的 groundtruth 数据计算每个 chunk 的 MRR、hit@k 等 [32]。</li>
+</ul>
+</li>
+<li>优点：</li>
+<li>和实际生产调用完全绑定：你能看到<strong>每一次失败回答背后具体召回了哪些 chunk</strong>，并对这些 chunk 打标签。</li>
+<li>特别适合做 chunking 变更前后的在线/离线 AB 对比。</li>
+<li>缺点：</li>
+<li>偏“监控+可观测性”，对“离线、无 query 的 chunk intrinsic 评估”支持不如 Adaptive Chunking 那样开箱即用。</li>
+</ul>
+<h4 id="3deepeval">3）DeepEval</h4>
+<ul>
+<li>本质是“pytest for LLMs”[27][31]：</li>
+<li>你写一个“测试函数”，里面调用你的 RAG pipeline，并对 pipeline 中“retrieved contexts”字段应用各类 metrics。</li>
+<li>自带 RAG Triad（answer_relevance, faithfulness, contextual_relevance/precision/recall）、fluency 等指标 [28]。</li>
+<li>用在 chunking 上的典型方式：</li>
+<li>把 chunking 策略（甚至 chunker 实现）注入到 pipeline 构建中；</li>
+<li>为每种策略建立一套 unit tests：<ul>
+<li>对同一批问题跑 pipeline；</li>
+<li>比较各种 RAG Triad 指标；</li>
+<li>若某项指标（如 contextual_relevance）下降超过阈值则测试失败。</li>
+</ul>
+</li>
+<li>优点：</li>
+<li>可以融入 CI/CD：一旦你调整 chunk_size/overlap/strategy，自动跑回归测试。</li>
+<li>缺点：</li>
+<li>不直接提供 chunk intrinsic 评估，仍需你自己实现 BC/CS/Coherence 等指标。</li>
+</ul>
+<hr />
+<h2 id="workflow">四、从解析到调优的完整落地 Workflow（可操作）</h2>
+<p>下面给你一条可以实际落地、并支持自动化调优的工作流，对应五个阶段：</p>
+<blockquote>
+<p><strong>复杂文档解析 -&gt; 策略切分 -&gt; 可视化调试 -&gt; 质量量化评估 -&gt; 参数/策略调优</strong></p>
+</blockquote>
+<h3 id="0">阶段 0：准备基准数据与目标</h3>
+<ol>
+<li>选定一个或多个典型业务文档集合（PDF 报告、手册、规范等）。</li>
+<li>准备一个基础问答/检索评估集：</li>
+<li>每份文档标注 10～50 个真实用户风格的问题及参考答案；</li>
+<li>若成本有限，也可以用 LLM 自动生成问题，并做少量人工审查。</li>
+<li>明确优化目标：</li>
+<li>更高的检索 Recall / context_precision；</li>
+<li>更少的 hallucination（faithfulness 提高）；</li>
+<li>受限于 context window 的成本约束等。</li>
+</ol>
+<h3 id="1parsing">阶段 1：复杂文档解析（Parsing）</h3>
+<p><strong>推荐工具链：Docling + 自定义 Loader</strong></p>
+<ol>
+<li>用 Docling 把 PDF/Office/扫描件解析成 DoclingDocument（统一结构 JSON/Markdown）[9][10]：</li>
+<li>结构包含：页面、文本块、heading 树、表格、图片区域、阅读顺序。</li>
+<li>设计结构保持策略：</li>
+<li>例如：<ul>
+<li>标题 + 其下所有段落为一组；</li>
+<li>整张表格始终作为一个不可拆分的单元；</li>
+<li>页眉/页脚/版权信息在这一阶段就标记为“可忽略”。</li>
+</ul>
+</li>
+</ol>
+<p><strong>输出</strong>：结构化文档集合，为后续 chunker 提供统一输入。</p>
+<h3 id="2chunking-strategy">阶段 2：策略切分（Chunking Strategy）</h3>
+<p>围绕结构化文档设计多套候选策略（可以参考 Firecrawl、Weaviate、Databricks 的实践指南 [1][20][33]）：</p>
+<ul>
+<li>S1：纯 Fixed-size（按 token 长度 + overlap）。</li>
+<li>S2：Recursive + Heading aware（按标题/段落递归分割）。</li>
+<li>S3：Sentence-based + Overlap。</li>
+<li>S4：Semantic Chunking：</li>
+<li>先按句切割；</li>
+<li>用句向量相似度找到自然话题边界（低相似度处切断）。</li>
+<li>S5：Adaptive / Agentic Chunking：</li>
+<li>不同文档类型用不同策略；</li>
+<li>或用 Adaptive Chunking 框架对多种策略做自动选择 [18][19]。</li>
+</ul>
+<p>在代码中将每种策略封装为一个 <code>Chunker</code> 接口（例如 <code>chunk(doc) -&gt; List[Chunk]</code>），这样后续切换非常轻松。</p>
+<h3 id="3visual-debugging">阶段 3：可视化调试（Visual Debugging）</h3>
+<ol>
+<li><strong>文档视图（结构层）</strong>：</li>
+<li>在 Docling Studio 中加载文档，勾选某一 chunking 策略（如 structure-aware chunking）[8]：<ul>
+<li>观察表格、长段落是否被不合理切分；</li>
+<li>查看 chunk 边界是否恰好落在自然的段落/标题过渡处。</li>
+</ul>
+</li>
+<li>对问题较大的策略记笔记（例如“Fixed-size 切断了大段公式推导”）。</li>
+<li><strong>文本/Token 视图（参数层）</strong>：</li>
+<li>把同一段 markdown 文本复制到 ChunkViz 或 RAG Chunking Playground [1][4]：<ul>
+<li>调节 chunk_size / overlap，观察边界变化；</li>
+<li>尤其关注 FAQ/定义类段落，看是否会被截断。</li>
+</ul>
+</li>
+<li>如要在命令行中调试，可使用 RAG-TUI 实时拖动参数 [11]。</li>
+<li><strong>embedding 视图（语义层）</strong>：</li>
+<li>使用 RAGmap / Renumics RAG 等，将 chunk embeddings 降维可视化 [12][13]：<ul>
+<li>看是否有“某个主题被拆散到多个远距离 cluster”的现象；</li>
+<li>或查询一个典型问题，标出被召回的 chunk，看语义位置是否合理。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>这个阶段的核心是：让你和业务方“建立直觉”，快速淘汰明显不合理的策略，减少后续评估成本。</p>
+</blockquote>
+<h3 id="4metrics">阶段 4：质量量化评估（Metrics &amp; 自动化对比）</h3>
+<h4 id="41-query">4.1 内在指标评估（无 query）</h4>
+<p>对每份文档、每种 chunking 策略，计算一套内在指标：</p>
+<ol>
+<li>实现简化版 BC / CS / Coherence / Redundancy：</li>
+<li>单独对每种策略跑一次，得到例如：<ul>
+<li><code>BC_avg, CS_avg, Coherence_avg, Redundancy_avg, SizeCompliance</code> 等。</li>
+</ul>
+</li>
+<li>若使用 Adaptive Chunking：</li>
+<li>直接借用其 5 个 intrinsic metrics 的实现，对你的文档跑一遍 [18][19]。</li>
+</ol>
+<p>筛选掉那些：</p>
+<ul>
+<li>BC 明显低、CS 明显高的策略；</li>
+<li>长度分布极端（大量超长或超短块）的策略。</li>
+</ul>
+<h4 id="42-llm-as-a-judge-chunk">4.2 LLM-as-a-judge Chunk 评估</h4>
+<ol>
+<li>利用 RAGAS General Purpose Metrics（Simple Criteria / Rubric-based）[22][23]，编写如下 rubric：</li>
+<li>“该 chunk 内是否含有被截断的句子/表格/代码块？”（0/1）</li>
+<li>“该 chunk 能否就本块文本中提到的概念给出一个完整定义或说明？”（1–5）</li>
+<li>“该 chunk 是否包含明显无关噪音（页眉、版权、分页符等）？”（0–1）</li>
+<li>使用一个高质量 LLM（如 GPT-4 级别或本地强模型）作为 judge，批量对所有 chunk 打分。</li>
+<li>对每种策略汇总：</li>
+<li>平均分、低分块占比（如评分＜3 的块比例）。</li>
+</ol>
+<h4 id="43-rag-ragas-trulens-deepeval">4.3 RAG 端到端评估（RAGAS / TruLens / DeepEval）</h4>
+<ol>
+<li><strong>构建多条 pipeline</strong>：每种 chunking 策略构建一个完整 RAG pipeline（其余组件相同）。</li>
+<li>使用 RAGAS 或 DeepEval：</li>
+<li>在问答基准集上跑：<ul>
+<li>faithfulness、answer_relevance、context_precision / recall 等 [26][27][28]。</li>
+</ul>
+</li>
+<li>如有标准答案，则也可计算 EM/F1。</li>
+<li>如需更细粒度的诊断，外加 TruLens：</li>
+<li>为 retrieved_chunks 字段设置 feedback functions，如 context_relevance、hit@k、MRR 等 [30][32]；</li>
+<li>对出错的 query 进行 trace，分析哪些 chunk 反复出现在 bad case 里。</li>
+</ol>
+<p>最终你可以得到一张表：<strong>每种策略在内在指标 &amp; RAG 指标上的综合得分</strong>。</p>
+<h3 id="5optimization">阶段 5：参数/策略调优（Optimization &amp; 迭代）</h3>
+<p>结合上面的结果，推荐采用“两阶段优化 + 回归测试”的方式：</p>
+<ol>
+<li>阶段 1：离线网格搜索（基于内在 + LLM-judge 指标）</li>
+<li>在每种策略内再做细粒度参数搜索（chunk_size, overlap, min/max sentences 等）；</li>
+<li>只使用内在指标 + LLM-judge 得分，快速缩小参数空间。</li>
+<li>阶段 2：小规模 RAG 评估（RAGAS/DeepEval/TruLens）</li>
+<li>对阶段 1 筛出的 top-k 配置，跑完整问答评估；</li>
+<li>用统计显著性或 Bootstrap 置信区间来对照性能差异，避免偶然波动。</li>
+<li>持续回归（CI/CD）</li>
+<li>选中 1～2 套“生产策略 + 参数”；</li>
+<li>用 DeepEval / RAGAS 集成到 CI 流程中：<ul>
+<li>当你改了 chunker 实现或参数时，自动跑评估；</li>
+<li>若某些关键指标（如 faithfulness/context_precision）跌破阈值，则阻断上线。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="_1">总结：如何把这些拼成一套工程化体系？</h2>
+<p>综合上面的内容，你可以把“科学的 Chunking 可视化与质量评估体系”设计为三层：</p>
+<ol>
+<li><strong>可视化层（Visual Debugging）</strong></li>
+<li>文档结构视图：Docling Studio。</li>
+<li>文本/参数视图：ChunkViz / RAG Chunking Playground / RAG-TUI。</li>
+<li>语义空间视图：RAGmap / embedding 可视化。</li>
+<li><strong>度量层（Metrics Layer）</strong></li>
+<li>内在指标：Boundary Clarity、Chunk Stickiness、Coherence、Redundancy、Adaptive Chunking 的五维指标等。</li>
+<li>LLM-as-a-judge：基于 RAGAS General Purpose Metrics 编写 chunk-level rubrics。</li>
+<li>RAG 级指标：RAGAS / DeepEval / TruLens 的 faithfulness、context_precision、answer_relevance 等。</li>
+<li><strong>自动化评估与调优层（Evaluation &amp; Optimization Layer）</strong></li>
+<li>将 chunking 策略抽象为 pluggable <code>Chunker</code>；</li>
+<li>用 Adaptive Chunking &amp; intrinsic metrics 做第一轮筛选；</li>
+<li>再通过 RAGAS / DeepEval / TruLens 等框架，在问答基准集上做端到端对比；</li>
+<li>最终将最优策略写入 CI/CD 的回归测试中，保证后续改动不会无感地破坏 chunk 质量。</li>
+</ol>
+<p>这样，你既有“所见即所得”的可视化能力，又有理论上被大量论文支持（MoC、M-RAG、Adaptive Chunking 等）的定量评估指标，还能与主流 RAG 评估框架自然衔接，形成一个可持续演进的 Chunking 工程体系。</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] Best Chunking Strategies for RAG (and LLMs) in 2026. https://www.firecrawl.dev/blog/best-chunking-strategies-rag</p>
+<p>[2] MichalZnalezniak/Chunking-Vis. https://github.com/MichalZnalezniak/Chunking-Vis</p>
+<p>[3] 5 Levels Of Text Splitting. https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb</p>
+<p>[4] RAG Chunking Strategies: The Visual Guide (2026 Benchmarks). https://aiagentsbuzz.com/guides/rag-chunking-strategies/</p>
+<p>[5] RAG Chunking &amp; Retrieval Visualization Lab. https://langcopilot.com/tools/rag-chunk-lab</p>
+<p>[6] GitHub - docling-project/docling. https://github.com/docling-project/docling</p>
+<p>[7] Docling Document. https://docling-project.github.io/docling/concepts/docling_document/</p>
+<p>[8] Docling Studio 0.4.0 — from OCR debugger to RAG pipeline inspection tool. https://discuss.huggingface.co/t/docling-studio-0-4-0-from-ocr-debugger-to-rag-pipeline-inspection-tool/175267</p>
+<p>[9] Docling Technical Report. https://arxiv.org/html/2408.09869v5</p>
+<p>[10] Docling core data types and transformations. https://github.com/docling-project/docling-core</p>
+<p>[11] rag-tui. https://github.com/rasinmuhammed/rag-tui</p>
+<p>[12] JGalego/RAGmap. https://github.com/JGalego/RAGmap</p>
+<p>[13] Renumics/renumics-rag. https://github.com/Renumics/renumics-rag</p>
+<p>[14] MoC: Mixtures of Text Chunking Learners for Retrieval-Augmented Generation. https://arxiv.org/abs/2503.09600</p>
+<p>[15] M-RAG: Making RAG Faster, Stronger, and More Efficient. https://arxiv.org/html/2603.26667v1</p>
+<p>[16] FreeChunker: A Cross-Granularity Chunking Framework. https://fugumt.com/fugumt/paper_check/2510.20356v1_enmode</p>
+<p>[17] Semantic Chunking Algorithm Survey. https://www.emergentmind.com/topics/semantic-chunking-algorithm</p>
+<p>[18] Adaptive Chunking: automatically select the best chunking method per document for RAG. https://github.com/ekimetrics/adaptive-chunking</p>
+<p>[19] Optimizing Chunking-Method Selection for RAG. https://arxiv.org/pdf/2603.25333</p>
+<p>[20] Mastering Chunking Strategies for RAG. https://community.databricks.com/t5/technical-blog/the-ultimate-guide-to-chunking-strategies-for-rag-applications/ba-p/113089</p>
+<p>[21] RAG Chunking Strategies - DEV Community. https://dev.to/sreeni5018/rag-chunking-strategies-4i3a</p>
+<p>[22] General Purpose Metrics - Ragas. https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/general_purpose/</p>
+<p>[23] Modifying Prompts in Metrics - Ragas. https://docs.ragas.io/en/stable/howtos/customizations/metrics/modifying-prompts-metrics/</p>
+<p>[24] LLM As a Judge: A Complete Guide With Hands-On RAG Example. https://www.datacamp.com/tutorial/llm-as-a-judge-rag</p>
+<p>[25] LLM-as-a-judge: a complete guide to using LLMs for evaluations. https://www.evidentlyai.com/llm-guide/llm-as-a-judge</p>
+<p>[26] List of available metrics - Ragas. https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/</p>
+<p>[27] RAG Evaluation: Metrics, Frameworks &amp; Testing (2026). https://blog.premai.io/rag-evaluation-metrics-frameworks-testing-2026/</p>
+<p>[28] RAG Evaluation | DeepEval by Confident AI. https://deepeval.com/guides/guides-rag-evaluation</p>
+<p>[29] The 2026 RAG Performance Landscape - FloTorch. https://www.flotorch.ai/blogs/the-2026-rag-performance-landscape-what-every-enterprise-leader-needs-to-know</p>
+<p>[30] Evaluation using Feedback Functions - TruLens. https://www.trulens.org/component_guides/evaluation/</p>
+<p>[31] How to Measure Model Quality (RAGAS, DeepEval, TruLens). https://www.abstractalgorithms.dev/llm-evaluation-frameworks-ragas-deepeval-trulens-1</p>
+<p>[32] Groundtruth Evaluations for Retrieval Systems - TruLens. https://www.trulens.org/getting_started/quickstarts/groundtruth_evals_for_retrieval_systems/</p>
+<p>[33] Chunking Strategies to Improve LLM RAG Pipeline Performance. https://weaviate.io/blog/chunking-strategies-for-rag</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 泥烟的客栈
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/knight02-bit" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:tsjkht@foxmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://space.bilibili.com/398743455" target="_blank" rel="noopener" title="space.bilibili.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92c-26.4-.8-48.2-9.8-65.3-27.2S.7 396.5 0 368.2V169.8c.8-26 9.7-47.6 26.7-65.7C43.8 87.8 65.5 78.8 92 78h29.4L96 52.2c-5.7-5.7-8.6-13-8.6-21.8S90.3 14.3 96 8.6 109 0 117.9 0s16.1 2.9 21.9 8.6L213.1 78h88l74.5-69.4C381.7 2.9 389.2 0 398 0s16.1 2.9 21.9 8.6c5.7 5.7 8.6 13 8.6 21.8s-2.9 16.1-8.6 21.8L394.6 78h29.3c26.4.8 48 9.8 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96c-9.6.4-17.4 3.7-23.6 9.8-6.1 6.1-9.4 13.9-9.8 23.5v194.4c0 9.2 3.3 17 9.8 23.5s14.4 9.8 23.6 9.8h320.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+      
+        <script src="../../../assets/js/simpleLightbox.min.js"></script>
+      
+        <script src="../../../assets/js/custom.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5374 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+      
+      
+        <link rel="next" href="../20260422%20RAG%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E8%AF%84%E4%BC%B0/">
+      
+      
+      <link rel="icon" href="../../../niyan.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>20260421 水墨画笔触2D、3D实现调研 - 泥烟的客栈</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="../../../assets/css/simpleLightbox.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="泥烟的客栈" class="md-header__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
+      
+  <img src="../../../battery-half.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            泥烟的客栈
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              20260421 水墨画笔触2D、3D实现调研
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  &gt;&gt;&gt;泥烟の导航站
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Friends/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Friends
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Logs/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Logs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Reading/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reading
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../See%26Think/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  See&Think
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ToRead/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ToRead
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="泥烟的客栈" class="md-nav__button md-logo" aria-label="泥烟的客栈" data-md-component="logo">
+      
+  <img src="../../../battery-half.svg" alt="logo">
+
+    </a>
+    泥烟的客栈
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    &gt;&gt;&gt;泥烟の导航站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Friends/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Friends
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Friends
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Logs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Logs
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    脚本备份
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            脚本备份
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Logs/%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD/mkdocs%E5%B7%A5%E4%BD%9C%E5%8F%8A%E5%A4%87%E4%BB%BD%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mkdocs 工作及备份流
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Reading
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    《人工智能(高中版)》
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            《人工智能(高中版)》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%28%E9%AB%98%E4%B8%AD%E7%89%88%29%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    《垃圾回收的算法与实现》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            《垃圾回收的算法与实现》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    《程序性能优化理论与方法》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            《程序性能优化理论与方法》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    程序性能优化理论与方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    《算法精粹》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            《算法精粹》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reading/%E3%80%8A%E7%AE%97%E6%B3%95%E7%B2%BE%E7%B2%B9%E3%80%8B/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    斐波那契数列的多种实现和性能
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    See&Think
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            See&Think
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/AI-answer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    AI answer
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI answer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tips
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tips
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../See%26Think/AI-answer/tips/%E6%9C%89%E5%85%B3%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E8%A7%84%E8%8C%83%E5%81%9A%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    项目的进度可能因为上下文不足而中断，应该怎么做
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/TALK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    TALK
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            TALK
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../See%26Think/TALK/%E7%BF%81%E5%AE%B6%E7%BF%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    翁家翌
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../See%26Think/TALK/%E8%83%A1%E6%B8%8A%E9%B8%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    胡渊鸣
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../See%26Think/TECH/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    TECH
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            TECH
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ToRead/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ToRead
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ToRead
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    FIFO 优于 LRU：惰性提升和快速降级的威力
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            FIFO 优于 LRU：惰性提升和快速降级的威力
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%5B%E5%8E%9F%E6%96%87%5D%20FIFO%20%E4%BC%98%E4%BA%8E%20LRU%20%20-%20%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [原文] FIFO 优于 LRU    惰性提升和快速降级的威力
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/FIFO%20%E4%BC%98%E4%BA%8E%20LRU%EF%BC%9A%E6%83%B0%E6%80%A7%E6%8F%90%E5%8D%87%E5%92%8C%E5%BF%AB%E9%80%9F%E9%99%8D%E7%BA%A7%E7%9A%84%E5%A8%81%E5%8A%9B/%E5%AF%B9QD-LP-FIFO%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E7%AE%80%E6%98%93%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    对QD-LP-FIFO的理解和简易代码实现
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ToRead/Learning/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Learning
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/Learning/why%20LLM%20tokens%20cheaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    why LLM tokens cheaper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    论坛摘抄
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            论坛摘抄
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/reddit-readlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reddit readlist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/zhihu-readlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    科技
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ToRead/%E8%AE%BA%E5%9D%9B%E6%91%98%E6%8A%84/%E5%85%AC%E4%BC%97%E5%8F%B7-readlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    公众号 readlist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/optimized_rag_milvus_deepseek/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    （优化）使用Milvus和DeepSeek构建RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/rag_milvus_deepseek/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用Milvus和DeepSeek构建RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    技术探究
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            技术探究
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/deepseek%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deepseek原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_4" id="__nav_7_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    机器学习
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%9E%84%E5%BB%BA%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用监督学习构建经典机器学习模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%80%9F%E5%8A%A9%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E7%AE%80%E8%A6%81%E4%BA%86%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    借助一个例子简要了解机器学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%86%B3%E7%AD%96%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    决策树
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../GAMES101/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    GAMES101
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/GAMES101%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95%20wsl%2Bubuntu22.04%2Bvscode%2BVcXsrv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GAMES101环境配置记录 wsl+ubuntu22.04+vscode+VcXsrv
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture1-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture1 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture3-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture3 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture6%E6%8A%97%E9%94%AF%E9%BD%BF%E4%B8%8E%E4%B8%80%E7%82%B9%E7%82%B9%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture6抗锯齿与一点点深度缓存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES101/%5BGames101%E7%AC%94%E8%AE%B0%5DLecture7~9%20%E5%88%9D%E5%AD%A6shading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games101笔记]Lecture7~9 初学shading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    GAMES104
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES104
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%2C%E5%90%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记] 游戏中的渲染管线,后处理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.21%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%841%20%5B%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82%EF%BC%8C%E6%95%B4%E4%BD%93Pipeline%5D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.21 基础架构1 [引擎架构分层，整体Pipeline]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D3.28%20%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%842%20%E3%80%8E%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E5%92%8C%E7%AE%A1%E7%90%86%E3%80%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记]3.28 基础架构2 『数据组织和管理』
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAMES104/%5BGames104%E7%AC%94%E8%AE%B0%5D4.4%20%E6%B8%B2%E6%9F%93%E7%B3%BB%E7%BB%9F1%20%E3%80%8E%E6%B8%B2%E6%9F%93%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E3%80%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Games104笔记]4.4 渲染系统1 『渲染数据组织』
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Unity
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Unity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.15%5Dquard%E7%9A%84trigger%E5%B1%9E%E6%80%A7%2CSmoothDamp%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔3.15]quard的trigger属性,SmoothDamp函数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%943.18%5D%20Vector3.Slerp%20%E7%90%83%E5%BD%A2%E6%8F%92%E5%80%BC%2C%20%E6%A4%AD%E5%9C%86%E6%98%A0%E5%B0%84%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔3.18] Vector3.Slerp 球形插值, 椭圆映射法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.28%5D%20%E8%A7%A3%E5%86%B3trigger%E8%A7%A6%E5%8F%91%E7%B4%AF%E7%A7%AF%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔4.28] 解决trigger触发累积的方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unity/%5BUnity%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%944.29%5D%20%E5%9C%A8%E8%B7%B3%E8%B7%83%E5%89%8D%E5%90%8E%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E5%8F%82%E6%95%B0%E7%9A%84%E7%8A%B6%E6%80%81%E9%94%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [Unity学习随笔4.29] 在跳跃前后水平方向参数的状态锁
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../agent/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Agent
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../agent/ClaudeCode%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ClaudeCode源码杂谈
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_2" id="__nav_7_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ClaudeCode源码杂谈
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/ClaudeCode%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88/%E3%80%90Claude%20Code%E6%BA%90%E7%A0%81%E6%9D%82%E8%B0%88%EF%BC%881%EF%BC%89%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BD%BB%E9%87%8F%E6%A8%A1%E5%9E%8B%E8%8A%82%E7%BA%A6agent%E6%88%90%E6%9C%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    【Claude Code源码杂谈（1）】如何使用轻量模型节约agent成本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6_3" id="__nav_7_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Agent articles
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Agent articles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/agent-articles/%28reddit%29engineering%20roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    I built AI agents for 20+ startups this year. Here is the engineering roadmap to actually getting started.
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../agent/learn-claude-code/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Learn claude code
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_4" id="__nav_7_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Learn claude code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s01_agent_loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S01 agent loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s02_tool_use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S02 tool use
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s03_todo_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S03 todo write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/learn-claude-code/s04_subagent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S04 subagent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Debug
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/wsl2%20%E5%8F%82%E8%80%83%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B0%9D%E8%AF%95%E7%9A%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wsl2 参考的对象类型不支持尝试的操作
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7_2" id="__nav_7_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/linux/%5Blinux%5D%20%E5%8D%B3%E4%BD%BF%E6%9C%89root%E6%9D%83%E9%99%90%2C%20%E4%BB%8D%E7%84%B6%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%20%5BE212%20cant%20open%20file%20for%20writing%5D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [linux] 即使有root权限, 仍然无法修改文件 [E212 cant open file for writing]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/linux/%5Blinux%E8%99%9A%E6%8B%9F%E6%9C%BA%5D%20%E4%BD%BF%E7%94%A8yum%E5%91%BD%E4%BB%A4%E6%97%B6%EF%BC%8C%E8%A7%A3%E6%9E%90%E4%B8%8D%E4%BA%86yum%E6%BA%90%EF%BC%8CCannot%20find%20a%20valid%20baseurl%20for%20repo%20base%207%20x86_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [linux虚拟机] 使用yum命令时，解析不了yum源，Cannot find a valid baseurl for repo base 7 x86 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/linux/%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91%2Cubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E8%80%8C%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    由于使用校园网,ubuntu虚拟机时而不能连接网络的解决方案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Javascript
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/%5BJavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [JavaScript学习记录] 异步操作
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/%5BJavaStript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5D%20%E5%AF%B9%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [JavaStript学习记录] 对原型链的一些理解
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/%5B%E8%BD%AC%E8%BD%BD%5DJavaScript%20%E7%9A%84%20this%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [转载]JavaScript 的 this 原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maze
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_9">
+            <span class="md-nav__icon md-icon"></span>
+            Maze
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maze/%5Bpython%E5%AE%9E%E7%8E%B0%5D%20%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%28%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%29%E6%9E%84%E9%80%A0%E9%9A%8F%E6%9C%BA%E8%BF%B7%E5%AE%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [python实现] 递归回溯(深度优先)构造随机迷宫
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_10" id="__nav_7_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_10">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/%5Bpython%E7%AC%94%E8%AE%B0%5D%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90iterable%2C%20iterator%2C%20generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [python笔记] 深入分析iterable, iterator, generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    工具
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_11">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/cmake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cmake
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B7%A5%E5%85%B7/pelican/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pelican
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    常用命令
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12">
+            <span class="md-nav__icon md-icon"></span>
+            常用命令
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_13" id="__nav_7_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    技术报告
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_13">
+            <span class="md-nav__icon md-icon"></span>
+            技术报告
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    20260421 水墨画笔触2D、3D实现调研
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    20260421 水墨画笔触2D、3D实现调研
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、整体技术图景：从传统笔触到数字水墨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、2D 水墨渲染实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、2D 水墨渲染实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 图像级后处理（Engine / 通用）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 2D 游戏典型实践
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-unity-unreal" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、3D 水墨渲染：Unity / Unreal / 自研引擎
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、3D 水墨渲染：Unity / Unreal / 自研引擎">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Unity 技术路线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-unreal-engineue4-ue5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Unreal Engine（UE4 / UE5）技术路线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 其他 / 自研引擎
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blender" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、Blender 生态下的水墨实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、Blender 生态下的水墨实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 商业 / 闭源插件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 开放教程 / 节点实现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、程序化与随机化：让水墨“活起来”
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、程序化与随机化：让水墨“活起来”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 噪声驱动的随机笔触
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 程序化生成笔触而非“死贴图”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 数据驱动 / AI 向的程序化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、开源 vs 闭源：可用资源一览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、开源 vs 闭源：可用资源一览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 值得关注的开源 / 免费方向
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 主要闭源方向
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、如果你要真正落地：推荐技术路线
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、如果你要真正落地：推荐技术路线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-1-3d-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 目标 1：可控、可实时的 3D 水墨游戏渲染（Unity）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-2-3d-blender" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 目标 2：电影 / 宣传级 3D 水墨短片（Blender 导向）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-3-demo-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 目标 3：研究级 / Demo 级程序化水墨与 AI 结合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、总结与选型建议
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、总结与选型建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20260422%20RAG%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E8%AF%84%E4%BC%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20260422 RAG文本分块可视化与评估
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_14" id="__nav_7_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据结构与算法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_14">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构与算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/C%2B%2B%E5%AE%9E%E7%8E%B0Trie%20%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C++实现Trie 树
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BAcWing%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%5D%20%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98%E7%BB%83%E4%B9%A0%28%E8%BF%9B%E8%A1%8C%E4%B8%AD......%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [AcWing算法提高] 搜索专题练习(进行中......)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%5BKMP%5D%20%E5%AF%B9%E6%9C%80%E9%95%BF%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D%E8%A1%A8%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    [KMP] 对最长前后缀匹配表生成步骤的理解
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%AF%B9%E7%AD%9B%E8%B4%A8%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%5B%E6%99%AE%E9%80%9A%E7%AD%9B%2C%E8%AF%B6%E6%B0%8F%E7%AD%9B%2C%E7%BA%BF%E6%80%A7%E7%AD%9B%5D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    对筛质数三种方法的理解[普通筛,诶氏筛,线性筛]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_15" id="__nav_7_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    翻译
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_15">
+            <span class="md-nav__icon md-icon"></span>
+            翻译
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BF%BB%E8%AF%91/%E9%A5%AE%E6%B0%B4%E6%80%9D%E6%BA%90%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    饮水思源学习计算机图形技术和编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    设计模式
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            设计模式
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    游戏设计模式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_17" id="__nav_7_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    项目记录
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_17">
+            <span class="md-nav__icon md-icon"></span>
+            项目记录
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/trender_note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TRenderer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、整体技术图景：从传统笔触到数字水墨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、2D 水墨渲染实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、2D 水墨渲染实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 图像级后处理（Engine / 通用）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 2D 游戏典型实践
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-unity-unreal" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、3D 水墨渲染：Unity / Unreal / 自研引擎
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、3D 水墨渲染：Unity / Unreal / 自研引擎">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Unity 技术路线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-unreal-engineue4-ue5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Unreal Engine（UE4 / UE5）技术路线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 其他 / 自研引擎
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blender" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、Blender 生态下的水墨实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、Blender 生态下的水墨实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 商业 / 闭源插件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 开放教程 / 节点实现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、程序化与随机化：让水墨“活起来”
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、程序化与随机化：让水墨“活起来”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 噪声驱动的随机笔触
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 程序化生成笔触而非“死贴图”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 数据驱动 / AI 向的程序化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、开源 vs 闭源：可用资源一览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、开源 vs 闭源：可用资源一览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 值得关注的开源 / 免费方向
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 主要闭源方向
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、如果你要真正落地：推荐技术路线
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、如果你要真正落地：推荐技术路线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-1-3d-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 目标 1：可控、可实时的 3D 水墨游戏渲染（Unity）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-2-3d-blender" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 目标 2：电影 / 宣传级 3D 水墨短片（Blender 导向）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-3-demo-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 目标 3：研究级 / Demo 级程序化水墨与 AI 结合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、总结与选型建议
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、总结与选型建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+
+  <h1>20260421 水墨画笔触2D、3D实现调研</h1>
+
+<blockquote>
+<p>调研水墨画笔触/画面的2d/3d实现，包括且不限于游戏引擎、blender以及程序化随机化等方面，以及开源闭源的情况。</p>
+</blockquote>
+<p>下面是基于你给的方向，把「水墨画笔触 / 画面」在 2D / 3D 里的技术路线、游戏引擎 / Blender 实践、程序化随机化手法，以及开源 / 闭源生态整理成的一份可直接用于立项或技术选型的调研总结。</p>
+<hr />
+<h2 id="_1">一、整体技术图景：从传统笔触到数字水墨</h2>
+<p>数字水墨本质上是非真实感渲染（NPR）在中国画语境下的一个分支。典型技术拆解可以粗略分为：</p>
+<ol>
+<li><strong>轮廓线 / 勾线</strong></li>
+<li>法线与视线点积（<code>dot(n, v)</code>）/ 视差（rim light）检测轮廓与折痕，再用水墨笔触纹理叠加。</li>
+<li>屏幕后处理（对深度 / 法线图做边缘检测）。</li>
+<li>在 3D 里常配合“扩张外壳”描边模型或 SDF 笔触。</li>
+<li><strong>内部墨色 / 皴法与晕染</strong></li>
+<li>贴图 + 噪声（Perlin / Voronoi / 分形噪声）模拟纸纹、墨色浓淡和飞白。</li>
+<li>物理 / 半物理扩散：基于宣纸和水墨传输模型，用流体或扩散方程模拟墨晕[1][2]。</li>
+<li>多通道 / 多图层渲染：分“基本笔画区、扩散区、不规则边界区”分别处理[3]。</li>
+<li><strong>风格整体调控</strong></li>
+<li>光照“非写实”：简化高光 / 阴影，按墨分五色（焦、浓、重、淡、清）映射灰度或明度。</li>
+<li>轮廓 vs 内部：很多方案把描边和内部墨色分开着色，再合成[4]。</li>
+<li><strong>实现维度</strong></li>
+<li>2D：图像后处理、Shader Graph、粒子或屏幕空间笔触。</li>
+<li>3D：顶点 / 片元 Shader、后处理、几何节点（Blender）或 Houdini 程序化建模 + UE/Unity 渲染。</li>
+</ol>
+<hr />
+<h2 id="2d">二、2D 水墨渲染实现</h2>
+<h3 id="21-engine">2.1 图像级后处理（Engine / 通用）</h3>
+<p>典型做法（以游戏引擎为例）：</p>
+<ol>
+<li><strong>灰度与对比度调节</strong></li>
+<li>把源图像转为偏冷灰度，提升对比以强化墨色层次，而不是简单“黑白 + 模糊”。</li>
+<li><strong>边缘检测 + 笔触线条</strong></li>
+<li>Sobel / Laplacian 边缘 + 噪声纹理 → 不规则墨线（非纯几何线）。</li>
+<li>或直接用法线 + 深度（在 3D 场景的 2D 输出上做）。</li>
+<li><strong>墨晕与模糊</strong></li>
+<li>多次高斯模糊 + 噪声遮罩，控制“哪里晕、晕多大”；</li>
+<li>有论文用基于图像的水墨扩散模型，在高频细节区域降低扩散保留细节[5]。</li>
+<li><strong>纸纹和留白</strong></li>
+<li>将宣纸纹理（高频噪声）乘进亮度 / Alpha 通道，营造纸张吸墨感；</li>
+<li>通过阈值 / 遮罩控制大片留白（山雾空白、云、水面等）。</li>
+</ol>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>对 2D 游戏或视频后期很友好，只改后处理，兼容现有素材。<br />
+<strong>缺点</strong>：</li>
+<li>与 3D 结构绑定有限，深度感与笔触方向难做到“随物赋形”。</li>
+</ul>
+<h3 id="22-2d">2.2 2D 游戏典型实践</h3>
+<p>2D 水墨手游 / 小游戏大量采用：</p>
+<ul>
+<li>引擎层面：Unity / Cocos / WebGL</li>
+<li>技术要点：</li>
+<li>场景直接绘制为水墨风 Tile / 背景图，角色和 UI 用普通 2D Sprite；</li>
+<li>再叠加一层全屏水墨后处理（描边 + 晕染），强化整体统一感；</li>
+<li>粒子系统 + 手绘水墨粒子（墨滴、墨烟、破墨溅射）做技能与交互特效。</li>
+</ul>
+<hr />
+<h2 id="3d-unity-unreal">三、3D 水墨渲染：Unity / Unreal / 自研引擎</h2>
+<h3 id="31-unity">3.1 Unity 技术路线</h3>
+<p>人员成本和资料最丰富，适合作为主力研发引擎。</p>
+<ol>
+<li>
+<p><strong>基于 Shader 的 3D 水墨风格</strong><br />
+   常见做法（多个技术博客和项目实践中反复出现）：</p>
+</li>
+<li>
+<p>轮廓线</p>
+<ul>
+<li>方式 A：在 Shader 中利用 <code>dot(n, v)</code>、rim lighting，检测视角边缘，叠加水墨笔触纹理；</li>
+<li>方式 B：扩一个外壳模型反向法线 + 固定暗色 / 墨线纹理；</li>
+</ul>
+</li>
+<li>
+<p>内部墨色 / 皴法</p>
+<ul>
+<li>使用 2D 或伪 3D Noise（把 2D Noise 映射到世界坐标）生成笔触走向、皴纹；</li>
+<li>通过世界空间或对象空间坐标采样笔触纹理，控制“山体皴纹顺势而下”；</li>
+</ul>
+</li>
+<li>
+<p>多 Pass / 多层混合</p>
+<ul>
+<li>
+<p>基础色（Diffuse）</p>
+</li>
+<li>
+<p>墨线层</p>
+</li>
+<li>泼墨 / 飞白遮罩层（噪声乘进 Alpha）</li>
+<li>宣纸纹理层。</li>
+</ul>
+</li>
+<li>
+<p><strong>三维山水 / 国画风场景案例</strong><br />
+   有较完整的“仿宋代水墨山水 3D 渲染”技术拆解：</p>
+</li>
+<li>
+<p>使用 Height / Normal 贴图 + 噪声构造皴法；</p>
+</li>
+<li>通过伪 3D Noise 与世界坐标映射，保证从不同角度看皴纹连贯；</li>
+<li>
+<p>远近景用不同笔触密度、对比度和饱和度模拟“远山淡墨，近景重墨”[6]。</p>
+</li>
+<li>
+<p><strong>正式开源项目示例（3D_ChineseInkPaintingStyleShader）</strong></p>
+</li>
+<li>
+<p>基于 Unity 的完整 3D 水墨 Shader 示例，提供项目源码；</p>
+</li>
+<li>主要实现：<ul>
+<li>勾线 Shader + 水墨纹理混合；</li>
+<li>使用随机函数（基于顶点位置的 sin/cos）和噪声图控制笔触粗细、墨色随机变化；</li>
+</ul>
+</li>
+<li>
+<p>许可证允许学习和二次开发（需确认具体 License 条款）。</p>
+</li>
+<li>
+<p><strong>URP / Shader Graph 实现</strong></p>
+</li>
+<li>
+<p>使用 Shader Graph 拼接非真实感节点（NormalFromHeight、VertexID、Truchet 等）可以在图形化界面完成基础水墨效果；</p>
+</li>
+<li>对技术美术友好，方便做风格探索和程序化控制（参数暴露给 Inspector）。</li>
+</ol>
+<h3 id="32-unreal-engineue4-ue5">3.2 Unreal Engine（UE4 / UE5）技术路线</h3>
+<p>Unreal 在重型 3D 水墨场景 / 动画上更常见。</p>
+<ol>
+<li>
+<p><strong>材质 + 后处理组合</strong></p>
+</li>
+<li>
+<p>场景材质中实现水墨着色：</p>
+<ul>
+<li>利用材质节点做 paper texture / ink noise / height-based 皴纹；</li>
+<li>法线与视线点积、曲率检测 + 外扩 outline mesh 做墨线；</li>
+</ul>
+</li>
+<li>
+<p>后处理材质叠加统一的水墨滤镜（纸纹、墨晕、失焦）。</p>
+</li>
+<li>
+<p><strong>Custom Shading Model / 魔改引擎</strong></p>
+</li>
+<li>
+<p>有项目通过自定义 Shading Model 来支持东方绘画风格（Toon、国画等），在 GBuffer 阶段就编码“墨色层级”和“轮廓强度”。</p>
+</li>
+<li>
+<p><strong>程序化与大场景</strong></p>
+</li>
+<li>
+<p>利用 UE5 的 PCG（Procedural Content Generation）和 Houdini 进行程序化山体 / 植被；</p>
+</li>
+<li>
+<p>然后在材质中施加水墨着色，使宏观构图符合“水墨构图规律”（三远法、层层叠山）。</p>
+</li>
+<li>
+<p><strong>闭源特色：电影级动态水墨引擎</strong></p>
+</li>
+<li>
+<p>如电影《哪吒之魔童闹海》团队自研的“动态水墨渲染引擎”，在 3D 动画中实时模拟墨晕、留白和粒子化水墨效果[7]。</p>
+</li>
+<li>
+<p>此类引擎多属于</p>
+<p>企业内部闭源技术</p>
+<p>：</p>
+<ul>
+<li>有专利描述“粒子水墨”“3D 水墨渲染”等；</li>
+<li>对外只以技术分享或论文形式部分披露思路，不开放源码。</li>
+</ul>
+</li>
+</ol>
+<h3 id="33">3.3 其他 / 自研引擎</h3>
+<ul>
+<li>部分公司（如 Lumverse、一些国产 3D 引擎）展示了“水墨江南实时三维场景”，</li>
+</ul>
+<p>通常也是：</p>
+<ul>
+<li>自研渲染管线 + NPR 模块；</li>
+<li>内建纸纹、墨线、墨晕 Shader；</li>
+<li>出于商业考虑大多闭源。</li>
+</ul>
+<hr />
+<h2 id="blender">四、Blender 生态下的水墨实现</h2>
+<p>Blender 是免费开源三维平台，但具体的水墨插件 / Asset 既有闭源商用，也有教程 / 节点网络可自建。</p>
+<h3 id="41">4.1 商业 / 闭源插件</h3>
+<ol>
+<li><strong>Watercolor Renderer（实时水彩 / 水墨风渲染插件）</strong></li>
+<li>面向 Eevee 的实时水彩渲染插件：<ul>
+<li>全局风格配置 + 局部顶点绘制两套控制；</li>
+<li>模拟纸纹、颜料扩散、边缘色散等。</li>
+</ul>
+</li>
+<li>在多个素材站出售（非开源，付费）。</li>
+<li><strong>Inkwood Shader 预设包</strong></li>
+<li>将 3D 模型“重新设计”为水墨 / 油画风格：<ul>
+<li>在 Eevee 下实时工作，含轮廓线、笔触和纸纹；</li>
+</ul>
+</li>
+<li>同样是商业资产包（闭源）。</li>
+<li><strong>InkTool（三维水墨创作工具）</strong></li>
+<li>基于 Geometry Nodes 的 3D 水墨插件，可以把任何模型转成“国画风墨线 + 块面”；</li>
+<li>通过几何节点生成轮廓线、笔触实例化等；</li>
+<li>发布渠道多为爱发电 / B 站推广，通常是付费、不开源源码。</li>
+</ol>
+<h3 id="42">4.2 开放教程 / 节点实现</h3>
+<ol>
+<li><strong>水墨材质节点网络（公开教程）</strong></li>
+<li>用 Blender Shader Nodes 实现：<ul>
+<li>底层：噪声（Noise / Musgrave） + 纸纹（纹理图）；</li>
+<li>中层：通过 Object / World 坐标驱动笔触走向；</li>
+<li>顶层：混合 Base Color 与笔触 Mask，控制飞白与浓淡。</li>
+</ul>
+</li>
+<li>相关实现已被人移植到 Unity Shader 中，说明节点逻辑相对简单、可迁移。</li>
+<li><strong>Grease Pencil + 手绘线条</strong></li>
+<li>用 Grease Pencil 绘制 2D / 2.5D 墨线，再配合底层 3D 模型；</li>
+<li>有人制作传统墨水风格的 Grease Pencil 笔刷（纹理笔 + 抖动参数），免费分享在社区（但笔刷本身多为资产，代码无关）。</li>
+<li><strong>Geometry Nodes 程序化勾线 / 构图</strong></li>
+<li>利用几何节点依数据（法线、曲率、位置）筛选边缘，生成国画式轮廓线；</li>
+<li>再配合材质实现淡墨填色和纸纹。</li>
+</ol>
+<p><strong>总结</strong>：</p>
+<ul>
+<li>Blender 本身是开源；</li>
+<li><strong>高质量水墨插件多为闭源商用</strong>（Watercolor Renderer、Inkwood、InkTool 等）；</li>
+<li>但你完全可以依据公开教程自己搭 Shader/Node 网络，复刻出接近效果。</li>
+</ul>
+<hr />
+<h2 id="_2">五、程序化与随机化：让水墨“活起来”</h2>
+<p>程序化与随机化是让数字水墨摆脱“平贴纹理”、“机械重复”的关键。主要有几层：</p>
+<h3 id="51">5.1 噪声驱动的随机笔触</h3>
+<ol>
+<li><strong>轮廓抖动与飞白</strong></li>
+<li>用 2D / 3D 噪声扰动轮廓线的 UV 或世界坐标：<ul>
+<li><code>offset = noise(worldPos * scale + randomSeed)</code></li>
+<li>将偏移乘进颜色 / Alpha，形成不规则边缘和飞白；</li>
+</ul>
+</li>
+<li>Unity 里常用噪声贴图 <code>_OutlineNoise</code> 来扰动轮廓，使轮廓随模型而非随屏幕。</li>
+<li><strong>笔触粗细 / 浓淡随机化</strong></li>
+<li>在顶点 Shader 中以顶点坐标 / VertexID 作为随机种子，通过 sin/cos 函数生成伪随机数控制：<ul>
+<li>笔触宽度；</li>
+<li>不同区域墨色深浅。</li>
+</ul>
+</li>
+<li>在 Unity 的水墨项目中，已有人用顶点位置作为随机源控制 outline 粗细和颜色抖动。</li>
+</ol>
+<h3 id="52">5.2 程序化生成笔触而非“死贴图”</h3>
+<p>很多 3D 水墨项目都强调：</p>
+<blockquote>
+<p>放弃预制贴图，采用实时程序化生成笔触，笔触随镜头与场景要素“生长”。</p>
+</blockquote>
+<p>典型做法：</p>
+<ol>
+<li><strong>笔触路径由几何 / 摄像机驱动</strong></li>
+<li>按视距、视角、运动速度，用程序生成“刷痕”：<ul>
+<li>摄像机远时：笔触更粗、更抽象；</li>
+<li>近景：增加细节、多层皴纹；</li>
+</ul>
+</li>
+<li>山体、树木、云水等元素的分布（Houdini / PCG 程序化生成）提供笔触生长路径。</li>
+<li><strong>SDF + GPU 实例化</strong>（UE5 课程报告中给出的思路）</li>
+<li>将笔触做成 SDF 纹理 / 体积，然后用 GPU 大量实例化，实时在 3D 空间排布墨线；</li>
+<li>通过自定义“墨迹扩散算法”模拟水墨在纸上的扩散。</li>
+<li><strong>粒子 + 手绘纹理混合</strong></li>
+<li>粒子系统用来控制“有规律的笔触路径”，而不是完全随机粒子云；</li>
+<li>粒子贴图使用手绘水墨笔触纹理，构成剑气、墨烟、浪花等效果；</li>
+<li>随粒子生命周期改变 Alpha / 尺寸模拟“浓到淡、湿到干”。</li>
+</ol>
+<h3 id="53-ai">5.3 数据驱动 / AI 向的程序化</h3>
+<p>在近两年 AIGC 水墨方向中，有几种思路值得借鉴：</p>
+<ol>
+<li><strong>深度学习驱动风格迁移</strong></li>
+<li>对传统水墨数据训练图像 / 视频风格迁移模型，将普通 3D 渲染或实拍转为水墨风格[8]；</li>
+<li>可用于离线生成贴图 / 概念分镜，而非实时游戏。</li>
+<li><strong>数据驱动笔触渲染</strong></li>
+<li>论文中有“Data-Driven Ink Painting Brushstroke Rendering”类方法：从真实笔触数据中学习笔触形状分布与扩散特征，从而程序化合成高保真笔触。</li>
+<li><strong>3D Ink Painting 工具（InkBrush 等）</strong></li>
+<li>有研究型工具允许在 3D 空间中用“笔刷”直接画墨线，内部用程序化笔触和动画生成真正体积化的墨迹[9]。</li>
+</ol>
+<hr />
+<h2 id="vs">六、开源 vs 闭源：可用资源一览</h2>
+<blockquote>
+<p>这里只给出关键代表性方向，省略具体 URL，便于阅读。</p>
+</blockquote>
+<h3 id="61">6.1 值得关注的开源 / 免费方向</h3>
+<ol>
+<li><strong>Unity / GitHub 项目</strong></li>
+<li>3D_ChineseInkPaintingStyleShader（3D 水墨 Shader 项目）</li>
+<li>Unity 官方 + 社区的 NPR 教程（Toon / Outline）可直接改造用于水墨。</li>
+<li>各类 Fluid / Smoke 模拟 demo，可复用为墨晕物理基础。</li>
+<li><strong>Blender 相关</strong></li>
+<li>Blender 自身（完全开源），支持：<ul>
+<li>Shader Node 自建水墨材质；</li>
+<li>Geometry Nodes 程序化勾线 / 程序化山水；</li>
+<li>Grease Pencil 用于 2D 墨线动画；</li>
+</ul>
+</li>
+<li>社区笔刷、材质节点多为免费共享（注意 License）。</li>
+<li><strong>学术代码与开源 Demo</strong></li>
+<li>浙江大学等关于“GPU 实时水墨画绘制”的代码示例[1]（部分课程 / 论文配套）；</li>
+<li>国外“Real-time image-based Chinese ink painting rendering”等论文，有的提供数据或伪代码，可自行实现。</li>
+<li><strong>AIGC 图像开源模型</strong></li>
+<li>各类开源文生图模型（如 Stable Diffusion 社区中的中式水墨 LoRA、Qwen-Image 等开源模型）可以用于：<ul>
+<li>自动生成水墨贴图、笔触纹理、场景概念；</li>
+<li>生成 2D 水墨背景 / 插画资源。</li>
+</ul>
+</li>
+<li>不适合作为实时渲染核心，但很适合做资产生产管线。</li>
+</ol>
+<h3 id="62">6.2 主要闭源方向</h3>
+<ol>
+<li><strong>商业插件 / 资产</strong></li>
+<li>Blender：Watercolor Renderer、Inkwood、InkTool 等；</li>
+<li>C4D：RenderDancer（水墨渲染器）等；</li>
+<li>这些一般以一次性授权方式售卖，不开放源码，但可学习其参数设计与使用流程。</li>
+<li><strong>内部引擎 / 大厂技术</strong></li>
+<li>动态水墨渲染引擎（《哪吒之魔童闹海》等）；</li>
+<li>各厂自研的 3D NPR 渲染管线（适配 UE / Unity 定制版本）；</li>
+<li>相关算法多通过专利 / 技术白皮书部分公开，但不会开源具体实现。</li>
+<li><strong>AIGC 商业闭源模型</strong></li>
+<li>如 Banana Pro、部分高端视频生成模型，在水墨风格、文字渲染上表现突出，但：<ul>
+<li>通常只提供云端 API，无法嵌入离线渲染管线；</li>
+<li>授权条款对游戏 / 影视商用有较多限制。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="_3">七、如果你要真正落地：推荐技术路线</h2>
+<p>根据你提的几个重点（2D/3D、游戏引擎、Blender、程序化随机化、开源 / 闭源），给一个比较务实的方案组合。</p>
+<h3 id="71-1-3d-unity">7.1 目标 1：可控、可实时的 3D 水墨游戏渲染（Unity）</h3>
+<p><strong>推荐栈：Unity + URP + 自研 Shader + 程序化 Noise</strong></p>
+<ol>
+<li>立项阶段：</li>
+<li>参考 GitHub 上的 3D_ChineseInkPaintingStyleShader 项目和“仿宋代水墨山水”Unity 实现案例，做一个<strong>技术 Demo：单一山体 + 天空 + 树</strong>；</li>
+<li>在 URP 中建立基础的 NPR 渲染框架（Outline + Toon + 自定义 Light Function）。</li>
+<li>核心 Shader 要点：</li>
+<li>Outline：<code>dot(n, v)</code> + 噪声纹理扰动；提供笔触尺寸、随机强度参数；</li>
+<li>内部墨色：1–2 张水墨皴纹贴图 + 1 张噪声图，世界空间采样；</li>
+<li>飞白与纸纹：使用 2D 纸纹贴图乘进亮度 / Alpha；</li>
+<li>远近景控制：根据深度 / 距摄像机距离调节对比度与细节密度。</li>
+<li>程序化随机化：</li>
+<li>使用 Shader 中的 worldPos / vertexID 做伪随机种子，控制：<ul>
+<li>不同山体块的纹理偏移和笔触方向；</li>
+<li>Outline 粗细随位置轻微抖动；</li>
+</ul>
+</li>
+<li>为树木、石头等元素提供“笔触模板”，由脚本或 Shader 随机组合排布。</li>
+<li>资源管线：</li>
+<li>贴图初版可由 AIGC（Stable Diffusion + 水墨 LoRA）生成，之后美术手工修正成循环纹理；</li>
+<li>通过 Scriptable Render Feature 做屏幕后处理，再叠加全局水墨滤镜。</li>
+</ol>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>完全基于开源 / 自研 Shader，无 License 压力；</li>
+<li>与 Unity 整体生态兼容，适合中小团队。</li>
+</ul>
+<h3 id="72-2-3d-blender">7.2 目标 2：电影 / 宣传级 3D 水墨短片（Blender 导向）</h3>
+<p><strong>推荐栈：Blender + Eevee/Cycles + 节点材质 + Geometry Nodes</strong></p>
+<ol>
+<li>造型与构图：</li>
+<li>使用 Blender 建模 / 资产库 + 几何节点做程序化山体 / 植被；</li>
+<li>几何节点生成勾线（基于边索引 / 法线变化筛选边）。</li>
+<li>材质：</li>
+<li>依据“水墨材质实现过程剖析”的节点：<ul>
+<li>纸纹：纹理坐标 → 噪声 / 纸纹贴图 → 乘进 Base Color；</li>
+<li>墨色：利用 ColorRamp 控制“墨五色”，配合 UV / Object 坐标拉出皴纹走向；</li>
+<li>轮廓：用 Layer Weight / Fresnel 节点 + Noise 做边缘变体。</li>
+</ul>
+</li>
+<li>程序化随机：</li>
+<li>使用 Object / Random Per Island 等节点，对不同对象 / 面随机赋值，推动材质参数细微变化（类似水墨手工不一致感）；</li>
+<li>Blender 4.x 开始 Geometry Nodes 的字段系统，可以直接给实例化的笔触 / 树叶注入随机旋转、缩放、纹理偏移。</li>
+<li>渲染与后期：</li>
+<li>Eevee 做实时预览，Cycles 做最终高质量渲染；</li>
+<li>后期再用合成节点加一点镜头模糊、胶片颗粒和色调统一。</li>
+</ol>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>完全开源；</li>
+<li>适合做高质量短片、过场动画和宣传视频。</li>
+</ul>
+<h3 id="73-3-demo-ai">7.3 目标 3：研究级 / Demo 级程序化水墨与 AI 结合</h3>
+<p>如果你想做“下一代动态水墨引擎”的雏形，可以考虑：</p>
+<ol>
+<li>先复现一篇经典 GPU 实时水墨论文中的核心扩散算法，用 Compute Shader 或 CUDA（如果目标是 PC / 主机）。</li>
+<li>在 UE5 / Unity 里做“小规模 Demo”：限定墨层数量（例如仅角色轮廓与脚下水波使用物理墨晕）。</li>
+<li>用开源文生图模型作为“纹理发生器”：</li>
+<li>在离线阶段生成大量风格统一的水墨贴图、场景 concept；</li>
+<li>在线阶段只做轻量级程序化变形与随机组合。</li>
+</ol>
+<hr />
+<h2 id="_4">八、总结与选型建议</h2>
+<ol>
+<li><strong>2D / 3D 上的差别更多在“是否需要与几何强绑定”</strong></li>
+<li>2D：后处理 + 贴图即可，技术门槛低；</li>
+<li>3D：必须让笔触与法线、曲率、深度、视角绑定，Shader / 几何节点复杂度提升一档。</li>
+<li><strong>游戏引擎方面：</strong></li>
+<li><strong>Unity</strong>：资料多、开源 Demo 丰富、上手成本低，是实现 3D 水墨游戏最务实的选择；</li>
+<li><strong>Unreal</strong>：适合高品质大场景和电影级短片，尤其在 UE5 + PCG + Houdini 流程下的程序化山水，但整体工程量更大。</li>
+<li><strong>Blender 方面：</strong></li>
+<li>作为开源 DCC，是水墨场景生产的极佳工具；</li>
+<li>高质量即用型水墨插件大多闭源商用，但节点网络方案完全可以自建，不受限制。</li>
+<li><strong>程序化随机化：</strong></li>
+<li>核心是：<strong>“不要把水墨当普通贴图，而要把笔触当‘程序生成的动态实体’”</strong>；</li>
+<li>噪声 / SDF / 粒子 / 几何节点 / PCG 都是为此服务的技术积木。</li>
+<li><strong>开源 vs 闭源：</strong></li>
+<li>开源：适合搭建自有技术栈，Unity/Blender + GitHub 项目 + 学术论文足够支撑一套完整水墨渲染方案；</li>
+<li>闭源：大厂的动态水墨引擎、商业插件适合“即插即用”和参考，不利于深度定制。</li>
+</ol>
+<p>如果你后续想更具体地落地到“某个项目（比如：3D 水墨 ARPG / 影视项目）”，可以告诉我项目约束（平台、预算、团队技能结构），我可以基于以上技术图谱帮你收敛成几条更具体的工程实施路径和任务拆解。</p>
+<hr />
+<h3 id="references">References</h3>
+<p>[1] 利用GPU 实时绘制水墨画效果. http://www.cad.zju.edu.cn/home/jhyu/Papers/GPU_ink.pdf<br />
+[2] 基于毛笔和宣纸的水墨传输模型与仿真算法. https://patents.google.com/patent/CN100338612C/zh<br />
+[3] 水墨画笔触的快速渲染算法及其应用. https://www.jcad.cn/article/id/469699e8-ab92-4314-8185-092b3fb5cefa<br />
+[4] 一种模型的渲染方法和装置（含水墨风格渲染描述）. https://patents.google.com/patent/WO2022041548A1/zh<br />
+[5] 细节增强的水墨扩散模拟. https://www.jcad.cn/article/id/574f50ba-d255-4d27-a35c-e0e97bb880f1<br />
+[6] 仿宋代水墨山水画风格3D渲染Unity实现. https://indienova.com/indie-game-development/3d-rendering-of-imitation-song-dynasty-style-ink-landscape-painting-by-unity/<br />
+[7] 数字场景中传统文化IP 的算法重构与全球叙事（动态水墨渲染、粒子水墨技术）. https://www.sinoss.net/upload/resources/file/2026/04/07/46989.pdf<br />
+[8] CN108305311A 一种数字化图像水墨风格渲染技术. https://patents.google.com/patent/CN108305311A/zh<br />
+[9] InkBrush: A Sketching Tool for 3D Ink Painting. https://dl.acm.org/doi/10.1145/3613904.3642128</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 泥烟的客栈
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/knight02-bit" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:tsjkht@foxmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://space.bilibili.com/398743455" target="_blank" rel="noopener" title="space.bilibili.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92c-26.4-.8-48.2-9.8-65.3-27.2S.7 396.5 0 368.2V169.8c.8-26 9.7-47.6 26.7-65.7C43.8 87.8 65.5 78.8 92 78h29.4L96 52.2c-5.7-5.7-8.6-13-8.6-21.8S90.3 14.3 96 8.6 109 0 117.9 0s16.1 2.9 21.9 8.6L213.1 78h88l74.5-69.4C381.7 2.9 389.2 0 398 0s16.1 2.9 21.9 8.6c5.7 5.7 8.6 13 8.6 21.8s-2.9 16.1-8.6 21.8L394.6 78h29.3c26.4.8 48 9.8 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96c-9.6.4-17.4 3.7-23.6 9.8-6.1 6.1-9.4 13.9-9.8 23.5v194.4c0 9.2 3.3 17 9.8 23.5s14.4 9.8 23.6 9.8h320.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.follow", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+      
+        <script src="../../../assets/js/simpleLightbox.min.js"></script>
+      
+        <script src="../../../assets/js/custom.js"></script>
+      
+    
+  </body>
+</html>
